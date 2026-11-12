@@ -812,7 +812,7 @@
 
       <div class="scene-wrapper" id="carStage" title="點擊小車按喇叭！">
         <span class="honk-hint">👆 點車子按喇叭</span>
-        <div class="honk-bubble" id="honkBubble">📢 嗶嗶！租車記得加實體 ETC 卡，山區斷網也能秒開手帳喔～🍞💨</div>
+        <div class="honk-bubble" id="honkBubble">📢 嗶嗶！已補齊名古屋早餐、必買戰利品與同步小抄囉～🍞💨</div>
 
         <svg viewBox="0 0 420 156" width="100%" height="auto" style="display:block;" role="img" aria-label="麵包小偷開自駕車雪景插畫">
           <rect x="0" y="0" width="420" height="116" fill="#E3F3FA" />
@@ -940,7 +940,7 @@
             <span style="font-size:0.82rem; font-weight:700;">🔑 房號：</span>
             <input type="text" id="roomInput" class="form-ctrl" style="width:120px; padding:4px 8px; font-weight:700;" placeholder="家庭房號" />
             <button type="button" class="book-btn white" onclick="switchRoom()">連線</button>
-            <button type="button" class="book-btn pink" onclick="copyShareSyncLink()">📤 複製帳本網址傳 LINE</button>
+            <button type="button" class="book-btn pink" onclick="copyShareSyncLink()">📤 複製帳本＆小抄網址傳 LINE</button>
           </div>
         </div>
 
@@ -1034,7 +1034,7 @@
       </div>
     </div>
 
-    <!-- ==================== 分頁 3：住宿與停車（含預約代號小抄＋航班） ==================== -->
+    <!-- ==================== 分頁 3：住宿與停車（含同步預約代號小抄＋航班） ==================== -->
     <div id="tab-stay" class="tab-pane">
       <div class="panel-card">
         <div class="sub-pills" id="staySubPills">
@@ -1045,11 +1045,14 @@
           <button type="button" class="sub-pill" onclick="filterStaySection('park', this)">🅿️ 9大停車場＋TEL</button>
         </div>
 
-        <!-- 🎫 可編輯預約代號＆入場時段小抄收納卡 -->
+        <!-- 🎫 可編輯＋雙向同步預約代號＆入場時段小抄收納卡 -->
         <div class="stay-sec" data-sec="memo" style="margin-bottom:14px;">
           <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin-bottom:8px;">
-            <h3 style="font-size:1.05rem;">🎫 預約代號＆入場時段小抄（自動儲存於手機）</h3>
-            <a href="https://vjw-lp.digital.go.jp/zh-hant/" target="_blank" rel="noopener noreferrer" class="map-btn" style="margin-top:0; background:var(--yellow);">🌐 開啟 Visit Japan Web</a>
+            <h3 style="font-size:1.05rem;">🎫 預約代號＆入場時段小抄（自動同步給旅伴）</h3>
+            <div style="display:flex; gap:5px; flex-wrap:wrap;">
+              <button type="button" class="book-btn pink" style="padding:4px 9px; font-size:0.8rem;" onclick="copyShareSyncLink()">📤 傳 LINE 同步小抄</button>
+              <a href="https://vjw-lp.digital.go.jp/zh-hant/" target="_blank" rel="noopener noreferrer" class="map-btn" style="margin-top:0; background:var(--yellow);">🌐 Visit Japan Web</a>
+            </div>
           </div>
           <div class="grid-2" style="background:#FFF9EB; border:2px solid var(--ink); border-radius:14px; padding:12px;">
             <div>
@@ -1191,16 +1194,55 @@
       </div>
     </div>
 
-    <!-- ==================== 分頁 4：實用錦囊 ==================== -->
+    <!-- ==================== 分頁 4：實用錦囊（含必買戰利品攻略） ==================== -->
     <div id="tab-guide" class="tab-pane">
       <div class="panel-card">
         <div class="sub-pills" id="guideSubPills">
           <button type="button" class="sub-pill active" onclick="filterGuideSection('all', this)">全部錦囊</button>
+          <button type="button" class="sub-pill" onclick="filterGuideSection('shop', this)">🎁 必買戰利品</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('phrase', this)">🗣️ 指指日文卡</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('etc', this)">🛣️ 2026 ETC新規</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('tax', this)">🧾 2026/11 退稅新制</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('rain', this)">☔ 雨備總覽</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('sos', this)">🆘 緊急＆事故SOP</button>
+        </div>
+
+        <!-- 0. 必買戰利品精選攻略 -->
+        <div class="guide-sec" data-gsec="shop" style="margin-bottom:14px;">
+          <h3 style="font-size:1.05rem; margin-bottom:8px;">🎁 名古屋＆飛驒親子必買戰利品攻略（免封袋直接塞箱）</h3>
+          <div class="grid-2">
+            <div class="mini-box" style="background:#FFF9EB;">
+              <b>🧸 1. 榮商圈可愛角色＆百貨名菓（東急步行 5 分）</b>
+              <div>
+                • <a href="https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%83%91%E3%83%AB%E3%82%B3" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：名古屋パルコ">📍名古屋 PARCO</a>：館內有 <strong>Chiikawa Land 名古屋店</strong>、SNOOPY TOWN 與大型書店（常有麵包小偷繪本周邊），可直接辦理退稅。<br/>
+                • <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%BE%E5%9D%82%E5%B1%8B%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%BA%97" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：松坂屋名古屋店">📍松坂屋名古屋店 B1</a>：必買 <a href="https://www.google.com/maps/search/?api=1&query=%E6%A1%82%E6%96%B0%E5%A0%82%20%E6%9D%BE%E5%9D%82%E5%B1%8B%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%BA%97" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：桂新堂 松坂屋名古屋店">📍桂新堂</a> 可愛動物／季節圖案薄燒蝦仙貝（4歲孩超愛），以及 <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%A1%E5%8F%A3%E5%B1%8B%E6%98%AF%E6%B8%85%20%E6%9D%BE%E5%9D%82%E5%B1%8B%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%BA%97" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：両口屋是清 松坂屋名古屋店">📍兩口屋是清</a>「千なり」迷你銅鑼燒。
+              </div>
+            </div>
+
+            <div class="mini-box">
+              <b>💊 2. 親子藥妝＆哄娃好物（唐吉訶德 / 松本清）</b>
+              <div>
+                • 2026/11 起<strong>廢除消耗品密封塑膠袋</strong>，買完可直接拆外盒塞進 6 大件行李箱隙縫！<br/>
+                • 推薦清單：<strong>兒童泡澡球（びっくらたまご）</strong>（晚上回飯店浴缸泡澡神器）、貝親 Pigeon 兒童防蛀牙噴霧／氟錠、麵包超人兒童感冒糖漿、池田模範堂兒童止癢貼片。
+              </div>
+            </div>
+
+            <div class="mini-box">
+              <b>🏔️ 3. 飛驒高山限定紀念品（D4–D5）</b>
+              <div>
+                • <strong>猴寶寶（さるぼぼ）御守與背包吊飾</strong>：飛驒地區祈求孩子平安長大的傳統護身符。<br/>
+                • <strong>樸葉味噌（朴葉みそ）調理包</strong>：附乾燥樸葉與特製味噌醬，回台灣用平底鍋乾煎牛肉或菇類就能還原高山旅館早餐風味。
+              </div>
+            </div>
+
+            <div class="mini-box" style="background:#FFEAE6;">
+              <b>🐥 4. D8–D9 最後一天再買的短效期＆機場名物</b>
+              <div>
+                • 三重伊勢名物 <a href="https://www.google.com/maps/search/?api=1&query=%E8%B5%A4%E7%A6%8F%20%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：赤福 中部国際空港">📍赤福</a>：紅豆泥包軟糯麻糬（效期僅 2–3 天，長島或機場免稅店買最適合帶回台灣）。<br/>
+                • 中部機場 4F <a href="https://www.google.com/maps/search/?api=1&query=%E3%81%B4%E3%82%88%E3%82%8A%E3%82%93STATION%20%E3%82%AB%E3%83%95%E3%82%A7%20%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%B7%E3%82%A2%E3%83%BC%E3%83%8C" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：ぴよりんSTATION カフェ ジャンシアーヌ">📍ぴよりん 小雞布丁蛋糕</a>（造型超萌）、<a href="https://www.google.com/maps/search/?api=1&query=%E5%9D%82%E8%A7%92%E7%B7%8F%E6%9C%AC%E8%88%97%20%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：坂角総本舗 中部国際空港">📍坂角總本鋪</a> 黃金蝦餅、<a href="https://www.google.com/maps/search/?api=1&query=%E9%9D%92%E6%9F%B3%E7%B7%8F%E6%9C%AC%E5%AE%B6%20%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：青柳総本家 中部国際空港">📍青柳總本家</a> 青蛙饅頭。
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- 1. 指指日文卡 -->
@@ -1222,10 +1264,10 @@
               <div style="font-weight:700; font-size:1.05rem; margin-top:4px;">ベッドガードをお願いします</div>
               <div style="font-size:0.8rem; opacity:0.8;">確認免費床邊護欄與併床（點擊放大）</div>
             </div>
-            <div class="mini-box" style="cursor:pointer;" onclick="openZoomCard('🍽️ 餐廳借用兒童椅＆餐具', '大人2名と4歳の子供1名です。\n子供用の椅子（いす）と取り皿・スプーンをお借りできますか？', '我們有 2 位大人和 1 位 4 歲小孩。請問可以借兒童餐椅、小碗和湯匙嗎？')">
-              <span style="background:var(--bamboo); border:1.5px solid var(--ink); border-radius:999px; padding:1px 8px; font-size:0.75rem; font-weight:700;">🥄 親子餐廳用餐</span>
-              <div style="font-weight:700; font-size:1.05rem; margin-top:4px;">子供用の椅子と食器をお借りできますか？</div>
-              <div style="font-size:0.8rem; opacity:0.8;">借用兒童餐椅、分裝小碗與兒童湯匙（點擊放大）</div>
+            <div class="mini-box" style="cursor:pointer;" onclick="openZoomCard('🍽️ 餐廳借用兒童椅＆味噌醬分開裝', '大人2名と4歳の子供1名です。\n子供用の椅子と食器をお借りできますか？\n（※味噌ダレは別添えでお願いします）', '2 位大人和 1 位 4 歲小孩。請問可借兒童餐椅與餐具嗎？（吃矢場とん味噌豬排時，附註「味噌醬請分開裝」！）')">
+              <span style="background:var(--bamboo); border:1.5px solid var(--ink); border-radius:999px; padding:1px 8px; font-size:0.75rem; font-weight:700;">🥄 親子餐廳＆醬料分裝</span>
+              <div style="font-weight:700; font-size:1.05rem; margin-top:4px;">子供用の椅子・味噌ダレ別添え</div>
+              <div style="font-size:0.8rem; opacity:0.8;">借兒童椅餐具＋味噌醬分開裝（點擊放大）</div>
             </div>
           </div>
         </div>
@@ -1276,7 +1318,7 @@
             </div>
             <div class="mini-box">
               <b>🌧️ D7–D8 市區＆長島遇雨</b>
-              <div><a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%A0%88%E5%95%86%E5%BA%97%E8%A1%97" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：大須商店街">📍大須商店街</a> 全覆蓋玻璃拱廊、<a href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8A%E3%82%B4%E3%83%A4" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：ポケモンセンターナゴヤ">📍松坂屋 寶可夢中心</a>、<a href="https://www.google.com/maps/search/?api=1&query=FLIGHT%20OF%20DREAMS" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：FLIGHT OF DREAMS">📍波音博物館</a> 皆為室內有頂棚。</div>
+              <div><a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%A0%88%E5%95%86%E5%BA%97%E8%A1%97" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：大須商店街">📍大須商店街</a> 全覆蓋玻璃拱廊、<a href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8A%E3%82%B4%E3%83%A4" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：ポケモンセンターナゴヤ">📍松坂屋 寶可夢中心</a>、<a href="https://www.google.com/maps/search/?api=1&query=FLIGHT%20OF%20DREAMS%20%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：FLIGHT OF DREAMS 中部国際空港">📍波音博物館</a> 皆為室內有頂棚。</div>
             </div>
           </div>
         </div>
@@ -1344,7 +1386,7 @@
 
   <!-- 右下角迷你麵包小偷小幫手 -->
   <div class="thief-buddy" id="thiefBuddy" title="點我聽麵包小偷小提醒！">
-    <div class="buddy-speech" id="buddySpeech">租車記得加實體 ETC 卡！預約代號可存「🚗 住宿停車」小抄 🎫</div>
+    <div class="buddy-speech" id="buddySpeech">「🧰 實用錦囊」新增了必買戰利品攻略，快去逛逛！🎁</div>
     <svg class="anim-thief" width="66" height="68" viewBox="0 0 84 86" aria-label="麵包小偷插圖">
       <ellipse cx="33" cy="76" rx="6" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.5"/>
       <ellipse cx="51" cy="76" rx="6" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.5"/>
@@ -1369,7 +1411,7 @@
       const badge = document.getElementById("offlineStatusBadge");
       try {
         if ("caches" in window && window.location.protocol.startsWith("http")) {
-          caches.open("nagoya-2027-offline-v1").then(cache => {
+          caches.open("nagoya-2027-offline-v2").then(cache => {
             cache.add(window.location.href).catch(() => {});
           });
         }
@@ -1437,11 +1479,37 @@
       document.getElementById("zoomModal").classList.remove("open");
     };
 
-    // ==================== 🎫 預約代號小抄自動儲存 ====================
+    // ==================== 🎫 預約代號小抄（支援雲端與分享連結雙向同步） ====================
     const MEMO_IDS = ["memoJal", "memoCar", "memoTickets", "memoHotel1", "memoHotel2", "memoHotel3"];
     const MEMO_STORAGE_KEY = "nagoya_2027_booking_memos_v1";
     let savedMemos = {};
     try { savedMemos = JSON.parse(localStorage.getItem(MEMO_STORAGE_KEY) || "{}"); } catch (e) {}
+
+    function applyMemosToInputs() {
+      MEMO_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && savedMemos[id] !== undefined) {
+          el.value = savedMemos[id];
+        }
+      });
+    }
+
+    function mergeMemos(incomingObj) {
+      if (!incomingObj || typeof incomingObj !== "object") return false;
+      let changed = false;
+      MEMO_IDS.forEach(id => {
+        const val = typeof incomingObj[id] === "string" ? incomingObj[id].trim() : "";
+        if (val && val !== (savedMemos[id] || "")) {
+          savedMemos[id] = val;
+          changed = true;
+        }
+      });
+      if (changed) {
+        try { localStorage.setItem(MEMO_STORAGE_KEY, JSON.stringify(savedMemos)); } catch (e) {}
+        applyMemosToInputs();
+      }
+      return changed;
+    }
 
     MEMO_IDS.forEach(id => {
       const el = document.getElementById(id);
@@ -1450,6 +1518,9 @@
       el.addEventListener("input", () => {
         savedMemos[id] = el.value;
         try { localStorage.setItem(MEMO_STORAGE_KEY, JSON.stringify(savedMemos)); } catch (e) {}
+        if (gunMemoNode) {
+          try { gunMemoNode.put({ [id]: el.value }); } catch (e) {}
+        }
       });
     });
 
@@ -1595,10 +1666,10 @@
     });
 
     const buddyPhrases = [
-      "預約租車記得加租「實體 ETC 卡」，日本多處交流道已改為無現金 ETC 專用！🛣️",
-      "把機票、租車與吉卜力入場時段貼進「🚗 住宿停車 ➔ 預約代號小抄」，現場一秒出示 🎫",
-      "樂高樂園入園先量身高領手環（100–105cm 關鍵分界），4歲起需購兒童票 🎡",
-      "吉卜力公園全區可重複入園（大倉庫 15:00 後可再進場），4歲起需買兒童票 🥐"
+      "D3 與 D7 早上可去東急飯店旁的「コメダ珈琲」體驗名古屋點飲料送吐司早餐！🍞☕",
+      "「🧰 實用錦囊 ➔ 🎁 必買戰利品」收錄了 Chiikawa Land、桂新堂與小雞布丁！🐥",
+      "填好「🎫 預約代號小抄」按傳 LINE，旅伴點開連訂房跟租車代號都會同步！📲",
+      "吃矢場とん味噌豬排記得點指指卡「味噌ダレ別添え」，孩子吃原味炸豬排超開心 🐷"
     ];
     let phraseIdx = 0;
     document.getElementById("thiefBuddy").addEventListener("click", () => {
@@ -1606,7 +1677,7 @@
       phraseIdx = (phraseIdx + 1) % buddyPhrases.length;
     });
 
-    // ==================== 共同編輯同步記帳本 ====================
+    // ==================== 共同編輯同步記帳本（含預約代號小抄雙向同步） ====================
     const LEDGER_STORAGE_KEY = "nagoya_2027_ledger_v1";
     const ROOM_STORAGE_KEY = "nagoya_2027_room_id";
     const RATE_STORAGE_KEY = "nagoya_2027_jpy_rate";
@@ -1631,6 +1702,7 @@
     let jpyRate = parseFloat(localStorage.getItem(RATE_STORAGE_KEY)) || 0.215;
     let gunInstance = null;
     let gunRoomNode = null;
+    let gunMemoNode = null;
 
     function loadLocalLedger() {
       try {
@@ -1671,7 +1743,7 @@
       return false;
     }
 
-    function encodeSyncPayload(arr) { return btoa(unescape(encodeURIComponent(JSON.stringify(arr)))); }
+    function encodeSyncPayload(obj) { return btoa(unescape(encodeURIComponent(JSON.stringify(obj)))); }
     function decodeSyncPayload(b64) { return JSON.parse(decodeURIComponent(escape(atob(b64)))); }
 
     function checkUrlHashSync() {
@@ -1686,14 +1758,22 @@
           localStorage.setItem(ROOM_STORAGE_KEY, currentRoomId);
         }
         if (syncParam) {
-          const incomingList = decodeSyncPayload(syncParam);
+          const decoded = decodeSyncPayload(syncParam);
           let mergedCount = 0;
-          if (Array.isArray(incomingList)) {
-            incomingList.forEach(item => { if (mergeExpenseRecord(item)) mergedCount++; });
+          let memoUpdated = false;
+          if (Array.isArray(decoded)) {
+            decoded.forEach(item => { if (mergeExpenseRecord(item)) mergedCount++; });
+          } else if (decoded && typeof decoded === "object") {
+            if (Array.isArray(decoded.expenses)) {
+              decoded.expenses.forEach(item => { if (mergeExpenseRecord(item)) mergedCount++; });
+            }
+            if (decoded.memos) {
+              memoUpdated = mergeMemos(decoded.memos);
+            }
           }
-          if (mergedCount > 0) {
-            saveLocalLedger();
-            document.getElementById("syncStatusText").textContent = `已合併 ${mergedCount} 筆更新！`;
+          if (mergedCount > 0) saveLocalLedger();
+          if (mergedCount > 0 || memoUpdated) {
+            document.getElementById("syncStatusText").textContent = `已合併 ${mergedCount} 筆帳目` + (memoUpdated ? "＋小抄！" : "！");
           }
           history.replaceState(null, "", window.location.pathname + window.location.search);
           const accBtn = document.querySelectorAll(".m-tab-btn")[1];
@@ -1718,16 +1798,27 @@
           gunInstance = Gun({ peers: ["https://gun-manhattan.herokuapp.com/gun", "https://relay.peer.ooo/gun"] });
         }
         gunRoomNode = gunInstance.get("nagoya2027_breadthief_ledger_" + cleanRoom);
+        gunMemoNode = gunInstance.get("nagoya2027_breadthief_memos_" + cleanRoom);
         document.getElementById("syncDot").textContent = "🟢";
         document.getElementById("syncStatusText").textContent = `已連線（房號：${cleanRoom}）`;
 
         Object.values(expensesMap).forEach(rec => { gunRoomNode.get(rec.id).put(rec); });
+        if (Object.keys(savedMemos).length > 0) {
+          gunMemoNode.put(savedMemos);
+        }
+
         gunRoomNode.map().on((data, key) => {
           if (!data || typeof data !== "object") return;
           const record = { ...data, id: data.id || key };
           if (mergeExpenseRecord(record)) {
             saveLocalLedger();
             renderExpenses();
+          }
+        });
+
+        gunMemoNode.on((data) => {
+          if (data && typeof data === "object") {
+            mergeMemos(data);
           }
         });
       } catch (e) {}
@@ -1741,12 +1832,16 @@
     };
 
     window.copyShareSyncLink = function() {
-      const encoded = encodeSyncPayload(Object.values(expensesMap));
+      const payload = {
+        expenses: Object.values(expensesMap),
+        memos: savedMemos
+      };
+      const encoded = encodeSyncPayload(payload);
       const baseUrl = window.location.origin + window.location.pathname;
       const shareUrl = `${baseUrl}#room=${encodeURIComponent(currentRoomId)}&sync=${encoded}`;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(shareUrl).then(() => {
-          alert("✅ 已複製「共同帳本同步網址」！貼到 LINE 群組，旅伴點開就會自動合併帳目！");
+          alert("✅ 已複製「共同帳本＋預約代號小抄」同步網址！\n貼到 LINE 群組，旅伴點開就會自動合併帳目與所有訂房代號！");
         }).catch(() => prompt("請複製下方同步網址傳給旅伴：", shareUrl));
       } else {
         prompt("請複製下方同步網址傳給旅伴：", shareUrl);
@@ -1904,7 +1999,7 @@
     connectGunRoom(currentRoomId);
     renderExpenses();
 
-    // ==================== 每日行程資料（含 4 歲購票/身高、白川鄉停車時間、ETC 提醒） ====================
+    // ==================== 每日行程資料（含名古屋早餐、幼兒點餐技巧、D8精準導航） ====================
     const itineraryData = [
       {
         day: "D1", date: "2/24(三)", ledgerDay: "D1 (2/24)",
@@ -1946,7 +2041,7 @@
       },
       {
         day: "D3", date: "2/26(五)", ledgerDay: "D3 (2/26)",
-        title: "Day 3｜走進宮崎駿童話：吉卜力公園",
+        title: "Day 3｜名古屋喫茶早餐 ➔ 吉卜力公園童話日",
         summary: `宿：${gm("名古屋東急飯店", "名古屋東急ホテル")}（連住第 2 晚）`,
         routeInfo: {
           isDrive: true,
@@ -1961,9 +2056,9 @@
         parking: `車機設 TEL：0561-64-1130 停 ${gm("愛・地球博記念公園 北1駐車場", "愛・地球博記念公園 北1駐車場")}（¥500/次），離吉卜力大倉庫最近。`,
         rain: `${gm("吉卜力大倉庫", "ジブリの大倉庫")} 為 100% 全室內恆溫展館！逛完魔女之谷麵包店後可去同公園內的 ${gm("愛知縣兒童綜合館", "あいち児童総合センター")}（室內大型攀爬塔）或 ${gm("AEON Mall 長久手", "イオンモール長久手")}。`,
         events: [
-          { time: "09:15 - 10:00", tr: "自駕 26 分", must: false, title: `開車前往愛・地球博記念公園`, desc: `自駕直達北 1 停車場，省去帶 4 歲幼兒轉乘電車的步行負擔。` },
-          { time: "10:00 - 15:30", tr: "園區漫步", must: true, title: `★ 必去：吉卜力公園（大倉庫＋魔女之谷）`, desc: `<strong>4歲起需購兒童票</strong>；全區可重複入園（大倉庫 15:00 後可再入場）。全室內 ${gm("吉卜力大倉庫", "ジブリの大倉庫")} 玩貓巴士房間；${gm("魔女之谷", "魔女の谷 ジブリパーク")} 搭旋轉木馬。`, food: `🥐 魔女之谷 ${gm("グーチョキパン屋", "グーチョキパン屋 ジブリパーク")} 現烤可頌與法式麵包！` },
-          { time: "16:30", tr: "自駕 26 分", must: false, title: `返回榮商圈下午茶＆藥妝百貨散步`, desc: `步行逛 ${gm("綠洲 21", "オアシス21")}、${gm("松坂屋名古屋店", "松坂屋名古屋店")}（帶護照辦退稅）。`, food: `🍰 ${gm("HARBS 榮本店", "HARBS 栄本店")} 水果千層蛋糕；晚餐 ${gm("山本屋總本家", "山本屋総本家 栄")} 味噌烏龍麵。` }
+          { time: "08:00 - 09:00", tr: "步行 4 分", must: false, title: `體驗名古屋靈魂「喫茶店 Morning」早餐文化`, desc: `出發前步行至東急飯店旁的 ${gm("コメダ珈琲店 榮店", "コメダ珈琲店 栄広小路店")}（點飲料免費送現烤奶油厚片吐司＋水煮蛋，超搭麵包小偷主題！）或老牌名店 ${gm("コンパル 榮西店", "コンパル 栄西店")} 現炸海老三明治。` },
+          { time: "09:15 - 15:30", tr: "自駕 26 分", must: true, title: `★ 必去：吉卜力公園（大倉庫＋魔女之谷）`, desc: `<strong>4歲起需購兒童票</strong>；全區可重複入園（大倉庫 15:00 後可再入場）。全室內 ${gm("吉卜力大倉庫", "ジブリの大倉庫")} 玩貓巴士房間；${gm("魔女之谷", "魔女の谷 ジブリパーク")} 搭旋轉木馬。`, food: `🥐 魔女之谷 ${gm("グーチョキパン屋", "グーチョキパン屋 ジブリパーク")} 現烤可頌與法式麵包！` },
+          { time: "16:30", tr: "自駕 26 分", must: false, title: `返回榮商圈下午茶＆可愛雜貨散步`, desc: `步行逛 ${gm("綠洲 21", "オアシス21")}、${gm("松坂屋名古屋店", "松坂屋名古屋店")}（B1 買 ${gm("桂新堂", "桂新堂 松坂屋名古屋店")} 動物蝦仙貝）與 ${gm("名古屋 PARCO", "名古屋パルコ")} Chiikawa Land。`, food: `🍰 ${gm("HARBS 榮本店", "HARBS 栄本店")} 水果千層蛋糕；晚餐 ${gm("山本屋總本家", "山本屋総本家 栄")} 味噌烏龍麵（可請店員煮軟「麺やわらかめ」給小孩吃）。` }
         ]
       },
       {
@@ -2005,9 +2100,9 @@
         parking: `白川鄉車機設 TEL：05769-6-1311 停 ${gm("村営せせらぎ公園駐車場", "村営せせらぎ公園駐車場")}（2/28 免預約、08:00 開放，建議 10:30 前抵達避免週日雪季車潮，¥1,000/次）。`,
         rain: `小雪可進 ${gm("和田家", "和田家 白川郷")} 合掌屋參觀；若遇暴雪封路絕不硬闖，改去平地市郊 ${gm("飛驒之里", "飛騨の里")} ＋ ${gm("飛驒物產館", "飛騨物産館")} 彩繪猴寶寶 DIY＋ ${gm("高山祭屋台會館", "高山祭屋台会館")}！`,
         events: [
-          { time: "08:30 - 09:30", tr: "步行 3 分", must: false, title: `高山宮川朝市晨間散步採買`, desc: `逛 ${gm("宮川朝市", "宮川朝市")} 買飛驒傳統「猴寶寶（さるぼぼ）」布偶。`, food: `🍎 現切飛驒蘋果、${gm("喜八郎 飛驒牛包子", "飛騨牛まん本舗 喜八郎")}、手沖咖啡。` },
-          { time: "09:30 - 13:30", tr: "自駕 50 分", must: true, title: `★ 必去：世界遺產白川鄉合掌村（童話雪景／玩雪）`, desc: `前往 ${gm("白川鄉合掌村", "白川郷合掌造り集落")}，搭接駁車上 ${gm("城山天守閣展望台", "城山天守閣展望台")}，再到 ${gm("合掌造民居庭園", "野外博物館 合掌造り民家園")} 堆雪人。`, food: `🍡 ${gm("喫茶落人", "喫茶 落人 白川郷")} 炭火圍爐現烤紅豆湯圓。` },
-          { time: "15:00 - 18:30", tr: "自駕 50 分", must: false, title: `回飯店午休充電 ➔ 漫步三町筋古街`, desc: `下午回房小睡片刻，傍晚散步 ${gm("三町筋古街", "さんまち通り 高山")}。`, food: `🍣 ${gm("飛驒こって牛", "飛騨こって牛")} 飛驒牛握壽司、晚餐 ${gm("麵屋白川", "麺屋しらかわ")} 拉麵。` }
+          { time: "08:30 - 09:30", tr: "步行 3 分", must: false, title: `高山宮川朝市晨間散步採買`, desc: `逛 ${gm("宮川朝市", "宮川朝市")} 買飛驒傳統「猴寶寶（さるぼぼ）」御守吊飾給寶貝。`, food: `🍎 現切飛驒蘋果、玻璃瓶濃郁 ${gm("飛驒牛乳", "飛騨牛乳")}、${gm("喜八郎 飛驒牛包子", "飛騨牛まん本舗 喜八郎")}。` },
+          { time: "09:30 - 13:30", tr: "自駕 50 分", must: true, title: `★ 必去：世界遺產白川鄉合掌村（童話雪景／玩雪）`, desc: `前往 ${gm("白川鄉合掌村", "白川郷合掌造り集落")}，搭接駁車上 ${gm("城山天守閣展望台", "城山天守閣展望台")}，再到 ${gm("合掌造民居庭園", "野外博物館 合掌造り民家園")} 堆雪人。`, food: `🍡 ${gm("喫茶落人", "喫茶 落人 白川郷")} 炭火圍爐紅豆湯圓、現烤核桃味噌「五平餅」（軟糯鹹甜超適合孩子分食）。` },
+          { time: "15:00 - 18:30", tr: "自駕 50 分", must: false, title: `回飯店午休充電 ➔ 漫步三町筋古街`, desc: `下午回房小睡片刻，傍晚散步 ${gm("三町筋古街", "さんまち通り 高山")}（順便買樸葉味噌調理包）。`, food: `🍣 ${gm("飛驒こって牛", "飛騨こって牛")} 飛驒牛握壽司、${gm("高山布丁亭", "高山プリン亭")} 雪國藍布丁、晚餐 ${gm("麵屋白川", "麺屋しらかわ")}。` }
         ]
       },
       {
@@ -2047,8 +2142,8 @@
         parking: `車機設 TEL：052-251-2411 返抵 ${gm("名古屋東急飯店 B1-B2 車庫", "名古屋東急ホテル")}（限高 2.0m，¥1,200/晚）。`,
         rain: `${gm("大須商店街", "大須商店街")} 整區為全覆蓋式玻璃拱廊不淋雨；下午逛 ${gm("松坂屋名古屋店 寶可夢中心", "ポケモンセンターナゴヤ")} 與 ${gm("榮地下街", "サカエチカ")} 連通商場。`,
         events: [
-          { time: "10:30 - 12:30", tr: "自駕 2 小時", must: false, title: `水明館泡完晨湯退房，開車返回名古屋市區`, desc: `沿途可停靠 ${gm("關 SA（上行）", "関サービスエリア 上り")} 或 ${gm("美濃加茂 SA", "美濃加茂サービスエリア")} 休息買霜淇淋。` },
-          { time: "14:00 - 18:00", tr: "地鐵／步行", must: false, title: `大須商店街尋寶 ＆ 榮商圈藥妝百貨補貨`, desc: `逛 ${gm("大須商店街", "大須商店街")} 扭蛋玩具店，再到 ${gm("榮商圈", "栄駅 名古屋")} 採買退稅藥妝與伴手禮。`, food: `🍢 大須 ${gm("新雀本店", "新雀本店 大須")} 烤醬油糰子；晚餐 ${gm("矢場とん 矢場町本店", "矢場とん 矢場町本店")} 味噌豬排。` }
+          { time: "10:30 - 12:30", tr: "自駕 2 小時", must: false, title: `水明館泡完晨湯退房，開車返回名古屋市區`, desc: `沿途可停靠 ${gm("關 SA（上行）", "関サービスエリア 上り")} 或 ${gm("美濃加茂 SA", "美濃加茂サービスエリア")} 休息買飛驒牛乳霜淇淋。` },
+          { time: "14:00 - 18:00", tr: "地鐵／步行", must: false, title: `大須商店街尋寶 ＆ 榮商圈藥妝百貨補貨`, desc: `逛 ${gm("大須商店街", "大須商店街")} 扭蛋玩具店，再到 ${gm("榮商圈", "栄駅 名古屋")} 採買免稅藥妝（2026/11 起免封袋可直接拆盒裝箱）。`, food: `🍢 大須 ${gm("新雀本店", "新雀本店 大須")} 烤醬油糰子；晚餐 ${gm("矢場とん 矢場町本店", "矢場とん 矢場町本店")}（可請店員味噌醬分開裝「味噌ダレ別添え」給孩子吃原味炸豬排）。` }
         ]
       },
       {
@@ -2063,13 +2158,13 @@
             { place: "長島 Outlet", leg: "40分 (50km)" },
             { place: "波音博物館／機場還車", leg: "" }
           ],
-          navUrl: buildMultiRouteUrl("名古屋東急ホテル", "中部国際空港 アクセスプラザ", ["三井アウトレットパーク ジャズドリーム長島", "FLIGHT OF DREAMS"])
+          navUrl: buildMultiRouteUrl("名古屋東急ホテル", "中部国際空港 アクセスプラザ", ["三井アウトレットパーク ジャズドリーム長島", "FLIGHT OF DREAMS 中部国際空港"])
         },
         parking: `車機設 TEL：0594-45-8700 停 ${gm("三井長島 Outlet", "三井アウトレットパーク ジャズドリーム長島")}（單店滿 ¥3,000 全額退 ¥1,000 停車費）；18:00 回 ${gm("機場交通廣場 1F 還車", "中部国際空港 アクセスプラザ")}。`,
-        rain: `Outlet 店鋪間有遮雨廊道，緊鄰的 ${gm("名古屋麵包超人兒童博物館", "名古屋アンパンマンこどもミュージアム＆パーク")} 有大型室內劇場；下午 ${gm("波音博物館 FLIGHT OF DREAMS", "FLIGHT OF DREAMS")} 更是 100% 全室內！`,
+        rain: `Outlet 店鋪間有遮雨廊道，緊鄰的 ${gm("名古屋麵包超人兒童博物館", "名古屋アンパンマンこどもミュージアム＆パーク")} 有大型室內劇場；下午 ${gm("波音博物館 FLIGHT OF DREAMS", "FLIGHT OF DREAMS 中部国際空港")} 更是 100% 全室內！`,
         events: [
-          { time: "10:45 - 14:45", tr: "自駕 35 分", must: true, title: `★ 必去：三井 Outlet 爵士之夢長島 ＆ 麵包超人雙軌攻略`, desc: `逛 ${gm("三井 Outlet 爵士之夢長島", "三井アウトレットパーク ジャズドリーム長島")}（隨身帶護照辦退稅）；緊鄰步行 2 分鐘就是 ${gm("名古屋麵包超人兒童博物館", "名古屋アンパンマンこどもミュージアム＆パーク")} 備援放電！`, food: `🍜 園區美食街名古屋名物 ${gm("矢場とん 長島店", "矢場とん ジャズドリーム長島店")} 或親子丼。` },
-          { time: "15:30 - 17:45", tr: "跨海自駕 40 分", must: true, title: `★ 必去：波音博物館 FLIGHT OF DREAMS（機場 T2 旁）`, desc: `參觀 ${gm("波音博物館 FLIGHT OF DREAMS", "FLIGHT OF DREAMS")}，真實波音 787 機翼下有大型室內攀爬網與滑梯。`, food: `🍔 ${gm("SEATTLE TERRACE", "シアトルテラス FLIGHT OF DREAMS")} 用餐，外帶 ${gm("天むす千壽", "天むす千寿")} 炸蝦飯糰與 ${gm("仙貝之里", "えびせんべいの里 セントレア")} 蝦餅。` },
+          { time: "10:45 - 14:45", tr: "自駕 35 分", must: true, title: `★ 必去：三井 Outlet 爵士之夢長島 ＆ 麵包超人雙軌攻略`, desc: `逛 ${gm("三井 Outlet 爵士之夢長島", "三井アウトレットパーク ジャズドリーム長島")}（隨身帶護照辦退稅，可順買伊勢名物「赤福」）；緊鄰步行 2 分鐘就是 ${gm("名古屋麵包超人兒童博物館", "名古屋アンパンマンこどもミュージアム＆パーク")} 備援放電！`, food: `🍜 園區美食街名古屋名物 ${gm("矢場とん 長島店", "矢場とん ジャズドリーム長島店")} 或親子丼。` },
+          { time: "15:30 - 17:45", tr: "跨海自駕 40 分", must: true, title: `★ 必去：波音博物館 FLIGHT OF DREAMS（機場 T2 旁）`, desc: `參觀 ${gm("波音博物館 FLIGHT OF DREAMS", "FLIGHT OF DREAMS 中部国際空港")}，真實波音 787 機翼下有大型室內攀爬網與滑梯。`, food: `🍔 ${gm("SEATTLE TERRACE", "シアトルテラス FLIGHT OF DREAMS")} 用餐，外帶 ${gm("天むす千壽", "天むす千寿")} 炸蝦飯糰與 ${gm("仙貝之里", "えびせんべいの里 セントレア")} 蝦餅。` },
           { time: "18:00", tr: "還車＋入住", must: false, title: `機場滿油還車 ➔ 入住中部機場酒店整理 6 大箱行李`, desc: `加滿油（出示指指卡「レギュラー満タン」），還車後走空橋進 ${gm("中部機場酒店", "セントレアホテル")}，免稅品放行李箱最上層。` }
         ]
       },
@@ -2085,7 +2180,7 @@
         rain: `從飯店退房、推行李走空橋進 T1、辦退稅查驗到登機全程室內無風雨。`,
         events: [
           { time: "09:15 - 10:15", tr: "空橋步行 3 分", must: true, title: `★ 必去關鍵：T1 辦理機場退稅新制查驗 ➔ JAL 託運`, desc: `⚠️ 務必「先退稅查驗、再託運行李」！至 ${gm("中部國際機場 T1 出境大廳", "中部国際空港 第1ターミナル")} KIOSK 機台刷護照（🟢綠燈直接託運 / 🔴紅燈海關櫃檯查驗），完成後至 JAL 櫃檯託運 6 大件行李。` },
-          { time: "10:30 - 11:30", tr: "出境免稅區", must: false, title: `管制區免稅店最後採買 ＆ 登機準備`, desc: `入關後再買最後伴手禮，帶寶貝上廁所準備登機。`, food: `🦐 伴手禮：${gm("坂角總本鋪", "坂角総本舗 中部国際空港")} 黃金蝦餅、${gm("青柳總本家", "青柳総本家 中部国際空港")} 青蛙饅頭。` },
+          { time: "10:30 - 11:30", tr: "出境免稅區", must: false, title: `管制區免稅店最後採買 ＆ 登機準備`, desc: `入關後買短效期伴手禮帶回台灣，帶寶貝上廁所準備登機。`, food: `🦐 必買名物：${gm("赤福", "赤福 中部国際空港")} 紅豆麻糬、${gm("ぴよりん 小雞蛋糕", "ぴよりんSTATION カフェ ジャンシアーヌ")}、${gm("坂角總本鋪", "坂角総本舗 中部国際空港")} 黃金蝦餅、${gm("青柳總本家", "青柳総本家 中部国際空港")} 青蛙饅頭。` },
           { time: "12:05 - 14:40", tr: "JAL JL8670", must: false, title: `平安飛抵臺灣桃園國際機場 T2`, desc: `降落 ${gm("臺灣桃園國際機場 T2", "臺灣桃園國際機場第二航廈")}，平安回家囉！🎉` }
         ]
       }
@@ -2209,8 +2304,8 @@
       ]
     };
 
-    let state = JSON.parse(localStorage.getItem("nagoya_2027_bread_thief_v8") || "null") || defaultData;
-    function saveState() { localStorage.setItem("nagoya_2027_bread_thief_v8", JSON.stringify(state)); }
+    let state = JSON.parse(localStorage.getItem("nagoya_2027_bread_thief_v9") || "null") || defaultData;
+    function saveState() { localStorage.setItem("nagoya_2027_bread_thief_v9", JSON.stringify(state)); }
 
     function renderChecklist(type) {
       const listEl = document.getElementById(type === "todo" ? "todoList" : "packList");
