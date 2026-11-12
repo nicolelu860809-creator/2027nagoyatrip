@@ -133,15 +133,32 @@
       line-height: 1.25;
     }
 
+    .hero-sub-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
     .hero-sub-pill {
       display: inline-block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       background-color: var(--bg-washi);
       border: 2px solid var(--ink);
       border-radius: 999px;
-      padding: 2px 10px;
-      margin-top: 4px;
+      padding: 2px 9px;
+    }
+
+    .offline-badge {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      background-color: var(--bamboo);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 2px 8px;
     }
 
     .cd-strip {
@@ -616,6 +633,28 @@
       margin-bottom: 4px;
     }
 
+    /* 🎫 預約代號小抄輸入欄 */
+    .memo-field-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 8px;
+    }
+    .memo-field-row label {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .memo-input {
+      width: 100%;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 5px 8px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      background-color: var(--card-white);
+      color: var(--ink);
+    }
+
     /* 共同記帳樣式 */
     .sync-bar {
       background-color: var(--aqua);
@@ -757,7 +796,10 @@
       <div class="hero-header-row">
         <div class="hero-title-group">
           <h1>🍞 2027 名古屋親子自駕 9 日遊</h1>
-          <span class="hero-sub-pill">2/24(三)–3/4(四)｜2大1小(4y)｜麵包小偷手帳</span>
+          <div class="hero-sub-row">
+            <span class="hero-sub-pill">2/24(三)–3/4(四)｜2大1小(4y)</span>
+            <span class="offline-badge" id="offlineStatusBadge">📴 離線快取就緒</span>
+          </div>
         </div>
 
         <div class="cd-strip" aria-label="出發倒數">
@@ -770,7 +812,7 @@
 
       <div class="scene-wrapper" id="carStage" title="點擊小車按喇叭！">
         <span class="honk-hint">👆 點車子按喇叭</span>
-        <div class="honk-bubble" id="honkBubble">📢 嗶嗶！已加入「今日車程路線條＋一鍵多點導航」囉～🛣️💨</div>
+        <div class="honk-bubble" id="honkBubble">📢 嗶嗶！租車記得加實體 ETC 卡，山區斷網也能秒開手帳喔～🍞💨</div>
 
         <svg viewBox="0 0 420 156" width="100%" height="auto" style="display:block;" role="img" aria-label="麵包小偷開自駕車雪景插畫">
           <rect x="0" y="0" width="420" height="116" fill="#E3F3FA" />
@@ -992,16 +1034,56 @@
       </div>
     </div>
 
-    <!-- ==================== 分頁 3：住宿與停車（含航班） ==================== -->
+    <!-- ==================== 分頁 3：住宿與停車（含預約代號小抄＋航班） ==================== -->
     <div id="tab-stay" class="tab-pane">
       <div class="panel-card">
         <div class="sub-pills" id="staySubPills">
           <button type="button" class="sub-pill active" onclick="filterStaySection('all', this)">全部一覽</button>
+          <button type="button" class="sub-pill" onclick="filterStaySection('memo', this)">🎫 預約代號小抄</button>
           <button type="button" class="sub-pill" onclick="filterStaySection('flight', this)">✈️ JAL 航班</button>
           <button type="button" class="sub-pill" onclick="filterStaySection('hotel', this)">🏨 6段住宿</button>
           <button type="button" class="sub-pill" onclick="filterStaySection('park', this)">🅿️ 9大停車場＋TEL</button>
         </div>
 
+        <!-- 🎫 可編輯預約代號＆入場時段小抄收納卡 -->
+        <div class="stay-sec" data-sec="memo" style="margin-bottom:14px;">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin-bottom:8px;">
+            <h3 style="font-size:1.05rem;">🎫 預約代號＆入場時段小抄（自動儲存於手機）</h3>
+            <a href="https://vjw-lp.digital.go.jp/zh-hant/" target="_blank" rel="noopener noreferrer" class="map-btn" style="margin-top:0; background:var(--yellow);">🌐 開啟 Visit Japan Web</a>
+          </div>
+          <div class="grid-2" style="background:#FFF9EB; border:2px solid var(--ink); border-radius:14px; padding:12px;">
+            <div>
+              <div class="memo-field-row">
+                <label for="memoJal">✈️ JAL 訂位代號 / 電子機票號</label>
+                <input type="text" id="memoJal" class="memo-input" placeholder="貼上 6 碼訂位代號（已選兒童餐）" />
+              </div>
+              <div class="memo-field-row">
+                <label for="memoCar">🚗 租車公司＆預約編號（務必含實體 ETC 卡）</label>
+                <input type="text" id="memoCar" class="memo-input" placeholder="例：Toyota 租車 #123456（4WD+雪胎+ETC+汽座）" />
+              </div>
+              <div class="memo-field-row" style="margin-bottom:0;">
+                <label for="memoTickets">🎟️ 吉卜力大倉庫入場時段 ＆ 樂高門票代號</label>
+                <input type="text" id="memoTickets" class="memo-input" placeholder="例：2/26 大倉庫 10:00 場（2大1小）" />
+              </div>
+            </div>
+            <div>
+              <div class="memo-field-row">
+                <label for="memoHotel1">🏨 機場酒店（2/24 & 3/3）訂房代號</label>
+                <input type="text" id="memoHotel1" class="memo-input" placeholder="貼上 Centrair Hotel 訂房編號" />
+              </div>
+              <div class="memo-field-row">
+                <label for="memoHotel2">🏨 名古屋東急（2/25–27 & 3/2）訂房代號</label>
+                <input type="text" id="memoHotel2" class="memo-input" placeholder="貼上代號（已備註 Bed Guard＋併床）" />
+              </div>
+              <div class="memo-field-row" style="margin-bottom:0;">
+                <label for="memoHotel3">🏨 高山 HOTEL WOOD ＆ 下呂水明館代號</label>
+                <input type="text" id="memoHotel3" class="memo-input" placeholder="貼上高山連住2晚與下呂一泊二食代號" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JAL 航班 -->
         <div class="stay-sec" data-sec="flight" style="margin-bottom:14px;">
           <h3 style="font-size:1.05rem; margin-bottom:8px;">✈️ 日本航空 JAL 航班（總額 TWD 38,864｜每人 2 件×23kg）</h3>
           <div class="grid-2">
@@ -1018,6 +1100,7 @@
           </div>
         </div>
 
+        <!-- 6 段住宿 -->
         <div class="stay-sec" data-sec="hotel" style="margin-bottom:14px;">
           <h3 style="font-size:1.05rem; margin-bottom:8px;">🏨 6 段精選飯店住宿</h3>
           <div class="grid-2">
@@ -1054,6 +1137,7 @@
           </div>
         </div>
 
+        <!-- 9 大停車場 -->
         <div class="stay-sec" data-sec="park">
           <h3 style="font-size:1.05rem; margin-bottom:8px;">🅿️ 9 大景點＆飯店停車速查（附車機 TEL）</h3>
           <div class="grid-2">
@@ -1079,7 +1163,7 @@
             </div>
             <div class="mini-box">
               <b>5. 白川鄉合掌村｜村原停車場（せせらぎ公園）</b>
-              <div>停好走過相逢橋進村（¥1,000/次）。<br/><span class="navi-tag">📟 TEL：05769-6-1311</span></div>
+              <div>2/28 免預約（08:00 開），建議 10:30 前抵達（¥1,000/次）。<br/><span class="navi-tag">📟 TEL：05769-6-1311</span></div>
               <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%91%E5%96%B6%E3%81%9B%E3%81%9B%E3%82%89%E3%81%8E%E5%85%AC%E5%9C%92%E9%A7%90%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：村営せせらぎ公園駐車場</a>
             </div>
             <div class="mini-box">
@@ -1113,11 +1197,13 @@
         <div class="sub-pills" id="guideSubPills">
           <button type="button" class="sub-pill active" onclick="filterGuideSection('all', this)">全部錦囊</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('phrase', this)">🗣️ 指指日文卡</button>
+          <button type="button" class="sub-pill" onclick="filterGuideSection('etc', this)">🛣️ 2026 ETC新規</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('tax', this)">🧾 2026/11 退稅新制</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('rain', this)">☔ 雨備總覽</button>
           <button type="button" class="sub-pill" onclick="filterGuideSection('sos', this)">🆘 緊急＆事故SOP</button>
         </div>
 
+        <!-- 1. 指指日文卡 -->
         <div class="guide-sec" data-gsec="phrase" style="margin-bottom:14px;">
           <h3 style="font-size:1.05rem; margin-bottom:8px;">🗣️ 離線指指日文溝通卡（點擊卡片可放大全螢幕）</h3>
           <div class="grid-2">
@@ -1144,6 +1230,17 @@
           </div>
         </div>
 
+        <!-- 2. 2026 ETC 專用車道新規 -->
+        <div class="guide-sec" data-gsec="etc" style="margin-bottom:14px;">
+          <h3 style="font-size:1.05rem; margin-bottom:8px;">🛣️ 2026 日本高速公路 ETC 專用新規提醒</h3>
+          <div class="mini-box" style="background:#FFF4D4;">
+            <b>⚠️ 租車務必加租「實體 ETC 卡」：</b><br/>
+            ① 中日本高速公路周遊券（CEP）已停止販售，且日本自 2026 年起已有超過 65 處收費站全面改為<strong>「ETC 專用（無人工現金車道）」</strong>。<br/>
+            ② 預約租車時務必同時勾選加租<strong>「ETC カード（實體 ETC 卡）」</strong>（租金約 ¥330），還車時在租車櫃檯一併結算過路費，上下交流道走紫色「ETC」車道即可順暢通行。
+          </div>
+        </div>
+
+        <!-- 3. 2026/11 退稅新制 -->
         <div class="guide-sec" data-gsec="tax" style="margin-bottom:14px;">
           <h3 style="font-size:1.05rem; margin-bottom:8px;">🧾 2026/11 日本機場退稅新制重點</h3>
           <div class="mini-box" style="background:#FFEAE6; margin-bottom:8px;">
@@ -1161,6 +1258,7 @@
           </div>
         </div>
 
+        <!-- 4. 全行程雨備總覽 -->
         <div class="guide-sec" data-gsec="rain" style="margin-bottom:14px;">
           <h3 style="font-size:1.05rem; margin-bottom:8px;">☔ 全行程雨天＆暴雪室內備案速查</h3>
           <div class="grid-2">
@@ -1183,6 +1281,7 @@
           </div>
         </div>
 
+        <!-- 5. 緊急電話與雪地事故 SOP -->
         <div class="guide-sec" data-gsec="sos">
           <h3 style="font-size:1.05rem; margin-bottom:8px;">🆘 緊急聯絡電話（點擊直撥）＆ 雪地事故 SOP</h3>
           <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; margin-bottom:8px;">
@@ -1245,7 +1344,7 @@
 
   <!-- 右下角迷你麵包小偷小幫手 -->
   <div class="thief-buddy" id="thiefBuddy" title="點我聽麵包小偷小提醒！">
-    <div class="buddy-speech" id="buddySpeech">D2–D8 都有「🛣️ 今日路線條＋一鍵全路線導航」喔！🗺️</div>
+    <div class="buddy-speech" id="buddySpeech">租車記得加實體 ETC 卡！預約代號可存「🚗 住宿停車」小抄 🎫</div>
     <svg class="anim-thief" width="66" height="68" viewBox="0 0 84 86" aria-label="麵包小偷插圖">
       <ellipse cx="33" cy="76" rx="6" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.5"/>
       <ellipse cx="51" cy="76" rx="6" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.5"/>
@@ -1265,6 +1364,31 @@
   </div>
 
   <script>
+    // ==================== 📴 離線快取與狀態持久化 ====================
+    (function initOfflineCache() {
+      const badge = document.getElementById("offlineStatusBadge");
+      try {
+        if ("caches" in window && window.location.protocol.startsWith("http")) {
+          caches.open("nagoya-2027-offline-v1").then(cache => {
+            cache.add(window.location.href).catch(() => {});
+          });
+        }
+      } catch (e) {}
+      function updateNetStatus() {
+        if (!badge) return;
+        if (navigator.onLine) {
+          badge.textContent = "📴 離線快取已就緒";
+          badge.style.backgroundColor = "var(--bamboo)";
+        } else {
+          badge.textContent = "✈️ 離線模式瀏覽中";
+          badge.style.backgroundColor = "var(--aqua)";
+        }
+      }
+      window.addEventListener("online", updateNetStatus);
+      window.addEventListener("offline", updateNetStatus);
+      updateNetStatus();
+    })();
+
     function gm(label, query) {
       const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query || label);
       return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="map-pill" title="開啟 Google Maps 導航：${query || label}">📍${label}</a>`;
@@ -1313,6 +1437,22 @@
       document.getElementById("zoomModal").classList.remove("open");
     };
 
+    // ==================== 🎫 預約代號小抄自動儲存 ====================
+    const MEMO_IDS = ["memoJal", "memoCar", "memoTickets", "memoHotel1", "memoHotel2", "memoHotel3"];
+    const MEMO_STORAGE_KEY = "nagoya_2027_booking_memos_v1";
+    let savedMemos = {};
+    try { savedMemos = JSON.parse(localStorage.getItem(MEMO_STORAGE_KEY) || "{}"); } catch (e) {}
+
+    MEMO_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (savedMemos[id]) el.value = savedMemos[id];
+      el.addEventListener("input", () => {
+        savedMemos[id] = el.value;
+        try { localStorage.setItem(MEMO_STORAGE_KEY, JSON.stringify(savedMemos)); } catch (e) {}
+      });
+    });
+
     // ==================== 🌤️ 即時天氣預報＋歷年氣候功能 ====================
     const weatherCities = [
       {
@@ -1337,7 +1477,9 @@
       }
     ];
 
-    const weatherCache = {};
+    const WEATHER_CACHE_KEY = "nagoya_2027_weather_cache_v1";
+    let weatherCache = {};
+    try { weatherCache = JSON.parse(localStorage.getItem(WEATHER_CACHE_KEY) || "{}"); } catch (e) {}
 
     function wmoToEmoji(code) {
       if (code === 0) return { icon: "☀️", label: "晴朗" };
@@ -1360,20 +1502,25 @@
 
       if (weatherCache[idx]) {
         renderWeatherCards(weatherCache[idx]);
-        return;
+      } else {
+        rowEl.innerHTML = `<div class="wf-day" style="grid-column: span 5; padding:10px;">正在取得 ${city.name} 最新氣象資料... 🌤️</div>`;
       }
 
-      rowEl.innerHTML = `<div class="wf-day" style="grid-column: span 5; padding:10px;">正在取得 ${city.name} 最新氣象資料... 🌤️</div>`;
       try {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=5`;
         const res = await fetch(url);
         const data = await res.json();
         weatherCache[idx] = data;
+        try { localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify(weatherCache)); } catch (e) {}
         tagEl.textContent = `目前 ${Math.round(data.current.temperature_2m)}°C`;
         renderWeatherCards(data);
       } catch (e) {
-        tagEl.textContent = "離線氣候模式";
-        rowEl.innerHTML = `<div class="wf-day" style="grid-column: span 5; padding:8px;">目前為離線狀態，出發前 1 週開啟網頁即可自動載入 5 日逐日預報！</div>`;
+        if (!weatherCache[idx]) {
+          tagEl.textContent = "離線氣候模式";
+          rowEl.innerHTML = `<div class="wf-day" style="grid-column: span 5; padding:8px;">目前為離線狀態，有網路時開啟即可自動更新並離線保存 5 日預報！</div>`;
+        } else {
+          tagEl.textContent = "已顯示離線快取預報";
+        }
       }
     };
 
@@ -1448,10 +1595,10 @@
     });
 
     const buddyPhrases = [
-      "點「🗺️ 一鍵匯入 Google Maps 完整路線」，會自動排好起點、中途點跟飯店！🚗",
-      "上方天氣卡可切換名古屋、高山、白川鄉、下呂即時預報！🌤️",
-      "還車去加油站點「🧰 實用錦囊 ➔ 指指日文卡」直接秀給店員看 ⛽",
-      "記完帳按「📤 複製帳本網址傳 LINE」就能雙向合併帳目 💰"
+      "預約租車記得加租「實體 ETC 卡」，日本多處交流道已改為無現金 ETC 專用！🛣️",
+      "把機票、租車與吉卜力入場時段貼進「🚗 住宿停車 ➔ 預約代號小抄」，現場一秒出示 🎫",
+      "樂高樂園入園先量身高領手環（100–105cm 關鍵分界），4歲起需購兒童票 🎡",
+      "吉卜力公園全區可重複入園（大倉庫 15:00 後可再進場），4歲起需買兒童票 🥐"
     ];
     let phraseIdx = 0;
     document.getElementById("thiefBuddy").addEventListener("click", () => {
@@ -1757,7 +1904,7 @@
     connectGunRoom(currentRoomId);
     renderExpenses();
 
-    // ==================== 每日行程資料（含今日自駕路線條＋一鍵全路線導航） ====================
+    // ==================== 每日行程資料（含 4 歲購票/身高、白川鄉停車時間、ETC 提醒） ====================
     const itineraryData = [
       {
         day: "D1", date: "2/24(三)", ledgerDay: "D1 (2/24)",
@@ -1792,8 +1939,8 @@
         parking: `樂高停 ${gm("金城埠頭立體停車場", "金城ふ頭駐車場")}（TEL：052-398-1771，停 3F 天橋直通入口）；晚上停 ${gm("東急飯店車庫", "名古屋東急ホテル")}（TEL：052-251-2411，限高 2.0m）。`,
         rain: `同一座停車場 3F 天橋步行 3 分鐘改去全室內的 ${gm("磁浮鐵道館", "リニア・鉄道館")} ＋ ${gm("SEA LIFE 海洋館", "シーライフ名古屋")} ＋ ${gm("Maker's Pier", "メイカーズピア")} 室內 DIY，免移車！`,
         events: [
-          { time: "08:30 - 09:15", tr: "機場取車", must: false, title: `中部機場交通廣場 1F 辦理取車`, desc: `檢查 4 重點：① 4WD ② 雪胎 ③ 兒童汽座 ④ 後車廂附除雪刷。` },
-          { time: "10:00 - 17:00", tr: "自駕 31 分", must: true, title: `★ 必去：日本樂高樂園（Legoland Japan）`, desc: `導航至 ${gm("日本樂高樂園", "レゴランド・ジャパン")}，週四平日排隊短，暢玩杜普羅區、駕駛學校與消防隊。`, food: `🍔 園區午餐：${gm("Brick House Burgers", "ブリック・ハウス・バーガー レゴランド")} 積木薯條漢堡。` },
+          { time: "08:30 - 09:15", tr: "機場取車", must: false, title: `中部機場交通廣場 1F 辦理取車`, desc: `檢查 5 重點：① 4WD ② 雪胎 ③ <strong>實體 ETC 卡</strong>（多處交流道為 ETC 專用）④ 兒童汽座 ⑤ 除雪刷。` },
+          { time: "10:00 - 17:00", tr: "自駕 31 分", must: true, title: `★ 必去：日本樂高樂園（Legoland Japan）`, desc: `導航至 ${gm("日本樂高樂園", "レゴランド・ジャパン")}！<strong>4歲起需購兒童票</strong>；入園先幫孩子量身高領取對應手環（100–105cm 為設施關鍵分界，領手環免每項重測）。`, food: `🍔 園區午餐：${gm("Brick House Burgers", "ブリック・ハウス・バーガー レゴランド")} 積木薯條漢堡。` },
           { time: "18:00", tr: "自駕 27 分", must: false, title: `入住名古屋東急飯店（連住 2 晚）＆榮商圈晚餐`, desc: `確認櫃檯已放置預約的免費床邊護欄（Bed Guard）與併床。`, food: `🍱 晚餐：${gm("あつた蓬萊軒 松坂屋店", "あつた蓬莱軒 松坂屋店")} 鰻魚飯三吃，或 ${gm("鳥開總本家", "鳥開総本家 栄")} 親子丼。` }
         ]
       },
@@ -1815,7 +1962,7 @@
         rain: `${gm("吉卜力大倉庫", "ジブリの大倉庫")} 為 100% 全室內恆溫展館！逛完魔女之谷麵包店後可去同公園內的 ${gm("愛知縣兒童綜合館", "あいち児童総合センター")}（室內大型攀爬塔）或 ${gm("AEON Mall 長久手", "イオンモール長久手")}。`,
         events: [
           { time: "09:15 - 10:00", tr: "自駕 26 分", must: false, title: `開車前往愛・地球博記念公園`, desc: `自駕直達北 1 停車場，省去帶 4 歲幼兒轉乘電車的步行負擔。` },
-          { time: "10:00 - 15:30", tr: "園區漫步", must: true, title: `★ 必去：吉卜力公園（大倉庫＋魔女之谷）`, desc: `全室內 ${gm("吉卜力大倉庫", "ジブリの大倉庫")} 玩貓巴士房間與兒童之街；${gm("魔女之谷", "魔女の谷 ジブリパーク")} 搭旋轉木馬。`, food: `🥐 魔女之谷 ${gm("グーチョキパン屋", "グーチョキパン屋 ジブリパーク")} 現烤可頌與法式麵包！` },
+          { time: "10:00 - 15:30", tr: "園區漫步", must: true, title: `★ 必去：吉卜力公園（大倉庫＋魔女之谷）`, desc: `<strong>4歲起需購兒童票</strong>；全區可重複入園（大倉庫 15:00 後可再入場）。全室內 ${gm("吉卜力大倉庫", "ジブリの大倉庫")} 玩貓巴士房間；${gm("魔女之谷", "魔女の谷 ジブリパーク")} 搭旋轉木馬。`, food: `🥐 魔女之谷 ${gm("グーチョキパン屋", "グーチョキパン屋 ジブリパーク")} 現烤可頌與法式麵包！` },
           { time: "16:30", tr: "自駕 26 分", must: false, title: `返回榮商圈下午茶＆藥妝百貨散步`, desc: `步行逛 ${gm("綠洲 21", "オアシス21")}、${gm("松坂屋名古屋店", "松坂屋名古屋店")}（帶護照辦退稅）。`, food: `🍰 ${gm("HARBS 榮本店", "HARBS 栄本店")} 水果千層蛋糕；晚餐 ${gm("山本屋總本家", "山本屋総本家 栄")} 味噌烏龍麵。` }
         ]
       },
@@ -1855,7 +2002,7 @@
           ],
           navUrl: buildMultiRouteUrl("HOTEL WOOD 高山", "HOTEL WOOD 高山", ["村営せせらぎ公園駐車場"])
         },
-        parking: `白川鄉車機設 TEL：05769-6-1311 停 ${gm("村営せせらぎ公園駐車場", "村営せせらぎ公園駐車場")}（¥1,000/次），走過相逢橋進村。`,
+        parking: `白川鄉車機設 TEL：05769-6-1311 停 ${gm("村営せせらぎ公園駐車場", "村営せせらぎ公園駐車場")}（2/28 免預約、08:00 開放，建議 10:30 前抵達避免週日雪季車潮，¥1,000/次）。`,
         rain: `小雪可進 ${gm("和田家", "和田家 白川郷")} 合掌屋參觀；若遇暴雪封路絕不硬闖，改去平地市郊 ${gm("飛驒之里", "飛騨の里")} ＋ ${gm("飛驒物產館", "飛騨物産館")} 彩繪猴寶寶 DIY＋ ${gm("高山祭屋台會館", "高山祭屋台会館")}！`,
         events: [
           { time: "08:30 - 09:30", tr: "步行 3 分", must: false, title: `高山宮川朝市晨間散步採買`, desc: `逛 ${gm("宮川朝市", "宮川朝市")} 買飛驒傳統「猴寶寶（さるぼぼ）」布偶。`, food: `🍎 現切飛驒蘋果、${gm("喜八郎 飛驒牛包子", "飛騨牛まん本舗 喜八郎")}、手沖咖啡。` },
@@ -2039,10 +2186,10 @@
     // ==================== 互動打勾清單 ====================
     const defaultData = {
       todo: [
-        { text: "預約租車（2/25 09:00 取 – 3/3 18:00 還，確認 4WD＋雪胎＋兒童汽座）", done: false },
+        { text: "預約租車（2/25 09:00 取 – 3/3 18:00 還，確認 4WD＋雪胎＋實體 ETC 卡＋兒童汽座）", done: false },
         { text: "申請台灣駕照日文譯本（監理站辦理，護照＋台灣駕照正本也要帶）", done: false },
-        { text: "搶購吉卜力公園門票（2026/12/10 台灣時間 13:00 開賣大散步券）", done: false },
-        { text: "預訂日本樂高樂園門票（官網早鳥優惠）", done: false },
+        { text: "搶購吉卜力公園門票（2026/12/10 台灣時間 13:00 開賣大散步券，4歲起需購兒童票）", done: false },
+        { text: "預訂日本樂高樂園門票（官網早鳥優惠，4歲起需購兒童票）", done: false },
         { text: "寫信給名古屋東急飯店預約免費床圍（Bed Guard）＋併床", done: false },
         { text: "JAL 官網提前預選 4 歲兒童餐（Child Meal）", done: false },
         { text: "開通漫遊 / eSIM 網路與旅遊平安險（含冬季自駕與醫療）", done: false },
@@ -2062,8 +2209,8 @@
       ]
     };
 
-    let state = JSON.parse(localStorage.getItem("nagoya_2027_bread_thief_v7") || "null") || defaultData;
-    function saveState() { localStorage.setItem("nagoya_2027_bread_thief_v7", JSON.stringify(state)); }
+    let state = JSON.parse(localStorage.getItem("nagoya_2027_bread_thief_v8") || "null") || defaultData;
+    function saveState() { localStorage.setItem("nagoya_2027_bread_thief_v8", JSON.stringify(state)); }
 
     function renderChecklist(type) {
       const listEl = document.getElementById(type === "todo" ? "todoList" : "packList");
