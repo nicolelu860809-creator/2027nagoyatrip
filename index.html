@@ -1,0 +1,2735 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2027 名古屋雪國親子自駕 9 日遊｜麵包小偷繪本手帳（全功能旗艦版）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gun/gun.js" async></script>
+  <style>
+    :root {
+      --bg-washi: #FFFCF6;
+      --ink: #3E3A39;
+      --coral: #F2A497;
+      --yellow: #F6D27A;
+      --aqua: #A8D3E6;
+      --bamboo: #B9DAA5;
+      --crust: #D69352;
+      --card-white: #FFFFFF;
+      --border-w: 3px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --shadow-solid: 4px 4px 0 #3E3A39;
+      --shadow-sm: 2px 2px 0 #3E3A39;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-washi);
+      color: var(--ink);
+      font-family: 'Huninn', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    body {
+      background-color: var(--bg-washi);
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='1.5' fill='%23E6DDD0'/%3E%3C/svg%3E");
+      color: var(--ink);
+      padding-bottom: 105px;
+      overflow-x: hidden;
+    }
+
+    /* 繪本風 Google Maps 超連結膠囊與導航按鈕 */
+    a.map-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      background-color: #FFF4D4;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 1px 8px;
+      margin: 1px 2px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      box-shadow: 1.5px 1.5px 0 var(--ink);
+      transition: transform 0.12s ease, background-color 0.12s ease;
+      line-height: 1.45;
+    }
+
+    a.map-pill:hover, a.map-pill:active {
+      background-color: var(--yellow);
+      transform: translate(1px, 1px);
+      box-shadow: 0.5px 0.5px 0 var(--ink);
+    }
+
+    a.map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background-color: var(--card-white);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      margin-top: 8px;
+      border: 2.5px solid var(--ink);
+      border-radius: 999px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.12s ease, background-color 0.12s ease;
+    }
+
+    a.map-btn:hover, a.map-btn:active {
+      background-color: var(--aqua);
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
+    .navi-tag {
+      display: inline-block;
+      margin-top: 6px;
+      background-color: #EEF7FC;
+      border: 2px dashed var(--ink);
+      border-radius: 8px;
+      padding: 3px 9px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* 頂端固定選單 */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--bg-washi);
+      border-bottom: var(--border-w) solid var(--ink);
+      padding: 10px 12px;
+    }
+
+    .nav-scroll {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 2px;
+    }
+    .nav-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-pill {
+      flex-shrink: 0;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 5px 13px;
+      border-radius: 999px;
+      border: 2.5px solid var(--ink);
+      background-color: var(--card-white);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    .nav-pill:hover, .nav-pill:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
+    .nav-pill.pink { background-color: var(--coral); }
+    .nav-pill.yellow { background-color: var(--yellow); }
+    .nav-pill.blue { background-color: var(--aqua); }
+    .nav-pill.green { background-color: var(--bamboo); }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* 通用繪本卡片 */
+    .book-card {
+      background-color: var(--card-white);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-solid);
+      padding: 20px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .book-card.bg-washi { background-color: var(--bg-washi); }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.32rem;
+      font-weight: 700;
+      background-color: var(--yellow);
+      border: var(--border-w) solid var(--ink);
+      border-radius: 999px;
+      padding: 6px 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-title.pink { background-color: var(--coral); }
+    .section-title.blue { background-color: var(--aqua); }
+    .section-title.green { background-color: var(--bamboo); }
+
+    /* Hero 區塊 */
+    .hero-box {
+      background-color: var(--yellow);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-solid);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hero-top {
+      padding: 22px 20px 10px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: var(--coral);
+      border: 2.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 1.75rem;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      background-color: var(--bg-washi);
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 2px solid var(--ink);
+    }
+
+    /* 倒數計時器 */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 440px;
+      margin: 16px auto 8px;
+    }
+
+    .cd-item {
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 8px 4px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cd-num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .cd-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    /* SVG 動畫舞台 */
+    .scene-wrapper {
+      position: relative;
+      width: 100%;
+      background-color: #E7F5FB;
+      border-top: var(--border-w) solid var(--ink);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .honk-hint {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background-color: var(--coral);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      z-index: 5;
+    }
+
+    .honk-bubble {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      background-color: var(--card-white);
+      border: var(--border-w) solid var(--ink);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-solid);
+      white-space: nowrap;
+      z-index: 10;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .honk-bubble.show {
+      transform: translateX(-50%) scale(1);
+    }
+
+    /* SVG 動畫關鍵影格 */
+    @keyframes carBounce {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+
+    @keyframes wheelSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes roadMove {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: 48; }
+    }
+
+    @keyframes puffSmoke {
+      0% { opacity: 0.95; transform: translate(0, 0) scale(0.6); }
+      100% { opacity: 0; transform: translate(-38px, -14px) scale(1.4); }
+    }
+
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes thiefWiggle {
+      0%, 100% { transform: rotate(0deg); }
+      35% { transform: rotate(-3deg); }
+      70% { transform: rotate(3deg); }
+    }
+
+    .anim-car-body { animation: carBounce 0.55s ease-in-out infinite; }
+    .anim-wheel-f { transform-origin: 248px 168px; animation: wheelSpin 0.9s linear infinite; }
+    .anim-wheel-b { transform-origin: 152px 168px; animation: wheelSpin 0.9s linear infinite; }
+    .anim-road { animation: roadMove 0.7s linear infinite; }
+    .anim-smoke-1 { animation: puffSmoke 1.2s ease-out infinite; }
+    .anim-smoke-2 { animation: puffSmoke 1.2s ease-out 0.6s infinite; }
+    .anim-float { animation: floatGentle 2.8s ease-in-out infinite; }
+    .anim-thief { transform-origin: center bottom; animation: thiefWiggle 2.4s ease-in-out infinite; }
+
+    /* 航班卡片 */
+    .flight-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 680px) {
+      .flight-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .flight-ticket {
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .flight-tag {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 999px;
+      border: 2px solid var(--ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .flight-route {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    .airport-code { font-size: 1.45rem; font-weight: 700; }
+    .flight-time { font-size: 1.1rem; font-weight: 700; }
+    .flight-meta { margin-top: 10px; padding-top: 10px; border-top: 2px dashed var(--ink); font-size: 0.88rem; }
+
+    /* 共同記帳本專屬樣式 */
+    .sync-bar {
+      background-color: var(--aqua);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sync-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .sync-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--card-white);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 3px 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .sync-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .room-input {
+      border: 2.5px solid var(--ink);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background-color: var(--card-white);
+      width: 145px;
+    }
+
+    .book-btn {
+      background-color: var(--yellow);
+      color: var(--ink);
+      border: 2.5px solid var(--ink);
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.12s ease;
+    }
+
+    .book-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
+    .book-btn.pink { background-color: var(--coral); }
+    .book-btn.green { background-color: var(--bamboo); }
+    .book-btn.white { background-color: var(--card-white); }
+
+    .ledger-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 680px) {
+      .ledger-summary-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-card {
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-label { font-size: 0.8rem; font-weight: 700; opacity: 0.85; }
+    .stat-val { font-size: 1.25rem; font-weight: 700; margin-top: 2px; }
+
+    .payer-breakdown {
+      background-color: var(--bg-washi);
+      border: 2.5px solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+    }
+
+    .payer-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .payer-chip { background-color: var(--card-white); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: 0.86rem; }
+
+    .expense-form {
+      background-color: var(--yellow);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 680px) {
+      .form-grid { grid-template-columns: 1fr 1fr 1.4fr 1fr; }
+    }
+
+    .form-field { display: flex; flex-direction: column; gap: 4px; }
+    .form-field label { font-size: 0.82rem; font-weight: 700; }
+    .form-ctrl { width: 100%; border: 2.5px solid var(--ink); border-radius: 10px; padding: 8px 10px; font-family: inherit; font-size: 0.92rem; background-color: var(--card-white); color: var(--ink); }
+
+    .form-bottom-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .expense-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .exp-item {
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .exp-left { flex: 1; min-width: 200px; }
+    .exp-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+    .exp-tag { font-size: 0.78rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; border: 2px solid var(--ink); background-color: var(--card-white); }
+    .exp-title { font-weight: 700; font-size: 1.02rem; }
+    .exp-right { display: flex; align-items: center; gap: 10px; }
+    .exp-amount { text-align: right; }
+    .exp-main-amt { font-weight: 700; font-size: 1.12rem; }
+    .exp-sub-amt { font-size: 0.8rem; opacity: 0.85; }
+
+    /* 每日行程日期切換器 */
+    .day-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 12px;
+      scrollbar-width: none;
+    }
+    .day-tabs::-webkit-scrollbar { display: none; }
+
+    .day-btn {
+      flex-shrink: 0;
+      background-color: var(--bg-washi);
+      color: var(--ink);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    .day-btn span { display: block; font-size: 0.76rem; opacity: 0.85; }
+    .day-btn.active { background-color: var(--coral); transform: translateY(-3px); box-shadow: var(--shadow-solid); }
+
+    @keyframes popBounce {
+      0% { opacity: 0; transform: scale(0.96) translateY(10px); }
+      65% { opacity: 1; transform: scale(1.01) translateY(-2px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .day-panel-animate { animation: popBounce 0.36s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+    .day-banner {
+      background-color: var(--bamboo);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .day-banner h3 { font-size: 1.2rem; margin-bottom: 4px; }
+
+    .parking-mini-card {
+      background-color: var(--yellow);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rain-mini-card {
+      background-color: var(--aqua);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 0.92rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rain-mini-title { font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+
+    /* 時間軸 */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+      border-left: 3px dashed var(--ink);
+      margin-left: 10px;
+    }
+
+    .tl-item {
+      position: relative;
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -34px;
+      top: 18px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--yellow);
+      border: 3px solid var(--ink);
+    }
+
+    .tl-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .tl-time { font-weight: 700; font-size: 0.92rem; background-color: var(--card-white); border: 2px solid var(--ink); border-radius: 8px; padding: 2px 8px; }
+    .badge-transport { font-size: 0.8rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; border: 2px solid var(--ink); }
+    .tr-car { background-color: var(--aqua); }
+    .tr-walk { background-color: var(--bamboo); }
+    .tr-plane { background-color: var(--yellow); }
+    .badge-must { font-size: 0.8rem; font-weight: 700; background-color: var(--coral); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 10px; }
+    .tl-title { font-size: 1.08rem; font-weight: 700; margin-bottom: 4px; }
+    .tl-desc { font-size: 0.93rem; }
+    .food-box { margin-top: 8px; background-color: var(--card-white); border: 2px solid var(--ink); border-radius: 10px; padding: 8px 12px; font-size: 0.88rem; }
+
+    /* 指指日文溝通卡 */
+    .phrase-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 680px) {
+      .phrase-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .phrase-card {
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 0.12s ease, background-color 0.12s ease;
+    }
+
+    .phrase-card:hover, .phrase-card:active {
+      background-color: #FFF4D4;
+      transform: translate(1px, 1px);
+    }
+
+    .phrase-jp {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin: 6px 0 4px;
+      color: var(--ink);
+    }
+
+    .phrase-zh {
+      font-size: 0.88rem;
+      opacity: 0.85;
+    }
+
+    /* 緊急電話按鈕 */
+    .sos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    @media (min-width: 680px) {
+      .sos-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .sos-btn {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      background-color: var(--card-white);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 12px 10px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      font-weight: 700;
+    }
+
+    .sos-num {
+      display: block;
+      font-size: 1.25rem;
+      margin-top: 2px;
+    }
+
+    /* 住宿、停車、退稅網格 */
+    .hotel-grid, .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 680px) {
+      .hotel-grid, .info-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .hotel-card, .info-item {
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hotel-date { display: inline-block; background-color: var(--yellow); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 10px; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; }
+    .hotel-date.highlight { background-color: var(--coral); }
+    .info-item h4 { font-size: 1.02rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+
+    .tax-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    @media (min-width: 680px) {
+      .tax-steps { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .tax-step-box { background-color: var(--card-white); border: var(--border-w) solid var(--ink); border-radius: var(--radius-md); padding: 12px; box-shadow: var(--shadow-sm); }
+    .step-num { display: inline-block; background-color: var(--coral); border: 2px solid var(--ink); border-radius: 999px; padding: 1px 10px; font-size: 0.8rem; font-weight: 700; margin-bottom: 6px; }
+
+    /* 互動清單 */
+    .checklist-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    @media (min-width: 720px) { .checklist-grid { grid-template-columns: 1fr 1fr; } }
+
+    .cl-panel { background-color: var(--bg-washi); border: var(--border-w) solid var(--ink); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm); }
+    .progress-wrap { background-color: var(--card-white); border: 2.5px solid var(--ink); border-radius: 999px; height: 18px; overflow: hidden; margin: 10px 0 14px; }
+    .progress-bar { height: 100%; background-color: var(--bamboo); border-right: 2.5px solid var(--ink); width: 0%; transition: width 0.25s ease; }
+    .cl-list { list-style: none; margin-bottom: 12px; }
+    .cl-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; background-color: var(--card-white); border: 2px solid var(--ink); border-radius: 10px; padding: 8px 10px; margin-bottom: 8px; font-size: 0.92rem; }
+    .cl-label { display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; }
+    .cl-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--coral); cursor: pointer; flex-shrink: 0; }
+    .cl-item.done .cl-text { text-decoration: line-through; opacity: 0.55; }
+    .del-btn { background-color: var(--coral); border: 2px solid var(--ink); border-radius: 6px; padding: 2px 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .add-row { display: flex; gap: 6px; }
+    .add-input { flex: 1; border: 2.5px solid var(--ink); border-radius: 10px; padding: 7px 10px; font-family: inherit; font-size: 0.9rem; background-color: var(--card-white); }
+    .add-btn { background-color: var(--yellow); border: 2.5px solid var(--ink); border-radius: 10px; padding: 7px 14px; font-family: inherit; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-sm); }
+
+    /* 左下角手機快速目錄按鈕 */
+    .quick-dir-btn {
+      position: fixed;
+      bottom: 18px;
+      left: 14px;
+      z-index: 96;
+      background-color: var(--yellow);
+      color: var(--ink);
+      border: var(--border-w) solid var(--ink);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-solid);
+    }
+
+    /* 彈出視窗（目錄與放大日文卡） */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(62, 58, 57, 0.55);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background-color: var(--bg-washi);
+      border: var(--border-w) solid var(--ink);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-solid);
+      padding: 20px;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .dir-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .dir-link {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      background-color: var(--card-white);
+      border: 2.5px solid var(--ink);
+      border-radius: 12px;
+      padding: 10px 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 右下角麵包小偷互動小幫手 */
+    .thief-buddy {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .buddy-speech {
+      background-color: var(--card-white);
+      border: var(--border-w) solid var(--ink);
+      border-radius: 16px;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 4px;
+      max-width: 210px;
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂端固定導覽列 -->
+  <nav class="top-nav" aria-label="主導覽選單">
+    <div class="nav-scroll">
+      <a href="#top" class="nav-pill yellow">🍞 首頁倒數</a>
+      <a href="#flights" class="nav-pill pink">✈️ JAL 航班</a>
+      <a href="#itinerary" class="nav-pill green">🗺️ 每日行程</a>
+      <a href="#accounting" class="nav-pill yellow">💰 共同記帳</a>
+      <a href="#phrasecards" class="nav-pill blue">🗣️ 指指日文卡</a>
+      <a href="#rainplan" class="nav-pill green">☔ 雨備＆雪備</a>
+      <a href="#hotels" class="nav-pill pink">🏨 住宿資訊</a>
+      <a href="#parking" class="nav-pill yellow">🅿️ 停車指南</a>
+      <a href="#taxfree" class="nav-pill blue">🧾 機場退稅新制</a>
+      <a href="#emergency" class="nav-pill pink">🆘 緊急＆事故SOP</a>
+      <a href="#checklists" class="nav-pill green">🎒 行前＆行李</a>
+    </div>
+  </nav>
+
+  <main class="container" id="top">
+
+    <!-- 首頁 Hero 繪本插畫＋倒數 -->
+    <section class="hero-box">
+      <div class="hero-top">
+        <span class="hero-badge">🍞 麵包小偷潛入名古屋！自駕導航＋共同記帳＋離線溝通卡</span>
+        <h1 class="hero-title">2027 名古屋雪國親子自駕 9 日遊</h1>
+        <p class="hero-sub">2027/2/24（三）— 3/4（四）｜2 大 1 小（4y）繪本之旅</p>
+
+        <div class="countdown-grid" aria-label="出發倒數計時">
+          <div class="cd-item">
+            <span class="cd-num" id="cd-days">--</span>
+            <span class="cd-label">天</span>
+          </div>
+          <div class="cd-item">
+            <span class="cd-num" id="cd-hours">--</span>
+            <span class="cd-label">時</span>
+          </div>
+          <div class="cd-item">
+            <span class="cd-num" id="cd-mins">--</span>
+            <span class="cd-label">分</span>
+          </div>
+          <div class="cd-item">
+            <span class="cd-num" id="cd-secs">--</span>
+            <span class="cd-label">秒</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 原創平塗 SVG：雪山合掌屋 ＋ 麵包小偷開自駕車 -->
+      <div class="scene-wrapper" id="carStage" title="點擊小車按喇叭！">
+        <span class="honk-hint">👆 點麵包車按喇叭</span>
+        <div class="honk-bubble" id="honkBubble">📢 嗶嗶！左下角有「📑 快速目錄」，隨時一秒跳轉喔～🍞💨</div>
+
+        <svg viewBox="0 0 420 198" width="100%" height="auto" style="display:block;" role="img" aria-label="麵包小偷開著載滿行李箱與法國麵包的休旅車前往白川鄉合掌村雪景">
+          <rect x="0" y="0" width="420" height="152" fill="#E3F3FA" />
+
+          <g class="anim-float">
+            <path d="M42 42 C42 33, 55 30, 61 36 C67 28, 83 30, 85 40 C93 41, 95 52, 85 54 L43 54 C35 53, 35 43, 42 42 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M312 32 C312 24, 324 22, 329 27 C334 20, 348 22, 350 31 C357 32, 358 42, 349 43 L313 43 C306 42, 306 33, 312 32 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+
+          <polygon points="8,150 84,56 160,150" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <polyline points="60,84 76,95 84,85 94,96 107,84" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <polygon points="242,150 322,48 408,150" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <polyline points="297,79 314,92 322,80 333,93 347,79" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <g transform="translate(316, 94)">
+            <rect x="14" y="28" width="46" height="28" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+            <rect x="24" y="36" width="10" height="10" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+            <rect x="40" y="36" width="10" height="10" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+            <polygon points="6,30 37,0 68,30" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <polyline points="14,30 37,8 60,30" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+
+          <g transform="translate(32, 98)">
+            <rect x="13" y="38" width="6" height="14" fill="#3E3A39"/>
+            <polygon points="16,4 2,26 30,26" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <polygon points="16,16 0,40 32,40" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+
+          <rect x="0" y="148" width="420" height="50" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+          <rect x="0" y="166" width="420" height="32" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+          <line x1="0" y1="182" x2="420" y2="182" stroke="#F6D27A" stroke-width="4" stroke-dasharray="14 10" class="anim-road"/>
+
+          <circle cx="116" cy="158" r="6" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5" class="anim-smoke-1"/>
+          <circle cx="106" cy="152" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5" class="anim-smoke-2"/>
+
+          <g class="anim-car-body">
+            <line x1="150" y1="88" x2="236" y2="88" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+            <rect x="144" y="75" width="54" height="13" rx="6.5" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+            <line x1="156" y1="77" x2="161" y2="85" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="168" y1="77" x2="173" y2="85" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="180" y1="77" x2="185" y2="85" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+            <rect x="202" y="69" width="32" height="19" rx="4" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+            <line x1="212" y1="69" x2="212" y2="88" stroke="#3E3A39" stroke-width="2.2"/>
+            <line x1="224" y1="69" x2="224" y2="88" stroke="#3E3A39" stroke-width="2.2"/>
+
+            <path d="M126 158 L126 122 C126 102, 140 90, 158 90 L226 90 C242 90, 252 102, 258 118 L274 122 C282 124, 286 132, 286 142 L286 158 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+
+            <path d="M198 98 L224 98 C236 98, 244 106, 248 118 L198 118 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="142" y="98" width="48" height="20" rx="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+
+            <g transform="translate(212, 99)">
+              <path d="M-8 19 L-8 8 C-11 4, -7 -1, 0 -1 C7 -1, 11 4, 8 8 L8 19 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M-8 8 C-11 4, -7 -1, 0 -1 C7 -1, 11 4, 8 8" fill="none" stroke="#D69352" stroke-width="3.2" stroke-linecap="round"/>
+              <ellipse cx="1" cy="10" rx="5.5" ry="5" fill="#FFFCF6" stroke="#3E3A39" stroke-width="1.8"/>
+              <circle cx="0" cy="8.5" r="1.4" fill="#3E3A39"/>
+              <circle cx="4" cy="8.5" r="1.4" fill="#3E3A39"/>
+              <path d="M2 11 Q6 11 7 13 Q5 15 2 14 Z" fill="#D69352" stroke="#3E3A39" stroke-width="1.5"/>
+              <circle cx="7" cy="13" r="1.2" fill="#3E3A39"/>
+            </g>
+
+            <g transform="translate(166, 108)">
+              <path d="M-11 4 Q0 -6 11 4 Q6 9 0 7 Q-6 9 -11 4 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/>
+              <line x1="-4" y1="0" x2="-3" y2="6" stroke="#3E3A39" stroke-width="1.8"/>
+              <line x1="4" y1="0" x2="3" y2="6" stroke="#3E3A39" stroke-width="1.8"/>
+              <circle cx="-1" cy="3.5" r="1" fill="#3E3A39"/>
+              <circle cx="3" cy="3.5" r="1" fill="#3E3A39"/>
+            </g>
+
+            <line x1="194" y1="122" x2="194" y2="156" stroke="#3E3A39" stroke-width="2.5"/>
+            <rect x="276" y="131" width="10" height="8" rx="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+            <rect x="120" y="150" width="170" height="10" rx="5" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+          </g>
+
+          <g class="anim-wheel-b">
+            <circle cx="152" cy="170" r="15" fill="#3E3A39"/>
+            <circle cx="152" cy="170" r="8" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+            <line x1="152" y1="162" x2="152" y2="178" stroke="#3E3A39" stroke-width="2"/>
+            <line x1="144" y1="170" x2="160" y2="170" stroke="#3E3A39" stroke-width="2"/>
+          </g>
+
+          <g class="anim-wheel-f">
+            <circle cx="248" cy="170" r="15" fill="#3E3A39"/>
+            <circle cx="248" cy="170" r="8" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+            <line x1="248" y1="162" x2="248" y2="178" stroke="#3E3A39" stroke-width="2"/>
+            <line x1="240" y1="170" x2="256" y2="170" stroke="#3E3A39" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 航班卡片 -->
+    <section class="book-card" id="flights">
+      <div class="section-header">
+        <h2 class="section-title">✈️ 日本航空 JAL 航班資訊</h2>
+        <span style="font-size:0.88rem; font-weight:700; background:var(--bamboo); border:2px solid var(--ink); padding:4px 12px; border-radius:999px;">總額 TWD 38,864｜每人 2 件×23kg 託運</span>
+      </div>
+
+      <div class="flight-grid">
+        <div class="flight-ticket">
+          <span class="flight-tag" style="background:var(--coral);">去程｜2027 年 2 月 24 日（三）</span>
+          <div style="font-weight:700; font-size:0.92rem;">日本航空 JL8670｜波音 737-800</div>
+          <div class="flight-route">
+            <div>
+              <div class="airport-code">TPE T2</div>
+              <div class="flight-time">15:50 起飛</div>
+              <div style="font-size:0.84rem;"><a href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E7%81%A3%E6%A1%83%E5%9C%92%E5%9C%8B%E9%9A%9B%E6%A9%9F%E5%A0%B4%E7%AC%AC%E4%BA%8C%E8%88%AA%E5%BB%88" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：臺灣桃園國際機場第二航廈">📍臺灣桃園國際機場 T2</a></div>
+            </div>
+            <div style="text-align:center; font-weight:700;">
+              <div style="font-size:0.8rem;">2 小時 35 分</div>
+              <div>━━ ✈️ ━━</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="airport-code">NGO T1</div>
+              <div class="flight-time">19:25 抵達</div>
+              <div style="font-size:0.84rem;"><a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：中部国際空港 第1ターミナル">📍中部國際機場 T1</a></div>
+            </div>
+          </div>
+          <div class="flight-meta">
+            💡 <strong>親子貼士</strong>：13:20 前抵達桃園 T2 報到，可先帶 4 歲寶貝去管制區兒童遊戲區放電；機上記得提前預選 JAL 兒童餐！
+          </div>
+        </div>
+
+        <div class="flight-ticket">
+          <span class="flight-tag" style="background:var(--aqua);">回程｜2027 年 3 月 4 日（四）</span>
+          <div style="font-weight:700; font-size:0.92rem;">日本航空 JL8670｜直飛返台</div>
+          <div class="flight-route">
+            <div>
+              <div class="airport-code">NGO T1</div>
+              <div class="flight-time">12:05 起飛</div>
+              <div style="font-size:0.84rem;"><a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：中部国際空港 第1ターミナル">📍中部國際機場 T1</a></div>
+            </div>
+            <div style="text-align:center; font-weight:700;">
+              <div style="font-size:0.8rem;">2 小時 35 分</div>
+              <div>━━ ✈️ ━━</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="airport-code">TPE T2</div>
+              <div class="flight-time">14:40 抵達</div>
+              <div style="font-size:0.84rem;"><a href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E7%81%A3%E6%A1%83%E5%9C%92%E5%9C%8B%E9%9A%9B%E6%A9%9F%E5%A0%B4%E7%AC%AC%E4%BA%8C%E8%88%AA%E5%BB%88" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：臺灣桃園國際機場第二航廈">📍臺灣桃園國際機場 T2</a></div>
+            </div>
+          </div>
+          <div class="flight-meta">
+            💡 <strong>黃金順序</strong>：09:15 前抵達 T1，<strong>先去辦機場退稅新制查驗，再去 JAL 櫃檯託運 6 大件行李</strong>！
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 每日行程（日期切換＋時間軸＋停車＋當日雨備＋一鍵連動記帳） -->
+    <section class="book-card" id="itinerary">
+      <div class="section-header">
+        <h2 class="section-title green">🗺️ 9 天 8 夜每日行程時間軸</h2>
+        <span style="font-size:0.86rem; font-weight:700;">點「📍地標膠囊」開導航｜滑到底可一鍵記帳 👇</span>
+      </div>
+
+      <div class="day-tabs" id="dayTabs" role="tablist"></div>
+      <div id="dayContent" class="day-panel-animate"></div>
+    </section>
+
+    <!-- 💰 旅伴共同編輯同步記帳本 -->
+    <section class="book-card" id="accounting">
+      <div class="section-header">
+        <h2 class="section-title">💰 親子旅遊共同記帳本（雙向同步）</h2>
+        <svg width="86" height="58" viewBox="0 0 86 58" aria-label="麵包小偷記帳算錢插圖">
+          <ellipse cx="16" cy="48" rx="10" ry="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.2"/>
+          <ellipse cx="16" cy="43" rx="10" ry="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.2"/>
+          <ellipse cx="16" cy="38" rx="10" ry="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.2"/>
+          <text x="16" y="40" font-size="6.5" font-weight="bold" text-anchor="middle" fill="#3E3A39">¥</text>
+          <path d="M36 52 L36 22 C32 17, 37 10, 48 10 C59 10, 64 17, 60 22 L60 52 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M36 22 C32 17, 37 10, 48 10 C59 10, 64 17, 60 22" fill="none" stroke="#D69352" stroke-width="3.2" stroke-linecap="round"/>
+          <ellipse cx="48" cy="26" rx="8" ry="6.5" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2"/>
+          <circle cx="45" cy="24.5" r="1.4" fill="#3E3A39"/>
+          <circle cx="51" cy="24.5" r="1.4" fill="#3E3A39"/>
+          <ellipse cx="48" cy="28" rx="4.2" ry="2.2" fill="#D69352" stroke="#3E3A39" stroke-width="1.5"/>
+          <rect x="64" y="24" width="18" height="24" rx="4" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2"/>
+          <rect x="67" y="27" width="12" height="5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.5"/>
+          <circle cx="69" cy="36" r="1.5" fill="#3E3A39"/>
+          <circle cx="73" cy="36" r="1.5" fill="#3E3A39"/>
+          <circle cx="77" cy="36" r="1.5" fill="#3E3A39"/>
+          <circle cx="69" cy="41" r="1.5" fill="#3E3A39"/>
+          <circle cx="73" cy="41" r="1.5" fill="#3E3A39"/>
+          <circle cx="77" cy="41" r="1.5" fill="#3E3A39"/>
+        </svg>
+      </div>
+
+      <div class="sync-bar">
+        <div class="sync-top-row">
+          <div class="sync-status-badge" id="syncStatusBadge">
+            <span id="syncDot">🟢</span>
+            <span id="syncStatusText">雲端即時同步就緒</span>
+          </div>
+          <div style="font-size:0.84rem; font-weight:700;">
+            1 日圓 ≈ <input type="number" id="rateInput" step="0.001" min="0.05" max="1" value="0.215" style="width:68px; border:2px solid #3E3A39; border-radius:8px; padding:2px 6px; font-family:inherit; font-weight:700; text-align:center;" /> 台幣
+          </div>
+        </div>
+
+        <div class="sync-controls">
+          <label for="roomInput" style="font-size:0.85rem; font-weight:700;">🔑 同步房號：</label>
+          <input type="text" id="roomInput" class="room-input" placeholder="輸入家庭房號" />
+          <button type="button" class="book-btn white" onclick="switchRoom()">切換/連線</button>
+          <button type="button" class="book-btn pink" onclick="copyShareSyncLink()">📤 複製最新帳本網址傳 LINE</button>
+        </div>
+        <div style="font-size:0.8rem; margin-top:8px; line-height:1.45;">
+          💡 <strong>雙重同步</strong>：① 旅伴輸入相同「同步房號」可即時同步；② 記完帳按「<strong>📤 複製最新帳本網址傳 LINE</strong>」，點開連結即<strong>智慧雙向合併</strong>各自帳目！
+        </div>
+      </div>
+
+      <div class="ledger-summary-grid">
+        <div class="stat-card" style="background-color:#FFF4D4;">
+          <div class="stat-label">🇯🇵 日圓總花費（換算）</div>
+          <div class="stat-val" id="totalJpyVal">¥0</div>
+        </div>
+        <div class="stat-card" style="background-color:#FFEAE6;">
+          <div class="stat-label">🇹🇼 台幣總花費（換算）</div>
+          <div class="stat-val" id="totalTwdVal">NT$0</div>
+        </div>
+        <div class="stat-card" style="background-color:#E7F6EC;">
+          <div class="stat-label">🧾 已標記免稅額（JPY）</div>
+          <div class="stat-val" id="taxFreeVal">¥0</div>
+        </div>
+        <div class="stat-card" style="background-color:#E5F4FA;">
+          <div class="stat-label">📝 帳目筆數</div>
+          <div class="stat-val" id="expenseCountVal">0 筆</div>
+        </div>
+      </div>
+
+      <div class="payer-breakdown">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+          <strong>👥 誰先付了多少（自動折合台幣統計）：</strong>
+          <span id="splitAdvice" style="font-size:0.84rem; font-weight:700; color:#8A3B2B;"></span>
+        </div>
+        <div class="payer-chips" id="payerChips"></div>
+      </div>
+
+      <div class="expense-form">
+        <div style="font-weight:700; font-size:1.02rem;">✏️ 新增一筆花費</div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="expDay">行程天數</label>
+            <select id="expDay" class="form-ctrl">
+              <option value="行前">行前準備</option>
+              <option value="D1 (2/24)">D1 (2/24)</option>
+              <option value="D2 (2/25)">D2 (2/25)</option>
+              <option value="D3 (2/26)">D3 (2/26)</option>
+              <option value="D4 (2/27)">D4 (2/27)</option>
+              <option value="D5 (2/28)">D5 (2/28)</option>
+              <option value="D6 (3/1)">D6 (3/1)</option>
+              <option value="D7 (3/2)">D7 (3/2)</option>
+              <option value="D8 (3/3)">D8 (3/3)</option>
+              <option value="D9 (3/4)">D9 (3/4)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="expCat">消費分類</label>
+            <select id="expCat" class="form-ctrl">
+              <option value="🍜 美食小吃">🍜 美食小吃</option>
+              <option value="🛍️ 購物伴手禮">🛍️ 購物伴手禮</option>
+              <option value="🎡 門票樂園">🎡 門票樂園</option>
+              <option value="🚗 自駕停車油資">🚗 自駕停車油資</option>
+              <option value="🏨 住宿溫泉">🏨 住宿溫泉</option>
+              <option value="✈️ 機票保險網路">✈️ 機票保險網路</option>
+              <option value="💊 藥妝其他">💊 藥妝其他</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="expTitle">消費項目名稱</label>
+            <input type="text" id="expTitle" class="form-ctrl" placeholder="例如：飛驒牛握壽司、樂高門票..." />
+          </div>
+
+          <div class="form-field">
+            <label for="expAmount">金額</label>
+            <input type="number" id="expAmount" class="form-ctrl" inputmode="decimal" placeholder="輸入數字" />
+          </div>
+        </div>
+
+        <div class="form-bottom-row">
+          <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+            <select id="expCurrency" class="form-ctrl" style="width:auto; font-weight:700;">
+              <option value="JPY">🇯🇵 日圓 (JPY ¥)</option>
+              <option value="TWD">🇹🇼 台幣 (TWD NT$)</option>
+            </select>
+
+            <select id="expPayer" class="form-ctrl" style="width:auto; font-weight:700;">
+              <option value="媽媽">👩 媽媽付款</option>
+              <option value="爸爸">👨 爸爸付款</option>
+              <option value="公費">👛 公費錢包</option>
+            </select>
+
+            <label style="display:inline-flex; align-items:center; gap:5px; font-size:0.88rem; font-weight:700; background:var(--card-white); border:2px solid var(--ink); border-radius:10px; padding:6px 10px; cursor:pointer;">
+              <input type="checkbox" id="expTaxFree" style="width:16px; height:16px; accent-color:var(--coral);" />
+              🧾 列入機場退稅
+            </label>
+          </div>
+
+          <button type="button" class="book-btn green" style="padding:8px 18px; font-size:0.95rem;" onclick="addExpense()">＋ 記上一筆</button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center;">
+          <strong style="font-size:0.9rem;">📋 消費明細：</strong>
+          <select id="filterDay" class="form-ctrl" style="width:auto; padding:4px 8px; font-size:0.85rem;" onchange="renderExpenses()">
+            <option value="ALL">全部天數</option>
+            <option value="行前">行前準備</option>
+            <option value="D1 (2/24)">D1 (2/24)</option>
+            <option value="D2 (2/25)">D2 (2/25)</option>
+            <option value="D3 (2/26)">D3 (2/26)</option>
+            <option value="D4 (2/27)">D4 (2/27)</option>
+            <option value="D5 (2/28)">D5 (2/28)</option>
+            <option value="D6 (3/1)">D6 (3/1)</option>
+            <option value="D7 (3/2)">D7 (3/2)</option>
+            <option value="D8 (3/3)">D8 (3/3)</option>
+            <option value="D9 (3/4)">D9 (3/4)</option>
+          </select>
+          <select id="filterPayer" class="form-ctrl" style="width:auto; padding:4px 8px; font-size:0.85rem;" onchange="renderExpenses()">
+            <option value="ALL">全部付款人</option>
+            <option value="媽媽">媽媽</option>
+            <option value="爸爸">爸爸</option>
+            <option value="公費">公費</option>
+          </select>
+        </div>
+
+        <button type="button" class="book-btn white" style="font-size:0.82rem;" onclick="exportExpensesCsv()">📥 匯出 Excel (CSV)</button>
+      </div>
+
+      <ul class="expense-list" id="expenseList"></ul>
+    </section>
+
+    <!-- 🗣️ 100% 離線可用：大字體指指日文溝通卡 -->
+    <section class="book-card bg-washi" id="phrasecards">
+      <div class="section-header">
+        <h2 class="section-title blue">🗣️ 離線指指日文溝通卡（點擊放大）</h2>
+        <span style="font-size:0.86rem; font-weight:700;">山區無網路也能直接拿給店員看 👆</span>
+      </div>
+
+      <div class="phrase-grid">
+        <div class="phrase-card" onclick="openZoomCard('⛽ 加油站專用（防加錯油）', 'レギュラー満タンでお願いします。\nレシートもください。', '請幫我加滿「Regular（紅色油槍一般無鉛汽油）」，並請給我收據。（還車前在機場旁加油站直接出示這張！）')">
+          <span class="exp-tag" style="background:var(--coral);">⛽ 加油站防呆</span>
+          <div class="phrase-jp">レギュラー満タンでお願いします</div>
+          <div class="phrase-zh">Regular（紅色油槍）加滿並索取收據（點擊放大）</div>
+        </div>
+
+        <div class="phrase-card" onclick="openZoomCard('🏥 幼兒藥局／看診症狀指指卡', '4歳の子供です。\n【症状】発熱（はつねつ）／ 鼻水（はなみず）／ 咳（せき）／ 腹痛（ふくつう）／ 嘔吐（おうと）\n※薬のアレルギーはありません。', '這是 4 歲的小孩。症狀：發燒／流鼻水／咳嗽／肚子痛／嘔吐。沒有藥物過敏。（點擊放大指給藥師或醫師看）')">
+          <span class="exp-tag" style="background:var(--yellow);">💊 4 歲幼兒買藥看診</span>
+          <div class="phrase-jp">4歳の子供です（発熱・鼻水・咳）</div>
+          <div class="phrase-zh">發燒／流鼻水／咳嗽／腹痛／無過敏對照（點擊放大）</div>
+        </div>
+
+        <div class="phrase-card" onclick="openZoomCard('🏨 飯店報到＆借用床圍（Bed Guard）', 'チェックインをお願いします。\n事前にお願いしていた「ベッドガード」と「ハリウッドツイン（ベッド2台くっつけ）」は用意されていますか？', '麻煩辦理入住。請問事先預約的「床邊護欄」與「兩張床併床」是否已準備好了？（點擊放大）')">
+          <span class="exp-tag" style="background:var(--aqua);">🛏️ 飯店床圍＆併床</span>
+          <div class="phrase-jp">ベッドガードをお願いします</div>
+          <div class="phrase-zh">入住確認免費床邊護欄與併床（點擊放大）</div>
+        </div>
+
+        <div class="phrase-card" onclick="openZoomCard('🍽️ 餐廳借用兒童椅＆兒童餐具', '大人2名と4歳の子供1名です。\n子供用の椅子（いす）と取り皿・スプーンをお借りできますか？', '我們有 2 位大人和 1 位 4 歲小孩。請問可以借兒童餐椅、小碗和湯匙嗎？（點擊放大）')">
+          <span class="exp-tag" style="background:var(--bamboo);">🥄 親子餐廳用餐</span>
+          <div class="phrase-jp">子供用の椅子と食器をお借りできますか？</div>
+          <div class="phrase-zh">借用兒童餐椅、分裝小碗與兒童湯匙（點擊放大）</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ☔ 全行程雨天＆暴雪室內備案總覽 -->
+    <section class="book-card bg-washi" id="rainplan">
+      <div class="section-header">
+        <h2 class="section-title green">☔ 全行程雨天 ＆ 大雪室內備案總覽</h2>
+        <svg width="88" height="62" viewBox="0 0 88 62" aria-label="麵包小偷撐傘雨備插圖">
+          <line x1="12" y1="8" x2="9" y2="15" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+          <line x1="76" y1="10" x2="73" y2="17" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+          <line x1="16" y1="26" x2="13" y2="33" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M22 24 Q44 2 66 24 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.8" stroke-linejoin="round"/>
+          <line x1="44" y1="4" x2="44" y2="11" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M52 24 L52 46 Q52 50 48 50" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M29 55 L29 33 C26 29, 30 23, 39 23 C48 23, 52 29, 49 33 L49 55 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M29 33 C26 29, 30 23, 39 23 C48 23, 52 29, 49 33" fill="none" stroke="#D69352" stroke-width="3.2" stroke-linecap="round"/>
+          <ellipse cx="40" cy="37" rx="7" ry="5.5" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2"/>
+          <circle cx="38" cy="35.5" r="1.3" fill="#3E3A39"/>
+          <circle cx="43" cy="35.5" r="1.3" fill="#3E3A39"/>
+          <ellipse cx="42" cy="39" rx="3.8" ry="2" fill="#D69352" stroke="#3E3A39" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item" style="background:var(--card-white);">
+          <h4>🌧️ 備案區 A｜金城埠頭（原 D2 樂高樂園遇雨）</h4>
+          <p style="font-size:0.9rem;">
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AA%E3%83%8B%E3%82%A2%E3%83%BB%E9%89%84%E9%81%93%E9%A4%A8" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：リニア・鉄道館">📍磁浮鐵道館（SCMAGLEV）</a>：步行 3 分鐘即達，全室內展出 39 輛實體新幹線與超大型鐵道模型，4 歲小孩超愛。<br/>
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%B7%E3%83%BC%E3%83%A9%E3%82%A4%E3%83%95%E5%90%8D%E5%8F%A4%E5%B1%8B" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：シーライフ名古屋">📍SEA LIFE 名古屋海洋館</a>：緊鄰樂高樂園入口全室內水族館，免吹風淋雨。<br/>
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E3%83%A1%E3%82%A4%E3%82%AB%E3%83%BC%E3%82%BA%E3%83%94%E3%82%A2" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：メイカーズピア">📍Maker's Pier 室內手作坊</a>：體驗親子披薩或冰淇淋 DIY。
+          </p>
+        </div>
+
+        <div class="info-item" style="background:var(--card-white);">
+          <h4>🌧️ 備案區 B｜吉卜力周邊（原 D3 戶外園區遇雨）</h4>
+          <p style="font-size:0.9rem;">
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%B8%E3%83%96%E3%83%AA%E3%81%AE%E5%A4%A7%E5%80%89%E5%BA%AB" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：ジブリの大倉庫">📍吉卜力大倉庫</a>：本身就是<strong>100% 全室內恆溫展館</strong>，貓巴士房間與兒童之街不受天氣影響。<br/>
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E3%81%82%E3%81%84%E3%81%A1%E5%85%90%E7%AB%A5%E7%B7%8F%E5%90%88%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：あいち児童総合センター">📍愛知縣兒童綜合館</a>：同在愛・地球博公園內（共用北 1 停車場），超大室內多層樓攀爬遊戲塔。<br/>
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E9%95%B7%E4%B9%85%E6%89%8B" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：イオンモール長久手">📍AEON Mall 長久手</a> ／ <a href="https://www.google.com/maps/search/?api=1&query=IKEA%E9%95%B7%E4%B9%85%E6%89%8B" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：IKEA長久手">📍IKEA 長久手</a>：開車 5 分鐘即達大型室內商場。
+          </p>
+        </div>
+
+        <div class="info-item" style="background:var(--card-white);">
+          <h4>🌨️ 備案區 C｜飛驒高山＆下呂（原 D4–D6 遇雨雪）</h4>
+          <p style="font-size:0.9rem;">
+            • <strong>若往白川鄉高速公路遇暴雪封路</strong>：絕不硬闖山路，改去平地市郊的 <a href="https://www.google.com/maps/search/?api=1&query=%E9%A3%9B%E9%A8%A8%E3%81%AE%E9%87%8C" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：飛騨の里">📍飛驒之里</a> 看合掌造，或帶寶貝去 <a href="https://www.google.com/maps/search/?api=1&query=%E9%A3%9B%E9%A8%A8%E7%89%A9%E7%94%A3%E9%A4%A8" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：飛騨物産館">📍飛驒物產館</a> 彩繪猴寶寶（さるぼぼ）、<a href="https://www.google.com/maps/search/?api=1&query=%E9%A3%9B%E9%A8%A8%E9%AB%98%E5%B1%B1%E3%83%86%E3%83%87%E3%82%A3%E3%83%99%E3%82%A2%E3%82%A8%E3%82%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：飛騨高山テディベアエコビレッジ">📍高山泰迪熊生態村</a>。<br/>
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89%20%E6%B0%B4%E6%98%8E%E9%A4%A8" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：下呂温泉 水明館">📍下呂水明館</a>：飯店本身有<strong>室內溫水泳池</strong>（記得帶泳衣）、三座室內名湯與茶室，全天不出門也超充實。
+          </p>
+        </div>
+
+        <div class="info-item" style="background:var(--card-white);">
+          <h4>🌧️ 備案區 D｜名古屋市區＆長島（原 D7–D8 遇雨）</h4>
+          <p style="font-size:0.9rem;">
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%A0%88%E5%95%86%E5%BA%97%E8%A1%97" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：大須商店街">📍大須商店街拱廊</a>：整條商店街均有高挑玻璃雨遮，雨天照樣輕鬆逛街吃小吃。<br/>
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%82%AB%E3%82%A8%E3%83%81%E3%82%AB" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：サカエチカ">📍榮地下街</a> ＋ <a href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8A%E3%82%B4%E3%83%A4" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：ポケモンセンターナゴヤ">📍松坂屋 寶可夢中心</a>：從東急飯店周邊可走地下連通道逛百貨與寶可夢中心。<br/>
+            • <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E4%BA%95%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88%E3%83%91%E3%83%BC%E3%82%AF%20%E3%82%B8%E3%83%A3%E3%82%BA%E3%83%89%E3%83%AA%E3%83%BC%E3%83%A0%E9%95%B7%E5%B3%B6" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：三井アウトレットパーク ジャズドリーム長島">📍長島 Outlet</a> 連通雨遮＋<a href="https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%A2%E3%83%B3%E3%83%91%E3%83%B3%E3%83%9E%E3%83%B3%E3%81%93%E3%81%A9%E3%82%82%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0%EF%BC%86%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：名古屋アンパンマンこどもミュージアム＆パーク">📍麵包超人室內劇場</a>：店鋪間多有遮雨廊道，<a href="https://www.google.com/maps/search/?api=1&query=FLIGHT%20OF%20DREAMS" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：FLIGHT OF DREAMS">📍波音博物館</a> 亦為全室內。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 住宿資訊（6 段完整安排＋車機導航 TEL＋Google Maps） -->
+    <section class="book-card" id="hotels">
+      <div class="section-header">
+        <h2 class="section-title">🏨 6 段精選飯店住宿一覽</h2>
+        <svg width="86" height="58" viewBox="0 0 86 58" aria-label="麵包小偷泡溫泉插圖">
+          <path d="M26 10 Q24 6 26 2" fill="none" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
+          <path d="M60 10 Q62 6 60 2" fill="none" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="43" cy="44" rx="34" ry="11" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+          <ellipse cx="43" cy="40" rx="30" ry="8" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+          <path d="M31 39 L31 22 C27 17, 32 10, 43 10 C54 10, 59 17, 55 22 L55 39 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M31 22 C27 17, 32 10, 43 10 C54 10, 59 17, 55 22" fill="none" stroke="#D69352" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="36" y="7" width="14" height="5" rx="2" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
+          <ellipse cx="43" cy="27" rx="8" ry="6.5" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2"/>
+          <path d="M38 25 Q40 23 42 25" fill="none" stroke="#3E3A39" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M44 25 Q46 23 48 25" fill="none" stroke="#3E3A39" stroke-width="1.8" stroke-linecap="round"/>
+          <ellipse cx="43" cy="29" rx="4" ry="2.5" fill="#D69352" stroke="#3E3A39" stroke-width="1.5"/>
+          <circle cx="43" cy="28.5" r="1.2" fill="#3E3A39"/>
+        </svg>
+      </div>
+
+      <div class="hotel-grid">
+        <div class="hotel-card">
+          <span class="hotel-date">2/24（三）– 2/25（四）｜1 晚</span>
+          <h4>1. 中部機場酒店（Centrair Hotel）</h4>
+          <p style="font-size:0.9rem; margin-top:4px;">下機出關後推推車走室內連通空橋 3～5 分鐘直達，完全免吹冷風淋雨，讓 4 歲孩子第一晚安穩睡飽。</p>
+          <div class="navi-tag">📟 車機 TEL：0569-38-1111</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%B3%E3%83%88%E3%83%AC%E3%82%A2%E3%83%9B%E3%83%86%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Google Map 導航：中部機場酒店</a>
+        </div>
+
+        <div class="hotel-card">
+          <span class="hotel-date">2/25（四）– 2/27（六）｜連住 2 晚</span>
+          <h4>2. 名古屋東急飯店（Nagoya Tokyu Hotel）</h4>
+          <p style="font-size:0.9rem; margin-top:4px;">榮商圈五星飯店，備有 B1-B2 地下平面停車場（限高 2.0m）。訂房記得備註借用<strong>免費床邊護欄（Bed Guard）＋併床</strong>。</p>
+          <div class="navi-tag">📟 車機 TEL：052-251-2411</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%9D%B1%E6%80%A5%E3%83%9B%E3%83%86%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Google Map 導航：名古屋東急飯店</a>
+        </div>
+
+        <div class="hotel-card">
+          <span class="hotel-date highlight">2/27（六）– 3/1（一）｜連住 2 晚★</span>
+          <h4>3. 高山 HOTEL WOOD（飛驒高山）</h4>
+          <p style="font-size:0.9rem; margin-top:4px;"><strong>連住 2 晚免收大行李換房！</strong>步行 1 分鐘即達 <a href="https://www.google.com/maps/search/?api=1&query=%E3%81%95%E3%82%93%E3%81%BE%E3%81%A1%E9%80%9A%E3%82%8A%20%E9%AB%98%E5%B1%B1" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：さんまち通り 高山">📍三町筋老街</a>，天然飛驒木質美學空間，輕鬆當天來回白川鄉玩雪。</p>
+          <div class="navi-tag">📟 車機検索：HOTEL WOOD 高山（高山市上二之町）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=HOTEL%20WOOD%20%E9%AB%98%E5%B1%B1" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Google Map 導航：高山 HOTEL WOOD</a>
+        </div>
+
+        <div class="hotel-card">
+          <span class="hotel-date highlight">3/1（一）– 3/2（二）｜1 晚名湯</span>
+          <h4>4. 下呂水明館（Suimeikan）</h4>
+          <p style="font-size:0.9rem; margin-top:4px;">日本三大名泉百年溫泉名宿，擁有三大主題大浴場、<strong>室內溫水泳池</strong>與專屬大型免費停車場，享受滑潤美肌湯與會席料理。</p>
+          <div class="navi-tag">📟 車機 TEL：0576-25-2800</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89%20%E6%B0%B4%E6%98%8E%E9%A4%A8" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Google Map 導航：下呂水明館</a>
+        </div>
+
+        <div class="hotel-card">
+          <span class="hotel-date">3/2（二）– 3/3（三）｜1 晚</span>
+          <h4>5. 名古屋東急飯店（Nagoya Tokyu Hotel）</h4>
+          <p style="font-size:0.9rem; margin-top:4px;">下山返抵市區大本營，車停飯店地下室後步行逛榮商圈百貨、藥妝與大須拱廊商店街補貨最省力。</p>
+          <div class="navi-tag">📟 車機 TEL：052-251-2411</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%9D%B1%E6%80%A5%E3%83%9B%E3%83%86%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Google Map 導航：名古屋東急飯店</a>
+        </div>
+
+        <div class="hotel-card">
+          <span class="hotel-date">3/3（三）– 3/4（四）｜1 晚</span>
+          <h4>6. 中部機場酒店（Centrair Hotel）</h4>
+          <p style="font-size:0.9rem; margin-top:4px;">長島 Outlet 血拼與波音館放電後，18:00 還車直接入住，從容打包 6 大件行李，隔天中午班機免早起趕車。</p>
+          <div class="navi-tag">📟 車機 TEL：0569-38-1111</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%B3%E3%83%88%E3%83%AC%E3%82%A2%E3%83%9B%E3%83%86%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Google Map 導航：中部機場酒店</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🅿️ 自駕停車指南速查大補帖 -->
+    <section class="book-card" id="parking">
+      <div class="section-header">
+        <h2 class="section-title green">🅿️ 9 大景點與飯店停車速查表</h2>
+        <svg width="76" height="58" viewBox="0 0 76 58" aria-label="麵包小偷停車指引插圖">
+          <path d="M16 50 L16 24 C12 19, 17 12, 28 12 C39 12, 44 19, 40 24 L40 50 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M16 24 C12 19, 17 12, 28 12 C39 12, 44 19, 40 24" fill="none" stroke="#D69352" stroke-width="3.2" stroke-linecap="round"/>
+          <ellipse cx="29" cy="28" rx="7.5" ry="6" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2"/>
+          <circle cx="27" cy="26.5" r="1.4" fill="#3E3A39"/>
+          <circle cx="32" cy="26.5" r="1.4" fill="#3E3A39"/>
+          <ellipse cx="31" cy="30" rx="4" ry="2.2" fill="#D69352" stroke="#3E3A39" stroke-width="1.5"/>
+          <circle cx="33" cy="29.5" r="1.1" fill="#3E3A39"/>
+          <line x1="56" y1="16" x2="56" y2="52" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+          <rect x="44" y="6" width="24" height="22" rx="6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+          <text x="56" y="22" font-size="14" font-weight="bold" text-anchor="middle" fill="#3E3A39">P</text>
+        </svg>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <h4>1. 樂高樂園＆磁浮鐵道館｜金城埠頭立體停車場</h4>
+          <p style="font-size:0.9rem;">5,010 格、限高 2.1m。<strong>停 3 樓可直接走有遮雨棚的連通天橋</strong>推推車直達樂園與鐵道館，平日上限 ¥1,000。</p>
+          <div class="navi-tag">📟 車機 TEL：052-398-1771（金城ふ頭駐車場）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E5%9F%8E%E3%81%B5%E9%A0%AD%E9%A7%90%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：金城ふ頭駐車場</a>
+        </div>
+
+        <div class="info-item">
+          <h4>2. 吉卜力公園＆兒童綜合館｜愛・地球博北停車場</h4>
+          <p style="font-size:0.9rem;">園區內<strong>無專用停車場</strong>，務必停北 1 停車場，離「吉卜力大倉庫」與雨備「兒童綜合館」步行最近，普通車 ¥500/次。</p>
+          <div class="navi-tag">📟 車機 TEL：0561-64-1130（愛・地球博記念公園）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E6%84%9B%E3%83%BB%E5%9C%B0%E7%90%83%E5%8D%9A%E8%A8%98%E5%BF%B5%E5%85%AC%E5%9C%92%20%E5%8C%971%E9%A7%90%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：愛・地球博記念公園 北1駐車場</a>
+        </div>
+
+        <div class="info-item">
+          <h4>3. 郡上八幡｜城下町廣場停車場</h4>
+          <p style="font-size:0.9rem;">平面車位好停且有乾淨公廁，出站即是平緩老街與谷中水之街（約 ¥500/次）。</p>
+          <div class="navi-tag">📟 車機 TEL：0575-67-1819（郡上八幡城下町プラザ）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E9%83%A1%E4%B8%8A%E5%85%AB%E5%B9%A1%E5%9F%8E%E4%B8%8B%E7%94%BA%E3%83%97%E3%83%A9%E3%82%B6" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：郡上八幡城下町プラザ</a>
+        </div>
+
+        <div class="info-item">
+          <h4>4. 高山 HOTEL WOOD｜飯店門口＆特約停車場</h4>
+          <p style="font-size:0.9rem;">抵達時<strong>先將車暫停飯店門口卸下大行李與幼童</strong>，再依櫃檯提供之合作停車場地圖前往停放（步行約 2–3 分鐘）。</p>
+          <div class="navi-tag">📟 車機検索：HOTEL WOOD 高山（高山市上二之町）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=HOTEL%20WOOD%20%E9%AB%98%E5%B1%B1" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：HOTEL WOOD 高山門口</a>
+        </div>
+
+        <div class="info-item">
+          <h4>5. 白川鄉合掌村｜村原停車場（せせらぎ公園）</h4>
+          <p style="font-size:0.9rem;">合掌村聚落內全區禁止外車進入，停好後牽孩子走過「相逢橋」即進村（¥1,000/次）。</p>
+          <div class="navi-tag">📟 車機 TEL：05769-6-1311（村営せせらぎ公園駐車場）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%91%E5%96%B6%E3%81%9B%E3%81%9B%E3%82%89%E3%81%8E%E5%85%AC%E5%9C%92%E9%A7%90%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：村営せせらぎ公園駐車場</a>
+        </div>
+
+        <div class="info-item">
+          <h4>6. 下呂水明館｜飯店專屬免費大型停車場</h4>
+          <p style="font-size:0.9rem;">備有超寬敞<strong>房客免費平面停車場</strong>，停好車步行過飛驒川大橋即可漫步溫泉街與足湯。</p>
+          <div class="navi-tag">📟 車機 TEL：0576-25-2800（下呂温泉 水明館）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89%20%E6%B0%B4%E6%98%8E%E9%A4%A8" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：下呂温泉 水明館停車場</a>
+        </div>
+
+        <div class="info-item">
+          <h4>7. 名古屋東急飯店｜B1–B2 地下平面車庫</h4>
+          <p style="font-size:0.9rem;">入口位於飯店側邊，<strong>限高 2.0m（Voxy/Sienta 皆可停）</strong>，300 個車位免預約，房客優惠價 ¥1,200/晚，期間可無限次進出。</p>
+          <div class="navi-tag">📟 車機 TEL：052-251-2411（名古屋東急ホテル）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%9D%B1%E6%80%A5%E3%83%9B%E3%83%86%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：名古屋東急ホテル停車場</a>
+        </div>
+
+        <div class="info-item" style="background-color: var(--yellow);">
+          <h4>8. 三井長島 Outlet｜全額退還停車費秘訣！</h4>
+          <p style="font-size:0.9rem;">入場先繳 ¥1,000/日，只要在 Outlet <strong>任一單一店鋪消費滿 ¥3,000（含稅）</strong>，憑收據與停車券至綜合服務台即可<strong>全額退還 ¥1,000 現金</strong>！</p>
+          <div class="navi-tag" style="background:#FFFFFF;">📟 車機 TEL：0594-45-8700（ジャズドリーム長島）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E4%BA%95%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88%E3%83%91%E3%83%BC%E3%82%AF%20%E3%82%B8%E3%83%A3%E3%82%BA%E3%83%89%E3%83%AA%E3%83%BC%E3%83%A0%E9%95%B7%E5%B3%B6" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：三井長島 Outlet 停車場</a>
+        </div>
+
+        <div class="info-item">
+          <h4>9. 中部國際機場｜租車中心還車站點</h4>
+          <p style="font-size:0.9rem;">3/3 傍晚返回機場島，依「レンタカー返却（Rental Car Return）」指標開至交通廣場（Access Plaza）1 樓各車行還車區，滿油還車後走室內空橋進機場酒店。</p>
+          <div class="navi-tag">📟 車機 TEL：0569-38-1195（中部国際空港）</div><br/>
+          <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%97%E3%83%A9%E3%82%B6" target="_blank" rel="noopener noreferrer" class="map-btn">📍 導航：中部国際空港 レンタカー返却</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🧾 2026/11 日本機場退稅新制全攻略 -->
+    <section class="book-card bg-washi" id="taxfree">
+      <div class="section-header">
+        <h2 class="section-title pink">🧾 2026/11 日本機場退稅新制全攻略</h2>
+        <svg width="92" height="58" viewBox="0 0 92 58" aria-label="麵包小偷退稅查驗插圖">
+          <rect x="8" y="12" width="24" height="34" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+          <line x1="13" y1="20" x2="27" y2="20" stroke="#3E3A39" stroke-width="2"/>
+          <line x1="13" y1="26" x2="25" y2="26" stroke="#3E3A39" stroke-width="2"/>
+          <text x="20" y="39" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#3E3A39">TAX</text>
+          <path d="M46 50 L46 24 C42 19, 47 12, 58 12 C69 12, 74 19, 70 24 L70 50 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="49" y="5" width="18" height="7" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+          <line x1="46" y1="12" x2="70" y2="12" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="57" cy="28" rx="7.5" ry="6" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2"/>
+          <circle cx="54" cy="26.5" r="1.4" fill="#3E3A39"/>
+          <circle cx="59" cy="26.5" r="1.4" fill="#3E3A39"/>
+          <ellipse cx="55" cy="30" rx="4" ry="2.2" fill="#D69352" stroke="#3E3A39" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <p style="font-weight:700; margin-bottom:10px;">2026 年 11 月起日本全面實施「先付含稅價、離境機場統一退稅」，親子購物變超輕鬆：</p>
+
+      <div class="info-grid" style="margin-bottom:14px;">
+        <div class="info-item" style="background:var(--bamboo);">
+          <h4>✨ 變革 1：廢除消耗品密封塑膠袋！</h4>
+          <p style="font-size:0.9rem;">藥妝、零食餅乾不再需要被店員用「不可拆封透明密封袋」捆成一球，可以直接拆開整齊塞進 6 大件行李箱隙縫！</p>
+        </div>
+        <div class="info-item" style="background:var(--aqua);">
+          <h4>✨ 變革 2：取消商品分類與 50 萬上限</h4>
+          <p style="font-size:0.9rem;">一般品（童裝、電器）與消耗品（藥妝、食品）<strong>合併計算滿未稅 ¥5,000</strong> 即可退稅，並取消單日同店 50 萬日圓上限（90 天內出境即可）。</p>
+        </div>
+      </div>
+
+      <div style="background:var(--coral); border:3px solid var(--ink); border-radius:14px; padding:10px 14px; font-weight:700; margin-bottom:12px;">
+        ⚠️ <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E9%83%A8%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener noreferrer" class="map-pill" title="在 Google Maps 開啟：中部国際空港 第1ターミナル">📍中部國際機場 T1</a> 黃金順序：務必「先辦海關退稅查驗 ➔ 再去 JAL 櫃檯託運行李」！
+      </div>
+
+      <div class="tax-steps">
+        <div class="tax-step-box">
+          <span class="step-num">Step 1｜入境</span>
+          <div style="font-weight:700; font-size:0.92rem;">開通 VJW 免稅碼</div>
+          <p style="font-size:0.84rem; margin-top:4px;">2/24 抵達 NGO 完成入境審查後，於 Visit Japan Web 產生個人「免稅 QR Code」。</p>
+        </div>
+        <div class="tax-step-box">
+          <span class="step-num">Step 2｜購物</span>
+          <div style="font-weight:700; font-size:0.92rem;">刷含稅價＋留收據</div>
+          <p style="font-size:0.84rem; margin-top:4px;">結帳出示護照或 VJW 碼（先刷含稅總額），店員將購買紀錄上傳海關系統，收據收進資料夾。</p>
+        </div>
+        <div class="tax-step-box">
+          <span class="step-num">Step 3｜離境</span>
+          <div style="font-weight:700; font-size:0.92rem;">09:15 機場機台核對</div>
+          <p style="font-size:0.84rem; margin-top:4px;">3/4 託運行李前，至 T1 出境大廳「海關退稅 KIOSK 機台」刷護照，選擇退款至信用卡或現金。</p>
+        </div>
+        <div class="tax-step-box">
+          <span class="step-num">Step 4｜放行</span>
+          <div style="font-weight:700; font-size:0.92rem;">綠燈託運／紅燈查驗</div>
+          <p style="font-size:0.84rem; margin-top:4px;">螢幕亮<strong>🟢 綠燈</strong>免檢查直接推去 JAL 託運；亮<strong>🔴 紅燈</strong>則至旁側海關櫃檯開箱核對商品後託運。</p>
+        </div>
+      </div>
+
+      <div class="info-item" style="background:var(--card-white);">
+        <h4>🛡️ 親子採買防雷 3 守則</h4>
+        <ul style="padding-left:20px; font-size:0.9rem; margin-top:4px;">
+          <li><strong>日本境內現吃零食分開結帳</strong>：買給 4 歲小孩在車上吃的麵包、草莓或布丁，請與要帶回台灣的退稅伴手禮分開結帳，避免海關查驗短少整筆失效。</li>
+          <li><strong>退稅戰利品集中放行李箱最上層</strong>：3/3 晚上在機場酒店打包時，把高單價免稅品放在行李箱打開最上層，萬一亮紅燈 30 秒就能完成查驗。</li>
+          <li><strong>隨身攜帶護照與透明收據資料夾</strong>：在長島 Outlet 或榮商圈購物時，所有退稅單據統一放入資料夾方便核對金額。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 🆘 緊急聯絡電話 ＆ 雪地事故 SOP -->
+    <section class="book-card" id="emergency">
+      <div class="section-header">
+        <h2 class="section-title pink">🆘 緊急聯絡電話 ＆ 雪地自駕事故 SOP</h2>
+        <span style="font-size:0.86rem; font-weight:700;">點擊電話號碼可直接撥打 📞</span>
+      </div>
+
+      <div class="sos-grid">
+        <a href="tel:110" class="sos-btn" style="background-color:#FFEAE6;">
+          🚓 日本報警（事故必打）
+          <span class="sos-num">110</span>
+        </a>
+        <a href="tel:119" class="sos-btn" style="background-color:#FFEAE6;">
+          🚑 救護車／火警
+          <span class="sos-num">119</span>
+        </a>
+        <a href="tel:0570008139" class="sos-btn" style="background-color:#FFF4D4;">
+          🔧 JAF 道路救援
+          <span class="sos-num">0570-00-8139</span>
+        </a>
+        <a href="tel:+819087944568" class="sos-btn" style="background-color:#E5F4FA;">
+          🇹🇼 駐大阪辦事處急難救助
+          <span class="sos-num">090-8794-4568</span>
+        </a>
+      </div>
+
+      <div class="info-item" style="background:var(--bg-washi);">
+        <h4>⚠️ 雪地自駕發生輕微擦撞／滑出路面 3 步驟 SOP</h4>
+        <ol style="padding-left:20px; font-size:0.9rem; margin-top:6px;">
+          <li><strong>確保人員安全</strong>：開啟雙黃燈、穿上反光背心，讓 4 歲小孩與家人退到護欄外側安全處（雪地切勿站在車道上）。</li>
+          <li><strong>務必撥打 110 報警（最重要！）</strong>：無論是自撞雪牆、停車場擦傷或與他車碰撞，日本保險規定<strong>沒有警察開立的「交通事故証明書」，CDW 與 NOC 全險一律不理賠</strong>。</li>
+          <li><strong>聯繫租車公司緊急中心</strong>：報警後依車內手冊電話通知租車行，並用手機拍下車輛受損與現場角度存證。</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 可打勾的出發前清單＆行李清單 -->
+    <section class="book-card" id="checklists">
+      <div class="section-header">
+        <h2 class="section-title">🎒 出發前待辦 ＆ 4 歲雪國雨備行李清單</h2>
+        <span style="font-size:0.84rem; font-weight:700;">✅ 打勾進度自動儲存在您的手機瀏覽器</span>
+      </div>
+
+      <div class="checklist-grid">
+        <div class="cl-panel">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3>📋 出發前必辦清單</h3>
+            <span id="todoProgressText" style="font-weight:700; font-size:0.9rem;">0%</span>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-bar" id="todoBar"></div>
+          </div>
+          <ul class="cl-list" id="todoList"></ul>
+          <div class="add-row">
+            <input type="text" class="add-input" id="todoInput" placeholder="新增待辦事項..." />
+            <button type="button" class="add-btn" onclick="addItem('todo')">＋ 新增</button>
+          </div>
+        </div>
+
+        <div class="cl-panel" style="background-color:#F4FAEE;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3>🧳 4 歲雪國＋雨備行李清單</h3>
+            <span id="packProgressText" style="font-weight:700; font-size:0.9rem;">0%</span>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-bar" id="packBar" style="background-color:var(--coral);"></div>
+          </div>
+          <ul class="cl-list" id="packList"></ul>
+          <div class="add-row">
+            <input type="text" class="add-input" id="packInput" placeholder="新增攜帶物品..." />
+            <button type="button" class="add-btn" onclick="addItem('pack')">＋ 新增</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 左下角手機快速目錄浮動按鈕 -->
+  <button type="button" class="quick-dir-btn" onclick="toggleDirModal(true)">📑 快速目錄</button>
+
+  <!-- 快速目錄彈出視窗 -->
+  <div class="modal-backdrop" id="dirModal" onclick="if(event.target===this) toggleDirModal(false)">
+    <div class="modal-box">
+      <h3 style="font-size:1.25rem;">🍞 手帳快速傳送門</h3>
+      <div class="dir-grid">
+        <a href="#top" class="dir-link" style="background:var(--yellow);" onclick="toggleDirModal(false)">🍞 首頁倒數</a>
+        <a href="#flights" class="dir-link" style="background:var(--coral);" onclick="toggleDirModal(false)">✈️ JAL 航班</a>
+        <a href="#itinerary" class="dir-link" style="background:var(--bamboo);" onclick="toggleDirModal(false)">🗺️ 每日行程</a>
+        <a href="#accounting" class="dir-link" style="background:var(--yellow);" onclick="toggleDirModal(false)">💰 共同記帳</a>
+        <a href="#phrasecards" class="dir-link" style="background:var(--aqua);" onclick="toggleDirModal(false)">🗣️ 指指日文卡</a>
+        <a href="#rainplan" class="dir-link" style="background:var(--bamboo);" onclick="toggleDirModal(false)">☔ 雨備＆雪備</a>
+        <a href="#hotels" class="dir-link" style="background:var(--coral);" onclick="toggleDirModal(false)">🏨 6 段住宿</a>
+        <a href="#parking" class="dir-link" style="background:var(--yellow);" onclick="toggleDirModal(false)">🅿️ 停車＋車機TEL</a>
+        <a href="#taxfree" class="dir-link" style="background:var(--aqua);" onclick="toggleDirModal(false)">🧾 機場退稅新制</a>
+        <a href="#emergency" class="dir-link" style="background:var(--coral);" onclick="toggleDirModal(false)">🆘 緊急＆事故SOP</a>
+        <a href="#checklists" class="dir-link" style="background:var(--bamboo); grid-column: span 2;" onclick="toggleDirModal(false)">🎒 出發前待辦 ＆ 4 歲雪國行李清單</a>
+      </div>
+      <button type="button" class="book-btn white" style="width:100%; padding:10px;" onclick="toggleDirModal(false)">✕ 關閉目錄</button>
+    </div>
+  </div>
+
+  <!-- 放大版日文指指卡視窗 -->
+  <div class="modal-backdrop" id="zoomModal" onclick="if(event.target===this) closeZoomCard()">
+    <div class="modal-box" style="background:var(--card-white);">
+      <div id="zoomTitle" style="font-weight:700; font-size:1rem; background:var(--yellow); border:2px solid var(--ink); border-radius:999px; padding:4px 14px; display:inline-block; margin-bottom:12px;"></div>
+      <div id="zoomJp" style="font-size:1.45rem; font-weight:700; line-height:1.55; white-space:pre-line; background:var(--bg-washi); border:3px solid var(--ink); border-radius:16px; padding:16px; margin-bottom:12px;"></div>
+      <div id="zoomZh" style="font-size:0.92rem; margin-bottom:14px;"></div>
+      <button type="button" class="book-btn pink" style="width:100%; padding:10px; font-size:1rem;" onclick="closeZoomCard()">✕ 關閉畫面</button>
+    </div>
+  </div>
+
+  <!-- 右下角可點擊互動的麵包小偷小幫手 -->
+  <div class="thief-buddy" id="thiefBuddy" title="點我聽麵包小偷的旅行密語！">
+    <div class="buddy-speech" id="buddySpeech">加油與幼兒看診都有「🗣️ 指指日文卡」！🍞</div>
+    <svg class="anim-thief" width="80" height="82" viewBox="0 0 84 86" aria-label="麵包小偷全身插圖">
+      <ellipse cx="33" cy="76" rx="6" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.5"/>
+      <ellipse cx="51" cy="76" rx="6" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.5"/>
+      <path d="M62 66 Q74 62 72 52" fill="none" stroke="#D69352" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M62 66 Q74 62 72 52" fill="none" stroke="#3E3A39" stroke-width="1.5" stroke-linecap="round"/>
+
+      <path d="M21 72 L21 30 C14 23, 22 10, 42 10 C62 10, 70 23, 63 30 L63 72 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M21 30 C14 23, 22 10, 42 10 C62 10, 70 23, 63 30" fill="none" stroke="#D69352" stroke-width="4.5" stroke-linecap="round"/>
+
+      <ellipse cx="42" cy="36" rx="13" ry="11" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+      <circle cx="37" cy="33" r="2.2" fill="#3E3A39"/>
+      <circle cx="45" cy="33" r="2.2" fill="#3E3A39"/>
+      <circle cx="36.3" cy="32.3" r="0.7" fill="#FFFFFF"/>
+      <circle cx="44.3" cy="32.3" r="0.7" fill="#FFFFFF"/>
+      <circle cx="32" cy="37" r="2.3" fill="#F2A497"/>
+      <path d="M38 38 Q46 37 48 40 Q45 43 38 42 Z" fill="#D69352" stroke="#3E3A39" stroke-width="2"/>
+      <circle cx="48" cy="40" r="1.8" fill="#3E3A39"/>
+
+      <ellipse cx="26" cy="54" rx="5" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.2"/>
+      <ellipse cx="58" cy="54" rx="5" ry="4" fill="#D69352" stroke="#3E3A39" stroke-width="2.2"/>
+      <path d="M32 56 Q42 47 52 56 Q47 61 42 59 Q37 61 32 56 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <script>
+    // 小幫手函式：自動產生 Google Maps 搜尋超連結
+    function gm(label, query) {
+      const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query || label);
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="map-pill" title="開啟 Google Maps 導航：${query || label}">📍${label}</a>`;
+    }
+
+    window.toggleDirModal = function(show) {
+      document.getElementById("dirModal").classList.toggle("open", show);
+    };
+
+    window.openZoomCard = function(title, jp, zh) {
+      document.getElementById("zoomTitle").textContent = title;
+      document.getElementById("zoomJp").textContent = jp;
+      document.getElementById("zoomZh").textContent = zh;
+      document.getElementById("zoomModal").classList.add("open");
+    };
+
+    window.closeZoomCard = function() {
+      document.getElementById("zoomModal").classList.remove("open");
+    };
+
+    // 1. 出發倒數計時器（目標：2027-02-24 15:50 台灣時間）
+    const targetDate = new Date("2027-02-24T15:50:00+08:00").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("cd-days").textContent = "0";
+        document.getElementById("cd-hours").textContent = "0";
+        document.getElementById("cd-mins").textContent = "0";
+        document.getElementById("cd-secs").textContent = "0";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("cd-days").textContent = days;
+      document.getElementById("cd-hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("cd-mins").textContent = String(mins).padStart(2, "0");
+      document.getElementById("cd-secs").textContent = String(secs).padStart(2, "0");
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // 2. 點擊小車按喇叭音效＋對話泡泡
+    const carStage = document.getElementById("carStage");
+    const honkBubble = document.getElementById("honkBubble");
+    let honkTimer = null;
+
+    function playCuteHorn() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+
+        [523.25, 659.25].forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(freq, now + idx * 0.13);
+          gain.gain.setValueAtTime(0.14, now + idx * 0.13);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.13 + 0.18);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + idx * 0.13);
+          osc.stop(now + idx * 0.13 + 0.19);
+        });
+      } catch (e) {}
+    }
+
+    carStage.addEventListener("click", () => {
+      playCuteHorn();
+      honkBubble.classList.add("show");
+      clearTimeout(honkTimer);
+      honkTimer = setTimeout(() => {
+        honkBubble.classList.remove("show");
+      }, 2400);
+    });
+
+    // 3. 右下角麵包小偷互動台詞
+    const buddyPhrases = [
+      "還車前去加油站，點「🗣️ 指指日文卡」直接秀「レギュラー満タン」給店員看！⛽",
+      "看行程時滑到底部按「✏️ 記一筆今日花費」，會自動幫你選好今天日期喔！💰",
+      "上車設車機導航，直接輸入停車指南裡的「📟 車機 TEL」最精準！🚗",
+      "萬一雪地有輕微擦撞，一定要先打 110 報警拿事故證明，保險才會理賠！🆘",
+      "長島 Outlet 單店滿 ¥3,000 退 ¥1,000 停車費，回程先退稅再託運 🧾"
+    ];
+    let phraseIdx = 0;
+    document.getElementById("thiefBuddy").addEventListener("click", () => {
+      document.getElementById("buddySpeech").textContent = buddyPhrases[phraseIdx];
+      phraseIdx = (phraseIdx + 1) % buddyPhrases.length;
+    });
+
+    // 4. 旅伴共同編輯同步記帳本（Gun.js 雲端即時同步 ＋ URL Hash 智慧雙向合併去重）
+    const LEDGER_STORAGE_KEY = "nagoya_2027_ledger_v1";
+    const ROOM_STORAGE_KEY = "nagoya_2027_room_id";
+    const RATE_STORAGE_KEY = "nagoya_2027_jpy_rate";
+
+    const initialSampleExpenses = [
+      {
+        id: "init_jal_tickets",
+        day: "行前",
+        cat: "✈️ 機票保險網路",
+        title: "JAL 日本航空來回機票（2大1小）",
+        amount: 38864,
+        currency: "TWD",
+        payer: "爸爸",
+        taxFree: false,
+        deleted: false,
+        updatedAt: 1700000001000
+      }
+    ];
+
+    let expensesMap = {};
+    let currentRoomId = localStorage.getItem(ROOM_STORAGE_KEY) || "nagoya2027";
+    let jpyRate = parseFloat(localStorage.getItem(RATE_STORAGE_KEY)) || 0.215;
+    let gunInstance = null;
+    let gunRoomNode = null;
+
+    function loadLocalLedger() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEY) || "null");
+        if (saved && typeof saved === "object" && Object.keys(saved).length > 0) {
+          expensesMap = saved;
+        } else {
+          initialSampleExpenses.forEach(item => {
+            expensesMap[item.id] = item;
+          });
+          saveLocalLedger();
+        }
+      } catch (e) {
+        initialSampleExpenses.forEach(item => {
+          expensesMap[item.id] = item;
+        });
+      }
+    }
+
+    function saveLocalLedger() {
+      try {
+        localStorage.setItem(LEDGER_STORAGE_KEY, JSON.stringify(expensesMap));
+      } catch (e) {}
+    }
+
+    function mergeExpenseRecord(record) {
+      if (!record || !record.id) return false;
+      const existing = expensesMap[record.id];
+      if (!existing || (record.updatedAt || 0) > (existing.updatedAt || 0)) {
+        expensesMap[record.id] = {
+          id: String(record.id),
+          day: String(record.day || "D1 (2/24)"),
+          cat: String(record.cat || "🍜 美食小吃"),
+          title: String(record.title || "未命名項目"),
+          amount: Number(record.amount) || 0,
+          currency: record.currency === "TWD" ? "TWD" : "JPY",
+          payer: String(record.payer || "媽媽"),
+          taxFree: Boolean(record.taxFree),
+          deleted: Boolean(record.deleted),
+          updatedAt: Number(record.updatedAt) || Date.now()
+        };
+        return true;
+      }
+      return false;
+    }
+
+    function encodeSyncPayload(arr) {
+      const jsonStr = JSON.stringify(arr);
+      return btoa(unescape(encodeURIComponent(jsonStr)));
+    }
+
+    function decodeSyncPayload(b64) {
+      const jsonStr = decodeURIComponent(escape(atob(b64)));
+      return JSON.parse(jsonStr);
+    }
+
+    function checkUrlHashSync() {
+      const hash = window.location.hash || "";
+      if (!hash.includes("sync=")) return;
+      try {
+        const params = new URLSearchParams(hash.replace(/^#/, ""));
+        const roomParam = params.get("room");
+        const syncParam = params.get("sync");
+        if (roomParam) {
+          currentRoomId = roomParam.trim();
+          localStorage.setItem(ROOM_STORAGE_KEY, currentRoomId);
+        }
+        if (syncParam) {
+          const incomingList = decodeSyncPayload(syncParam);
+          let mergedCount = 0;
+          if (Array.isArray(incomingList)) {
+            incomingList.forEach(item => {
+              if (mergeExpenseRecord(item)) mergedCount++;
+            });
+          }
+          if (mergedCount > 0) {
+            saveLocalLedger();
+            setSyncStatus("🟢", `已自動從分享連結同步合併 ${mergedCount} 筆更新！`);
+          }
+          history.replaceState(null, "", window.location.pathname + window.location.search + "#accounting");
+        }
+      } catch (e) {}
+    }
+
+    function setSyncStatus(dot, text) {
+      const dotEl = document.getElementById("syncDot");
+      const textEl = document.getElementById("syncStatusText");
+      if (dotEl) dotEl.textContent = dot;
+      if (textEl) textEl.textContent = text;
+    }
+
+    function connectGunRoom(roomId) {
+      const cleanRoom = (roomId || "nagoya2027").replace(/[^a-zA-Z0-9_-]/g, "") || "nagoya2027";
+      currentRoomId = cleanRoom;
+      localStorage.setItem(ROOM_STORAGE_KEY, cleanRoom);
+      document.getElementById("roomInput").value = cleanRoom;
+
+      try {
+        if (typeof Gun === "undefined") {
+          setSyncStatus("🟡", `離線本機模式（房號：${cleanRoom}，可用 LINE 連結同步）`);
+          return;
+        }
+        if (!gunInstance) {
+          gunInstance = Gun({
+            peers: [
+              "https://gun-manhattan.herokuapp.com/gun",
+              "https://relay.peer.ooo/gun"
+            ]
+          });
+        }
+        gunRoomNode = gunInstance.get("nagoya2027_breadthief_ledger_" + cleanRoom);
+        setSyncStatus("🟢", `雲端房間已連線（房號：${cleanRoom}）`);
+
+        Object.values(expensesMap).forEach(rec => {
+          gunRoomNode.get(rec.id).put(rec);
+        });
+
+        gunRoomNode.map().on((data, key) => {
+          if (!data || typeof data !== "object") return;
+          const record = { ...data, id: data.id || key };
+          if (mergeExpenseRecord(record)) {
+            saveLocalLedger();
+            renderExpenses();
+            setSyncStatus("🟢", `已與旅伴即時同步（房號：${cleanRoom}）`);
+          }
+        });
+      } catch (e) {
+        setSyncStatus("🟡", `本機儲存模式（房號：${cleanRoom}，請用分享網址同步）`);
+      }
+    }
+
+    window.switchRoom = function() {
+      const val = document.getElementById("roomInput").value.trim();
+      if (!val) {
+        alert("請輸入一組英文或數字的家庭同步房號，例如：nagoya2027");
+        return;
+      }
+      connectGunRoom(val);
+      renderExpenses();
+    };
+
+    window.copyShareSyncLink = function() {
+      const activeOrDeleted = Object.values(expensesMap);
+      const encoded = encodeSyncPayload(activeOrDeleted);
+      const baseUrl = window.location.origin + window.location.pathname;
+      const shareUrl = `${baseUrl}#room=${encodeURIComponent(currentRoomId)}&sync=${encoded}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          alert("✅ 已複製「最新共同帳本同步網址」！\n\n直接貼到 LINE 群組傳給旅伴，對方點開網頁就會自動合併所有花費明細囉！");
+        }).catch(() => {
+          prompt("請長按全選複製下方同步網址傳給旅伴：", shareUrl);
+        });
+      } else {
+        prompt("請長按全選複製下方同步網址傳給旅伴：", shareUrl);
+      }
+    };
+
+    window.quickLogDay = function(dayCode) {
+      const daySel = document.getElementById("expDay");
+      if (daySel) daySel.value = dayCode;
+      const accSec = document.getElementById("accounting");
+      if (accSec) accSec.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const titleInput = document.getElementById("expTitle");
+        if (titleInput) titleInput.focus();
+      }, 500);
+    };
+
+    window.addExpense = function() {
+      const day = document.getElementById("expDay").value;
+      const cat = document.getElementById("expCat").value;
+      const titleInput = document.getElementById("expTitle");
+      const amountInput = document.getElementById("expAmount");
+      const currency = document.getElementById("expCurrency").value;
+      const payer = document.getElementById("expPayer").value;
+      const taxFree = document.getElementById("expTaxFree").checked;
+
+      const title = titleInput.value.trim();
+      const amount = parseFloat(amountInput.value);
+
+      if (!title) {
+        alert("請輸入消費項目名稱喔！🍞");
+        titleInput.focus();
+        return;
+      }
+      if (isNaN(amount) || amount <= 0) {
+        alert("請輸入正確的消費金額！");
+        amountInput.focus();
+        return;
+      }
+
+      const id = "exp_" + Date.now() + "_" + Math.random().toString(36).slice(2, 6);
+      const record = {
+        id,
+        day,
+        cat,
+        title,
+        amount,
+        currency,
+        payer,
+        taxFree,
+        deleted: false,
+        updatedAt: Date.now()
+      };
+
+      mergeExpenseRecord(record);
+      saveLocalLedger();
+
+      if (gunRoomNode) {
+        try { gunRoomNode.get(id).put(record); } catch (e) {}
+      }
+
+      titleInput.value = "";
+      amountInput.value = "";
+      document.getElementById("expTaxFree").checked = false;
+      renderExpenses();
+    };
+
+    window.deleteExpense = function(id) {
+      const existing = expensesMap[id];
+      if (!existing) return;
+      if (!confirm(`確定要刪除「${existing.title}」這筆花費嗎？`)) return;
+
+      const updated = {
+        ...existing,
+        deleted: true,
+        updatedAt: Date.now()
+      };
+      expensesMap[id] = updated;
+      saveLocalLedger();
+
+      if (gunRoomNode) {
+        try { gunRoomNode.get(id).put(updated); } catch (e) {}
+      }
+      renderExpenses();
+    };
+
+    function renderExpenses() {
+      const listEl = document.getElementById("expenseList");
+      const filterDay = document.getElementById("filterDay").value;
+      const filterPayer = document.getElementById("filterPayer").value;
+
+      const allActive = Object.values(expensesMap)
+        .filter(item => !item.deleted)
+        .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+
+      let totalTwd = 0;
+      let totalJpy = 0;
+      let taxFreeJpy = 0;
+      const payerTwdMap = { "媽媽": 0, "爸爸": 0, "公費": 0 };
+
+      allActive.forEach(item => {
+        const amtTwd = item.currency === "TWD" ? item.amount : item.amount * jpyRate;
+        const amtJpy = item.currency === "JPY" ? item.amount : item.amount / jpyRate;
+        totalTwd += amtTwd;
+        totalJpy += amtJpy;
+        if (item.taxFree && item.currency === "JPY") {
+          taxFreeJpy += item.amount;
+        }
+        payerTwdMap[item.payer] = (payerTwdMap[item.payer] || 0) + amtTwd;
+      });
+
+      document.getElementById("totalJpyVal").textContent = "¥" + Math.round(totalJpy).toLocaleString();
+      document.getElementById("totalTwdVal").textContent = "NT$" + Math.round(totalTwd).toLocaleString();
+      document.getElementById("taxFreeVal").textContent = "¥" + Math.round(taxFreeJpy).toLocaleString();
+      document.getElementById("expenseCountVal").textContent = allActive.length + " 筆";
+
+      const chipsHtml = Object.entries(payerTwdMap).map(([name, val]) => {
+        const icon = name === "媽媽" ? "👩" : (name === "爸爸" ? "👨" : "👛");
+        return `<span class="payer-chip">${icon} ${name}：NT$${Math.round(val).toLocaleString()}</span>`;
+      }).join("");
+      document.getElementById("payerChips").innerHTML = chipsHtml;
+
+      const momPaid = payerTwdMap["媽媽"] || 0;
+      const dadPaid = payerTwdMap["爸爸"] || 0;
+      const diffHalf = Math.round(Math.abs(momPaid - dadPaid) / 2);
+      const adviceEl = document.getElementById("splitAdvice");
+      if (diffHalf > 10) {
+        if (dadPaid > momPaid) {
+          adviceEl.textContent = `💡 夫妻平分結算：媽媽給爸爸約 NT$${diffHalf.toLocaleString()}`;
+        } else {
+          adviceEl.textContent = `💡 夫妻平分結算：爸爸給媽媽約 NT$${diffHalf.toLocaleString()}`;
+        }
+      } else {
+        adviceEl.textContent = "💡 夫妻先墊付金額目前相當平均！";
+      }
+
+      const filtered = allActive.filter(item => {
+        if (filterDay !== "ALL" && item.day !== filterDay) return false;
+        if (filterPayer !== "ALL" && item.payer !== filterPayer) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `<li class="exp-item" style="justify-content:center; font-weight:700; opacity:0.75;">目前篩選條件下還沒有花費紀錄，快在上方記一筆吧！🍞</li>`;
+        return;
+      }
+
+      listEl.innerHTML = filtered.map(item => {
+        const mainStr = item.currency === "JPY"
+          ? `¥${Math.round(item.amount).toLocaleString()}`
+          : `NT$${Math.round(item.amount).toLocaleString()}`;
+        const subStr = item.currency === "JPY"
+          ? `約 NT$${Math.round(item.amount * jpyRate).toLocaleString()}`
+          : `約 ¥${Math.round(item.amount / jpyRate).toLocaleString()}`;
+
+        return `
+          <li class="exp-item">
+            <div class="exp-left">
+              <div class="exp-badges">
+                <span class="exp-tag" style="background:var(--yellow);">${item.day}</span>
+                <span class="exp-tag">${item.cat}</span>
+                <span class="exp-tag" style="background:var(--aqua);">${item.payer}付</span>
+                ${item.taxFree ? '<span class="exp-tag" style="background:var(--bamboo);">🧾 免稅</span>' : ''}
+              </div>
+              <div class="exp-title">${item.title}</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-amount">
+                <div class="exp-main-amt">${mainStr}</div>
+                <div class="exp-sub-amt">${subStr}</div>
+              </div>
+              <button type="button" class="del-btn" onclick="deleteExpense('${item.id}')" aria-label="刪除花費">✕</button>
+            </div>
+          </li>
+        `;
+      }).join("");
+    }
+
+    window.exportExpensesCsv = function() {
+      const allActive = Object.values(expensesMap)
+        .filter(item => !item.deleted)
+        .sort((a, b) => (a.updatedAt || 0) - (b.updatedAt || 0));
+
+      if (allActive.length === 0) {
+        alert("目前還沒有可匯出的花費紀錄喔！");
+        return;
+      }
+
+      const headers = ["天數", "分類", "項目名稱", "幣別", "原始金額", "折合台幣(TWD)", "付款人", "是否免稅"];
+      const rows = allActive.map(item => {
+        const twd = item.currency === "TWD" ? item.amount : Math.round(item.amount * jpyRate);
+        return [
+          item.day,
+          item.cat,
+          `"${item.title.replace(/"/g, '""')}"`,
+          item.currency,
+          item.amount,
+          twd,
+          item.payer,
+          item.taxFree ? "是" : "否"
+        ].join(",");
+      });
+
+      const csvContent = "\uFEFF" + [headers.join(","), ...rows].join("\n");
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `2027名古屋親子旅遊記帳_${currentRoomId}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    };
+
+    const rateInputEl = document.getElementById("rateInput");
+    rateInputEl.value = jpyRate;
+    rateInputEl.addEventListener("change", () => {
+      const val = parseFloat(rateInputEl.value);
+      if (!isNaN(val) && val > 0) {
+        jpyRate = val;
+        localStorage.setItem(RATE_STORAGE_KEY, String(jpyRate));
+        renderExpenses();
+      }
+    });
+
+    document.getElementById("expAmount").addEventListener("keydown", e => {
+      if (e.key === "Enter") addExpense();
+    });
+
+    loadLocalLedger();
+    checkUrlHashSync();
+    connectGunRoom(currentRoomId);
+    renderExpenses();
+
+    // 5. 9 天 8 夜完整行程資料庫（含高速親子休息站＋一鍵記帳連動）
+    const itineraryData = [
+      {
+        day: "D1",
+        date: "2/24（三）",
+        ledgerDay: "D1 (2/24)",
+        title: "Day 1｜桃園啟程 ➔ 抵達中部國際機場",
+        summary: `宿：${gm("中部機場酒店", "セントレアホテル")}｜下機步行即達零奔波`,
+        parking: `🅿️ 今日免租車！明日（2/25）早上 08:30 或 09:00 再至 ${gm("中部機場交通廣場", "中部国際空港 アクセスプラザ")} 1F 取車，現省一天租車與停車費。`,
+        rain: `☔ 當日雨備：下機後全程走在「有屋頂的室內連通空橋」直接進入 ${gm("機場 4F 燈籠街", "中部国際空港 ちょうちん横丁")} 吃晚餐與入住飯店，100% 不會淋到一滴雨！`,
+        events: [
+          {
+            time: "13:20",
+            transport: "桃園機場報到",
+            trClass: "tr-plane",
+            must: false,
+            title: `臺灣桃園國際機場 T2 報到＆兒童遊戲區放電`,
+            desc: `提前 2.5 小時抵達 ${gm("桃園機場第二航廈", "臺灣桃園國際機場第二航廈")} 辦理 JAL 託運，帶 4 歲寶貝到管制區主題兒童遊戲區玩耍，上機更好睡。`,
+            food: `🍽️ 推薦美食：桃機 T2 美食街先墊胃，機上享用預約好的 JAL 精緻兒童餐。`
+          },
+          {
+            time: "15:50 - 19:25",
+            transport: "JAL JL8670",
+            trClass: "tr-plane",
+            must: false,
+            title: `直飛名古屋中部國際機場（NGO T1）`,
+            desc: `降落 ${gm("中部國際機場 T1", "中部国際空港 第1ターミナル")}，飛行時間約 2 小時 35 分。入境審查後記得在 Visit Japan Web 開通個人「免稅 QR Code」備用。`
+          },
+          {
+            time: "20:15",
+            transport: "室內連通空橋步行",
+            trClass: "tr-walk",
+            must: false,
+            title: `入住中部機場酒店（Centrair Hotel）`,
+            desc: `推推車走室內空橋 3～5 分鐘直達 ${gm("中部機場酒店", "セントレアホテル")} 辦理 Check-in，完全免吹冷風。`,
+            food: `🍜 推薦晚餐（機場 4F 燈籠街）：${gm("宮きしめん", "宮きしめん 中部国際空港店")} 熱騰騰滑順寬烏龍麵（超適合 4 歲小孩）＋ ${gm("世界の山ちゃん", "世界の山ちゃん 中部国際空港店")} 夢幻手羽先炸雞翅。`
+          }
+        ]
+      },
+      {
+        day: "D2",
+        date: "2/25（四）",
+        ledgerDay: "D2 (2/25)",
+        title: "Day 2｜機場取車 ➔ 日本樂高樂園狂歡日",
+        summary: `宿：${gm("名古屋東急飯店", "名古屋東急ホテル")}（連住第 1 晚）`,
+        parking: `🅿️ 樂高樂園停 ${gm("金城埠頭立體停車場", "金城ふ頭駐車場")}（車機 TEL：052-398-1771，停 3 樓天橋直通入口）；晚上停 ${gm("名古屋東急飯店車庫", "名古屋東急ホテル")}（TEL：052-251-2411，限高 2.0m）。`,
+        rain: `☔ 當日雨備：從同一座停車場 3 樓天橋步行 3 分鐘改去 ${gm("磁浮鐵道館", "リニア・鉄道館")}（39 輛實體列車＋大型鐵道模型）＋緊鄰樂園入口的 ${gm("SEA LIFE 名古屋海洋館", "シーライフ名古屋")} ＋ ${gm("Maker's Pier", "メイカーズピア")} 室內披薩/冰淇淋 DIY，完全不用移車！`,
+        events: [
+          {
+            time: "08:30 - 09:15",
+            transport: "機場租車取車",
+            trClass: "tr-car",
+            must: false,
+            title: `中部機場交通廣場 1F 辦理取車`,
+            desc: `前往 ${gm("中部機場交通廣場 1F 租車區", "中部国際空港 アクセスプラザ")} 取車，檢查 4 項重點：① 4WD 四輪驅動 ② 雪胎（スタッドレス）③ 兒童安全座椅 ④ 後車廂附除雪刷。`
+          },
+          {
+            time: "10:00 - 17:00",
+            transport: "自駕約 35 分",
+            trClass: "tr-car",
+            must: true,
+            title: `★ 必去：日本樂高樂園（Legoland Japan）`,
+            desc: `導航至 ${gm("日本樂高樂園", "レゴランド・ジャパン")}！專為 2–12 歲設計的積木王國，週四平日排隊短，4 歲寶貝可暢玩杜普羅積木區、駕駛學校、消防隊噴水與迷你日本積木城。`,
+            food: `🍔 園區午餐：${gm("Brick House Burgers", "ブリック・ハウス・バーガー レゴランド")} 樂高積木造型薯條漢堡套餐。`
+          },
+          {
+            time: "18:00",
+            transport: "自駕約 35 分",
+            trClass: "tr-car",
+            must: false,
+            title: `入住名古屋東急飯店（連住 2 晚）＆榮商圈晚餐`,
+            desc: `將車停入 ${gm("名古屋東急飯店", "名古屋東急ホテル")} 地下車庫直達大廳，確認櫃檯已放置預約的免費床邊護欄（Bed Guard）與併床。`,
+            food: `🍱 推薦晚餐：${gm("あつた蓬萊軒 松坂屋店", "あつた蓬莱軒 松坂屋店")} 炭香鰻魚飯三吃，或 ${gm("鳥開總本家", "鳥開総本家 栄")} 金賞親子丼。`
+          }
+        ]
+      },
+      {
+        day: "D3",
+        date: "2/26（五）",
+        ledgerDay: "D3 (2/26)",
+        title: "Day 3｜走進宮崎駿童話：吉卜力公園",
+        summary: `宿：${gm("名古屋東急飯店", "名古屋東急ホテル")}（連住第 2 晚）｜全室內大倉庫避寒超友善`,
+        parking: `🅿️ 車機設 TEL：0561-64-1130 或導航 ${gm("愛・地球博記念公園 北1駐車場", "愛・地球博記念公園 北1駐車場")}（普通車 ¥500/次），距離「吉卜力大倉庫」步行最近。`,
+        rain: `☔ 當日雨備：${gm("吉卜力大倉庫", "ジブリの大倉庫")} 本身即為 100% 全室內恆溫展館，雨天照常依預約場次進場！戶外「魔女之谷」逛完麵包店後，可步行至同公園內的 ${gm("愛知縣兒童綜合館", "あいち児童総合センター")}（室內大型攀爬遊戲塔）放電，或開車 5 分鐘轉往 ${gm("AEON Mall 長久手", "イオンモール長久手")} ／ ${gm("IKEA 長久手", "IKEA長久手")}。`,
+        events: [
+          {
+            time: "09:15 - 10:00",
+            transport: "自駕約 40 分",
+            trClass: "tr-car",
+            must: false,
+            title: `從榮商圈開車前往愛・地球博記念公園`,
+            desc: `自駕直達 ${gm("愛・地球博記念公園 北1駐車場", "愛・地球博記念公園 北1駐車場")}，免去帶著 4 歲小孩轉乘地鐵與 Linimo 磁浮電車的步行負擔。`
+          },
+          {
+            time: "10:00 - 15:30",
+            transport: "園區漫步",
+            trClass: "tr-walk",
+            must: true,
+            title: `★ 必去：吉卜力公園（大倉庫＋魔女之谷）`,
+            desc: `暢玩 ${gm("吉卜力公園", "ジブリパーク")}！全室內 ${gm("吉卜力大倉庫", "ジブリの大倉庫")} 有專為幼童打造的「貓巴士房間」、兒童之街與巨型龍貓；${gm("魔女之谷", "魔女の谷 ジブリパーク")} 有旋轉木馬與琪琪麵包店。`,
+            food: `🥐 麵包小偷最愛：魔女之谷 ${gm("グーチョキパン屋", "グーチョキパン屋 ジブリパーク")} 現烤可頌與法式麵包！`
+          },
+          {
+            time: "16:30",
+            transport: "自駕約 40 分",
+            trClass: "tr-car",
+            must: false,
+            title: `返回榮商圈下午茶＆藥妝百貨散步`,
+            desc: `回東急飯店停好車後，步行逛 ${gm("綠洲 21", "オアシス21")}、${gm("松坂屋名古屋店", "松坂屋名古屋店")} 與藥妝店（記得帶護照辦理免稅登記）。`,
+            food: `🍰 推薦必吃：${gm("HARBS 榮本店", "HARBS 栄本店")} 創始店招牌水果千層蛋糕；晚餐推薦 ${gm("山本屋總本家", "山本屋総本家 栄")} 味噌煮烏龍麵。`
+          }
+        ]
+      },
+      {
+        day: "D4",
+        date: "2/27（六）",
+        ledgerDay: "D4 (2/27)",
+        title: "Day 4｜奧美濃古鎮漫步 ➔ 前進雪國飛驒高山",
+        summary: `宿：${gm("高山 HOTEL WOOD", "HOTEL WOOD 高山")}（連住第 1 晚｜免搬行李大本營）`,
+        parking: `🅿️ 中繼停 ${gm("郡上八幡城下町廣場停車場", "郡上八幡城下町プラザ")}（TEL：0575-67-1819）；高山飯店先暫停 ${gm("HOTEL WOOD 門口", "HOTEL WOOD 高山")} 卸行李與幼童，再停特約停車場。`,
+        rain: `☔ 當日雨備／雪備：郡上八幡遇雨改以室內體驗為主——帶寶貝去 ${gm("Sample Village Iwasaki 食品模型工房", "サンプルビレッジ・いわさき")} 親手做擬真食物模型＋參觀 ${gm("郡上八幡博覽館", "郡上八幡博覧館")}；若雨勢較大則直接開往高山，參觀全室內的 ${gm("飛驒高山泰迪熊生態村", "飛騨高山テディベアエコビレッジ")}。`,
+        events: [
+          {
+            time: "09:30 - 10:45",
+            transport: "自駕約 1 小時 15 分",
+            trClass: "tr-car",
+            must: false,
+            title: `沿東海北陸道北上（親子休息站補給點）`,
+            desc: `沿途山景逐漸出現白雪，若 4 歲小孩想上廁所或活動筋骨，推薦停靠設施齊全的 ${gm("長良川 SA", "長良川サービスエリア")} 或 ${gm("關 SA", "関サービスエリア")}，接著下交流道至郡上八幡中繼休息。`
+          },
+          {
+            time: "10:45 - 13:15",
+            transport: "古鎮散步",
+            trClass: "tr-walk",
+            must: false,
+            title: `郡上八幡（谷中水之街、城下町廣場、遠眺山城）`,
+            desc: `牽著寶貝走平整鵝卵石步道 ${gm("谷中水之街", "やなか水のこみち")} 看清澈錦鯉水渠，遠眺 ${gm("郡上八幡城", "郡上八幡城")}。`,
+            food: `🥔 推薦小吃：${gm("助野肉店", "肉の助野 郡上八幡")} 現炸熱呼呼飛驒牛可樂餅，與老街蕎麥麵午餐。`
+          },
+          {
+            time: "15:00",
+            transport: "自駕約 1 小時",
+            trClass: "tr-car",
+            must: false,
+            title: `入住高山 HOTEL WOOD（連住 2 晚）＆飛驒牛盛宴`,
+            desc: `入住 ${gm("高山 HOTEL WOOD", "HOTEL WOOD 高山")}，步行 1 分鐘即達三町筋老街。`,
+            food: `🥩 推薦晚餐：高山頂級 A5 飛驒牛燒肉名店 ${gm("味藏天國", "味蔵天国")} 或 ${gm("丸明 飛驒高山店", "丸明 飛騨高山店")}。`
+          }
+        ]
+      },
+      {
+        day: "D5",
+        date: "2/28（日）",
+        ledgerDay: "D5 (2/28)",
+        title: "Day 5｜宮川朝市 ➔ 童話白川鄉合掌村玩雪",
+        summary: `宿：${gm("高山 HOTEL WOOD", "HOTEL WOOD 高山")}（連住第 2 晚｜免收行李超輕鬆）`,
+        parking: `🅿️ 白川鄉車機設 TEL：05769-6-1311 停 ${gm("村営せせらぎ公園駐車場（村原停車場）", "村営せせらぎ公園駐車場")}（¥1,000/次），停妥後步行走過「相逢橋」進村。`,
+        rain: `🌨️ 當日雨備／暴雪封路備案：① 小雨/小雪：進 ${gm("和田家", "和田家 白川郷")} 或 ${gm("神田家", "神田家 白川郷")} 合掌屋內部參觀＋圍爐取暖；② 若遇暴雪封路：絕不硬闖山路，改去平地市郊 ${gm("飛驒之里", "飛騨の里")} 看合掌屋＋ ${gm("飛驒物產館", "飛騨物産館")} 手繪猴寶寶 DIY＋ ${gm("高山祭屋台會館", "高山祭屋台会館")}！`,
+        events: [
+          {
+            time: "08:30 - 09:30",
+            transport: "步行 3 分鐘",
+            trClass: "tr-walk",
+            must: false,
+            title: `高山宮川朝市晨間散步採買`,
+            desc: `沿著宮川河畔逛 ${gm("宮川朝市", "宮川朝市")}，幫寶貝買可愛的飛驒傳統「猴寶寶（さるぼぼ）」布偶。`,
+            food: `🍎 朝市必吃：現切香甜飛驒蘋果、${gm("喜八郎 飛驒牛包子", "飛騨牛まん本舗 喜八郎")}、手沖咖啡。`
+          },
+          {
+            time: "09:30 - 13:30",
+            transport: "自駕約 50 分",
+            trClass: "tr-car",
+            must: true,
+            title: `★ 必去：世界遺產白川鄉合掌村（童話雪景／玩雪）`,
+            desc: `自駕前往 ${gm("白川鄉合掌村", "白川郷合掌造り集落")}！搭接駁車上 ${gm("城山天守閣展望台", "城山天守閣展望台")} 俯瞰薑餅屋雪景，再到 ${gm("合掌造民居庭園", "野外博物館 合掌造り民家園")} 讓寶貝盡情堆雪人。`,
+            food: `🍡 雪中暖胃：合掌村 ${gm("喫茶落人", "喫茶 落人 白川郷")} 炭火圍爐現烤紅豆湯圓，暖心又好拍。`
+          },
+          {
+            time: "15:00 - 18:30",
+            transport: "自駕返高山＋步行",
+            trClass: "tr-walk",
+            must: false,
+            title: `回飯店午休充電 ➔ 漫步三町筋古街`,
+            desc: `連住同間飯店的超大優勢！下午回房小睡片刻，傍晚散步 ${gm("三町筋古街", "さんまち通り 高山")} 尋味。`,
+            food: `🍣 老街必吃：${gm("飛驒こって牛", "飛騨こって牛")} 仙貝盛裝炙燒飛驒牛握壽司、晚餐 ${gm("麵屋白川", "麺屋しらかわ")} 濃厚醬油拉麵。`
+          }
+        ]
+      },
+      {
+        day: "D6",
+        date: "3/1（一）",
+        ledgerDay: "D6 (3/1)",
+        title: "Day 6｜日本三大名泉：下呂溫泉水明館極致放鬆",
+        summary: `宿：${gm("下呂水明館", "下呂温泉 水明館")}｜百年名湯一泊二食`,
+        parking: `🅿️ 車機設 TEL：0576-25-2800 直達 ${gm("下呂温泉 水明館", "下呂温泉 水明館")}，享有房客專屬大型免費平面停車場。`,
+        rain: `☔ 當日雨備：${gm("下呂水明館", "下呂温泉 水明館")} 本身就是大型渡假村！若下雨可開車直達門口卸行李，外帶下呂布丁回房享用，下午在館內體驗「室內溫水游泳池（記得帶泳衣）」、三大室內主題溫泉大浴場與日式庭園茶室。`,
+        events: [
+          {
+            time: "10:30 - 11:30",
+            transport: "自駕約 1 小時",
+            trClass: "tr-car",
+            must: false,
+            title: `高山悠閒退房，沿國道 41 號南下下呂溫泉`,
+            desc: `一路欣賞飛驒川峽谷風光前往 ${gm("下呂溫泉", "下呂温泉")}，車程僅 1 小時非常輕鬆。`
+          },
+          {
+            time: "12:00 - 15:00",
+            transport: "溫泉街散步",
+            trClass: "tr-walk",
+            must: false,
+            title: `下呂溫泉街巡禮（青蛙神社、免費足湯亭）`,
+            desc: `散步 ${gm("下呂溫泉街", "下呂温泉街")} 尋找可愛青蛙石雕與 ${gm("加惠瑠神社", "加恵瑠神社")}，脱下鞋襪跟寶貝一起在路邊木造足湯亭泡腳。`,
+            food: `🍮 必吃甜點：${gm("下呂布丁（下呂プリン）", "下呂プリン")} 復古青蛙玻璃瓶手工布丁、${gm("ゆあみ屋", "ゆあみ屋 下呂温泉")} 溫泉蛋霜淇淋。`
+          },
+          {
+            time: "15:00",
+            transport: "飯店渡假",
+            trClass: "tr-walk",
+            must: true,
+            title: `★ 必去：入住下呂水明館・三大主題名湯＆會席晚宴`,
+            desc: `入住 ${gm("下呂水明館", "下呂温泉 水明館")}，換上日式浴衣體驗觸感如化妝水般滑嫩的「美肌之湯」，晚上在飯店享用豐盛飛驒牛會席料理。`
+          }
+        ]
+      },
+      {
+        day: "D7",
+        date: "3/2（二）",
+        ledgerDay: "D7 (3/2)",
+        title: "Day 7｜晨湯時光 ➔ 返回名古屋大須＆榮商圈補貨",
+        summary: `宿：${gm("名古屋東急飯店", "名古屋東急ホテル")}（1 晚）｜藥妝伴手禮採買與退稅整理`,
+        parking: `🅿️ 車機設 TEL：052-251-2411 返回停放 ${gm("名古屋東急飯店 B1-B2 車庫", "名古屋東急ホテル")}（限高 2.0m，房客 ¥1,200/晚）。`,
+        rain: `☔ 當日雨備：今日景點全數有雨遮！${gm("大須商店街", "大須商店街")} 整區為全覆蓋式玻璃拱廊商店街，推推車不淋雨；下午轉往 ${gm("松坂屋名古屋店 寶可夢中心", "ポケモンセンターナゴヤ")} 與 ${gm("榮地下街", "サカエチカ")} 連通商場，吹暖氣輕鬆採買退稅。`,
+        events: [
+          {
+            time: "10:30 - 12:30",
+            transport: "自駕約 2 小時",
+            trClass: "tr-car",
+            must: false,
+            title: `水明館泡完晨湯退房，開車返回名古屋市區`,
+            desc: `沿途可停靠 ${gm("關 SA（上行）", "関サービスエリア 上り")} 或 ${gm("美濃加茂 SA", "美濃加茂サービスエリア")} 讓孩子上廁所、買飛驒牛乳霜淇淋。`
+          },
+          {
+            time: "14:00 - 18:00",
+            transport: "地鐵／步行",
+            trClass: "tr-walk",
+            must: false,
+            title: `大須商店街尋寶 ＆ 榮商圈藥妝百貨補貨`,
+            desc: `帶 4 歲寶貝逛 ${gm("大須商店街", "大須商店街")} 扭蛋店與玩具店，接著到 ${gm("榮商圈", "栄駅 名古屋")} 採買藥妝與伴手禮（結帳記得辦退稅登記並留好收據）。`,
+            food: `🍢 推薦美食：大須 ${gm("新雀本店", "新雀本店 大須")} 現烤百圓醬油糰子；晚餐 ${gm("矢場とん 矢場町本店", "矢場とん 矢場町本店")} 秘傳紅味噌黑豚炸豬排。`
+          }
+        ]
+      },
+      {
+        day: "D8",
+        date: "3/3（三）",
+        ledgerDay: "D8 (3/3)",
+        title: "Day 8｜三井長島 Outlet 血拼 ➔ 波音巨型客機巡禮",
+        summary: `宿：${gm("中部機場酒店", "セントレアホテル")}｜18:00 還車從容打包`,
+        parking: `🅿️ 車機設 TEL：0594-45-8700 停 ${gm("三井長島 Outlet 停車場", "三井アウトレットパーク ジャズドリーム長島")}（單店滿 ¥3,000 全額退 ¥1,000 停車費）；18:00 開回 ${gm("中部機場交通廣場 1F 還車區", "中部国際空港 アクセスプラザ")}。`,
+        rain: `☔ 當日雨備：${gm("長島 Outlet", "三井アウトレットパーク ジャズドリーム長島")} 各棟店鋪間設有寬敞遮雨廊道，緊鄰的 ${gm("名古屋麵包超人兒童博物館", "名古屋アンパンマンこどもミュージアム＆パーク")} 亦具備大型室內劇場；下午 ${gm("波音博物館 FLIGHT OF DREAMS", "FLIGHT OF DREAMS")} 更是 100% 全室內行程！`,
+        events: [
+          {
+            time: "10:45 - 14:45",
+            transport: "自駕約 35 分",
+            trClass: "tr-car",
+            must: true,
+            title: `★ 必去：三井 Outlet 爵士之夢長島 ＆ 麵包超人雙軌攻略`,
+            desc: `前往 ${gm("三井 Outlet 爵士之夢長島", "三井アウトレットパーク ジャズドリーム長島")}！mikihouse、mezzo piano、BREEZE 童裝與精品超齊全（隨身帶護照辦退稅）；若孩子坐不住，緊鄰步行 2 分鐘就是 ${gm("名古屋麵包超人兒童博物館", "名古屋アンパンマンこどもミュージアム＆パーク")} 備援放電！`,
+            food: `🍜 園區午餐：長島 Outlet 美食街名古屋名物 ${gm("矢場とん 長島店", "矢場とん ジャズドリーム長島店")} 或親子丼、拉麵。`
+          },
+          {
+            time: "15:30 - 17:45",
+            transport: "跨海自駕約 40 分",
+            trClass: "tr-car",
+            must: true,
+            title: `★ 必去：波音博物館 FLIGHT OF DREAMS（機場 T2 旁）`,
+            desc: `開回機場島參觀 ${gm("波音博物館 FLIGHT OF DREAMS", "FLIGHT OF DREAMS")}，真實波音 787 巨型客機機翼下方設有超大型室內攀爬網與滑梯，讓 4 歲寶貝登機前一晚徹底放電！`,
+            food: `🍔 機翼下用餐：${gm("SEATTLE TERRACE", "シアトルテラス FLIGHT OF DREAMS")} 美式市集，外帶 ${gm("天むす千壽", "天むす千寿")} 炸蝦一口飯糰與 ${gm("仙貝之里", "えびせんべいの里 セントレア")} 蝦餅。`
+          },
+          {
+            time: "18:00",
+            transport: "還車＋步行入住",
+            trClass: "tr-walk",
+            must: false,
+            title: `機場滿油還車 ➔ 入住中部機場酒店整理 6 大箱行李`,
+            desc: `還車前在機場島加油站加滿（記得點「🗣️ 指指日文卡」出示「レギュラー満タン」），至 ${gm("中部機場交通廣場 1F", "中部国際空港 アクセスプラザ")} 還車後推戰利品走空橋進 ${gm("中部機場酒店", "セントレアホテル")}！`
+          }
+        ]
+      },
+      {
+        day: "D9",
+        date: "3/4（四）",
+        ledgerDay: "D9 (3/4)",
+        title: "Day 9｜機場退稅查驗 ➔ 從容登機返抵溫暖的家",
+        summary: `JAL JL8670｜12:05 名古屋起飛 ➔ 14:40 返抵桃園 T2`,
+        parking: `🅿️ 今日免開車！睡到自然醒享用飯店早餐，推著 6 大件行李走室內空橋 3 分鐘直達 ${gm("中部國際機場第一航廈（T1）", "中部国際空港 第1ターミナル")}。`,
+        rain: `☔ 當日雨備：從飯店退房、推 6 大箱行李經連通空橋進 T1、辦理退稅查驗到登機全程室內無風雨（貼心提醒：若把雨傘收進大行李箱託運，下飛機回桃園也完全不會淋雨）。`,
+        events: [
+          {
+            time: "09:15 - 10:15",
+            transport: "空橋步行 3 分鐘",
+            trClass: "tr-walk",
+            must: true,
+            title: `★ 必去關鍵：T1 辦理機場退稅新制查驗 ➔ JAL 託運`,
+            desc: `⚠️ 務必「先退稅查驗、再託運行李」！前往 ${gm("中部國際機場 T1 出境大廳", "中部国際空港 第1ターミナル")} KIOSK 機台刷護照核對退稅紀錄（綠燈免開箱直接託運、紅燈至海關櫃檯查驗），完成後至 JAL 櫃檯託運 6 大件行李。`
+          },
+          {
+            time: "10:30 - 11:30",
+            transport: "出境免稅區",
+            trClass: "tr-walk",
+            must: false,
+            title: `管制區免稅店最後採買 ＆ 登機準備`,
+            desc: `入關後再買最後伴手禮，帶寶貝上廁所準備登機。`,
+            food: `🦐 必買伴手禮：${gm("坂角總本鋪", "坂角総本舗 中部国際空港")} 黃金蝦餅、${gm("青柳總本家", "青柳総本家 中部国際空港")} 可愛青蛙造型饅頭。`
+          },
+          {
+            time: "12:05 - 14:40",
+            transport: "JAL JL8670",
+            trClass: "tr-plane",
+            must: false,
+            title: `平安飛抵臺灣桃園國際機場 T2`,
+            desc: `降落 ${gm("臺灣桃園國際機場 T2", "臺灣桃園國際機場第二航廈")}，滿載美好雪國回憶與戰利品，平安回家囉！🎉`
+          }
+        ]
+      }
+    ];
+
+    const dayTabsEl = document.getElementById("dayTabs");
+    const dayContentEl = document.getElementById("dayContent");
+    let activeDayIdx = 0;
+
+    function renderDay(idx) {
+      activeDayIdx = idx;
+      const d = itineraryData[idx];
+
+      Array.from(dayTabsEl.children).forEach((btn, i) => {
+        btn.classList.toggle("active", i === idx);
+      });
+
+      dayContentEl.classList.remove("day-panel-animate");
+      void dayContentEl.offsetWidth;
+      dayContentEl.classList.add("day-panel-animate");
+
+      const eventsHtml = d.events.map(ev => `
+        <div class="tl-item">
+          <div class="tl-top">
+            <span class="tl-time">⏰ ${ev.time}</span>
+            <span class="badge-transport ${ev.trClass}">${ev.transport}</span>
+            ${ev.must ? '<span class="badge-must">★ 必去行程</span>' : ''}
+          </div>
+          <div class="tl-title">${ev.title}</div>
+          <div class="tl-desc">${ev.desc}</div>
+          ${ev.food ? `<div class="food-box">${ev.food}</div>` : ''}
+        </div>
+      `).join("");
+
+      dayContentEl.innerHTML = `
+        <div class="day-banner">
+          <h3>${d.title}</h3>
+          <div style="font-size:0.92rem; font-weight:700;">${d.summary}</div>
+        </div>
+        <div class="parking-mini-card">${d.parking}</div>
+        <div class="rain-mini-card">
+          <div class="rain-mini-title">🍞☔ 當日雨備／雪備錦囊</div>
+          <div>${d.rain}</div>
+        </div>
+        <div class="timeline">${eventsHtml}</div>
+        <button type="button" class="book-btn pink" style="width:100%; padding:11px; font-size:0.98rem; margin-top:4px;" onclick="quickLogDay('${d.ledgerDay}')">
+          ✏️ 記一筆 ${d.day}（${d.date}）的花費（自動帶入天數）
+        </button>
+      `;
+    }
+
+    itineraryData.forEach((d, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "day-btn" + (idx === 0 ? " active" : "");
+      btn.innerHTML = `${d.day}<span>${d.date.replace("（", "(").replace("）", ")")}</span>`;
+      btn.addEventListener("click", () => renderDay(idx));
+      dayTabsEl.appendChild(btn);
+    });
+
+    renderDay(0);
+
+    // 6. 互動打勾清單（支援 localStorage 儲存、新增、刪除）
+    const defaultData = {
+      todo: [
+        { text: "預約租車（2/25 09:00 取 – 3/3 18:00 還，確認 4WD＋雪胎＋兒童汽座）", done: false },
+        { text: "申請台灣駕照日文譯本（監理站辦理，護照＋台灣駕照正本也要帶）", done: false },
+        { text: "搶購吉卜力公園門票（2026/12/10 台灣時間 13:00 開賣大散步券）", done: false },
+        { text: "預訂日本樂高樂園門票（官網早鳥優惠）", done: false },
+        { text: "寫信給名古屋東急飯店預約免費床圍（Bed Guard）＋併床", done: false },
+        { text: "JAL 官網提前預選 4 歲兒童餐（Child Meal）", done: false },
+        { text: "開通漫遊 / eSIM 網路與旅遊平安險（含冬季自駕與醫療）", done: false },
+        { text: "出發前填寫 Visit Japan Web（入境審查＋開通免稅 QR Code）", done: false }
+      ],
+      pack: [
+        { text: "護照正本（2 大 1 小）＋ 台灣駕照正本 ＋ 日文譯本", done: false },
+        { text: "高回饋實體信用卡（機場退稅新制刷卡登記用）＋ 日幣現金", done: false },
+        { text: "透明收據收納資料夾（集中存放退稅單據與長島停車券）", done: false },
+        { text: "4 歲兒童防滑雪靴（止滑深齒紋）＋ 備用羊毛厚襪 4 雙", done: false },
+        { text: "4 歲兒童防水防風羽絨外套、雪褲、防水手套、毛帽圍巾", done: false },
+        { text: "雨備裝備：輕便折疊推車＋推車專用防雨罩＋兒童輕便雨衣/折疊傘", done: false },
+        { text: "親子泳衣與泳帽（下呂水明館雨天可玩室內溫水游泳池！）", done: false },
+        { text: "玩雪小工具（折疊小鏟子、雪球夾，塞行李箱不佔位）", done: false },
+        { text: "常備幼兒藥品（退燒藥水、感冒藥、OK繃、凡士林保濕乳液、暖暖包）", done: false },
+        { text: "大尺寸折疊購物袋 2 個（長島 Outlet 裝戰利品回機場飯店打包）", done: false }
+      ]
+    };
+
+    let state = JSON.parse(localStorage.getItem("nagoya_2027_bread_thief_v5") || "null") || defaultData;
+
+    function saveState() {
+      localStorage.setItem("nagoya_2027_bread_thief_v5", JSON.stringify(state));
+    }
+
+    function renderChecklist(type) {
+      const listEl = document.getElementById(type === "todo" ? "todoList" : "packList");
+      const barEl = document.getElementById(type === "todo" ? "todoBar" : "packBar");
+      const textEl = document.getElementById(type === "todo" ? "todoProgressText" : "packProgressText");
+
+      const items = state[type];
+      const doneCount = items.filter(i => i.done).length;
+      const pct = items.length ? Math.round((doneCount / items.length) * 100) : 0;
+
+      barEl.style.width = pct + "%";
+      textEl.textContent = `${doneCount}/${items.length} (${pct}%)`;
+
+      listEl.innerHTML = items.map((item, idx) => `
+        <li class="cl-item ${item.done ? 'done' : ''}">
+          <label class="cl-label">
+            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleItem('${type}', ${idx})" />
+            <span class="cl-text">${item.text}</span>
+          </label>
+          <button type="button" class="del-btn" onclick="deleteItem('${type}', ${idx})" aria-label="刪除">✕</button>
+        </li>
+      `).join("");
+    }
+
+    window.toggleItem = function(type, idx) {
+      state[type][idx].done = !state[type][idx].done;
+      saveState();
+      renderChecklist(type);
+    };
+
+    window.deleteItem = function(type, idx) {
+      state[type].splice(idx, 1);
+      saveState();
+      renderChecklist(type);
+    };
+
+    window.addItem = function(type) {
+      const input = document.getElementById(type === "todo" ? "todoInput" : "packInput");
+      const val = input.value.trim();
+      if (!val) return;
+      state[type].push({ text: val, done: false });
+      input.value = "";
+      saveState();
+      renderChecklist(type);
+    };
+
+    document.getElementById("todoInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") addItem("todo");
+    });
+    document.getElementById("packInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") addItem("pack");
+    });
+
+    renderChecklist("todo");
+    renderChecklist("pack");
+  </script>
+</body>
+</html>
