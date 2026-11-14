@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>柔柔的 2027 名古屋・吉卜力與雪國冒險小冊子（A5直式・16頁完整版）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    @page {
+      size: A5 portrait;
+      margin: 0;
+    }
+
+    :root {
+      --ink: #2C3A2B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Zen Maru Gothic', 'Huninn', sans-serif;
+      color: var(--ink);
+      background-color: #EFECE2;
+      line-height: 1.45;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* A5 直式頁面容器：148mm x 210mm */
+    .a5-page {
+      width: 148mm;
+      height: 209.5mm;
+      padding: 9mm 10mm 8mm;
+      margin: 10px auto;
+      background: #FFFFFF;
+      border: 2px dashed #7BA675;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .a5-page:last-of-type {
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    @media print {
+      body { background: none; }
+      .a5-page {
+        border: none;
+        margin: 0;
+        width: 148mm;
+        height: 209.5mm;
+        padding: 9mm 10mm 8mm;
+        box-shadow: none;
+      }
+      .no-print { display: none !important; }
+    }
+
+    /* 頂部操作列 */
+    .print-toolbar {
+      position: fixed;
+      top: 10px;
+      right: 12px;
+      z-index: 999;
+      background: #FFFDF8;
+      border: 2.5px solid var(--ink);
+      border-radius: 16px;
+      padding: 8px 12px;
+      box-shadow: 3px 3px 0 var(--ink);
+      font-size: 0.82rem;
+      max-width: 240px;
+    }
+
+    .print-btn {
+      display: block;
+      width: 100%;
+      background: #F7D97E;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
+      margin-bottom: 5px;
+    }
+
+    /* 頁面頂部標題條 */
+    .p-head {
+      border-bottom: 2.5px solid var(--ink);
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+
+    .p-day-pill {
+      background: #F7D97E;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 1px 9px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .p-title {
+      font-size: 1.02rem;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    /* 家長陪讀小提示 */
+    .parent-tip {
+      background: #F6F5EC;
+      border: 1.8px solid var(--ink);
+      border-radius: 10px;
+      padding: 5px 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    /* 著色框 */
+    .color-box {
+      border: 2.2px solid var(--ink);
+      border-radius: 14px;
+      background: #FFFFFF;
+      padding: 6px 8px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .color-label {
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-align: left;
+      margin-bottom: 3px;
+    }
+
+    /* 互動遊戲框 */
+    .game-box {
+      border: 2.2px solid var(--ink);
+      border-radius: 14px;
+      background: #FFFDF7;
+      padding: 7px 9px;
+      margin-bottom: 6px;
+    }
+
+    .game-title {
+      font-size: 0.84rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    /* 每日專屬集章區 */
+    .stamp-row {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 7px;
+      align-items: stretch;
+    }
+
+    .stamp-slot {
+      border: 2.2px dashed var(--ink);
+      border-radius: 13px;
+      background: #FAFAF6;
+      padding: 5px 7px;
+      min-height: 74px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .stamp-slot b { font-size: 0.76rem; }
+    .stamp-slot span { font-size: 0.66rem; opacity: 0.75; }
+
+    .mini-check-box {
+      border: 2px solid var(--ink);
+      border-radius: 13px;
+      background: #EFF7EC;
+      padding: 6px 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .chk-line {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot-box {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: #FFF;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .p-foot {
+      border-top: 1.8px dashed var(--ink);
+      padding-top: 3px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      opacity: 0.8;
+    }
+
+    /* 賓果與表格 */
+    .bingo-3x3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 5px;
+    }
+
+    .b-cell {
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 0.74rem;
+      font-weight: 700;
+      min-height: 68px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #FFF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 浮動列印說明面板（列印時自動隱藏） -->
+  <div class="print-toolbar no-print">
+    <button type="button" class="print-btn" onclick="window.print()">🖨️ 列印 A5 16頁小冊子</button>
+    <div style="font-weight:700; line-height:1.4;">
+      💡 <strong>列印小秘訣</strong>：<br>
+      • 紙張選擇 <strong>A5 直式</strong>（或用 A4 紙選「小冊子列印 / 每張2頁」雙面列印後對折裝訂）。<br>
+      • 建議用 120g 較厚道林紙，方便 4 歲柔柔用蠟筆或彩色筆著色！
+    </div>
+  </div>
+
+  <!-- ==================== 第 1 頁：封面頁（貓咪巴士與森林小精靈著色） ==================== -->
+  <div class="a5-page" style="border-style:solid; border-width:3px;">
+    <div style="text-align:center; border-bottom:2.5px solid var(--ink); padding-bottom:6px;">
+      <div style="display:inline-block; background:#F7D97E; border:2px solid var(--ink); border-radius:999px; padding:1px 12px; font-size:0.76rem; font-weight:900; margin-bottom:4px;">
+        2027/2/24(三) – 3/4(四) ｜ 9天8夜親子自駕冒險
+      </div>
+      <h1 style="font-size:1.36rem; font-weight:900; line-height:1.25;">🌲 柔柔的名古屋・吉卜力<br>與雪國森林冒險小冊子</h1>
+    </div>
+
+    <!-- 封面黑白線稿著色插畫 -->
+    <div class="color-box" style="margin: 6px 0;">
+      <div class="color-label">🎨 封面著色畫：幫貓咪巴士、小煤炭球跟森林小精靈塗顏色！</div>
+      <svg viewBox="0 0 320 165" width="100%" height="156px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 蓬鬆白雲 -->
+          <path d="M18 32 C18 22, 32 19, 39 26 C45 16, 62 17, 66 28 C75 29, 77 40, 66 42 L20 42 C11 41, 11 33, 18 32 Z"/>
+          <path d="M242 28 C242 19, 255 16, 261 22 C266 14, 282 15, 285 25 C293 26, 295 36, 285 38 L244 38 C236 37, 236 29, 242 28 Z"/>
+          <!-- 遠方白川雪山 -->
+          <polygon points="8,132 54,68 100,132"/>
+          <polyline points="40,86 48,93 54,87 60,94 68,86" fill="none"/>
+          <!-- 車頂行李 -->
+          <line x1="88" y1="56" x2="168" y2="56"/>
+          <rect x="92" y="40" width="40" height="16" rx="5"/>
+          <rect x="138" y="38" width="26" height="18" rx="4"/>
+          <!-- 貓耳朵 -->
+          <polygon points="172,58 180,40 189,59"/>
+          <polygon points="194,60 204,42 209,63"/>
+          <!-- 貓咪巴士車身 -->
+          <path d="M62 126 L62 88 C62 69, 76 56, 96 56 L170 56 C188 56, 200 67, 206 82 L222 88 C229 91, 232 100, 232 111 L232 126 Z"/>
+          <path d="M84 56 L84 66 M106 56 L106 66 M128 56 L128 66"/>
+          <!-- 車窗 -->
+          <rect x="78" y="67" width="54" height="20" rx="4"/>
+          <path d="M140 67 L170 67 C182 67, 190 74, 194 87 L140 87 Z"/>
+          <!-- 小煤炭球乘客 -->
+          <circle cx="96" cy="78" r="6.5"/>
+          <circle cx="94" cy="77" r="1.8" fill="#2C3A2B"/>
+          <circle cx="98" cy="77" r="1.8" fill="#2C3A2B"/>
+          <circle cx="116" cy="79" r="6"/>
+          <circle cx="114" cy="78" r="1.6" fill="#2C3A2B"/>
+          <circle cx="118" cy="78" r="1.6" fill="#2C3A2B"/>
+          <!-- 駕駛座白色森林小精靈 -->
+          <polygon points="158,69 160,61 162,69"/>
+          <polygon points="165,69 167,61 169,69"/>
+          <ellipse cx="164" cy="77" rx="7.5" ry="7.5"/>
+          <circle cx="161.5" cy="76" r="1.4" fill="#2C3A2B"/>
+          <circle cx="166.5" cy="76" r="1.4" fill="#2C3A2B"/>
+          <!-- 鬍鬚與大圓燈 -->
+          <line x1="224" y1="101" x2="238" y2="98"/>
+          <line x1="224" y1="107" x2="238" y2="108"/>
+          <circle cx="224" cy="98" r="4.5"/>
+          <rect x="56" y="120" width="182" height="10" rx="5"/>
+          <!-- 車輪 -->
+          <circle cx="90" cy="138" r="15"/>
+          <circle cx="90" cy="138" r="7"/>
+          <circle cx="190" cy="138" r="15"/>
+          <circle cx="190" cy="138" r="7"/>
+          <!-- 右側撐荷葉傘小煤炭球 -->
+          <path d="M250 72 Q272 56 294 72 Z"/>
+          <line x1="272" y1="72" x2="272" y2="88"/>
+          <circle cx="272" cy="103" r="16"/>
+          <line x1="256" y1="96" x2="250" y2="92"/>
+          <line x1="255" y1="105" x2="249" y2="106"/>
+          <line x1="288" y1="96" x2="294" y2="92"/>
+          <line x1="289" y1="105" x2="295" y2="106"/>
+          <circle cx="266" cy="101" r="4.2"/>
+          <circle cx="278" cy="101" r="4.2"/>
+          <circle cx="266.5" cy="101" r="1.7" fill="#2C3A2B"/>
+          <circle cx="277.5" cy="101" r="1.7" fill="#2C3A2B"/>
+          <!-- 星星金平糖 -->
+          <polygon points="302,126 305,132 312,132 307,136 309,142 302,138 295,142 297,136 292,132 299,132"/>
+        </g>
+      </svg>
+    </div>
+
+    <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#FFF8E7; font-size:0.8rem; font-weight:700;">
+      <div>👧 冒險小主人：<strong>柔柔</strong>（4 歲）</div>
+      <div>👨‍👩‍👧 同行隊友：爸爸 ＆ 媽媽（自駕露營小隊）</div>
+      <div>🎁 集滿每日印章可兌換：扭蛋、飛驒牛乳霜淇淋、吉卜力小禮物！</div>
+    </div>
+
+    <div class="p-foot">
+      <span>2027 名古屋親子自駕小冊子</span>
+      <span>第 1 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 2 頁：護照資訊 ＆ 機場出發安全小約定 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">出發前準備</span>
+      <span class="p-title">🛂 柔柔的冒險護照 ＆ 安全小約定</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀導引</strong>：出發前跟柔柔一起認識這趟要搭的飛機、汽車與安全約定，完成就幫她在圓圈裡打勾！
+    </div>
+
+    <div class="game-box" style="background:#EFF7EC;">
+      <div class="game-title">🤝 柔柔的 4 個小旅人好習慣（做到就圈起來！）</div>
+      <div class="chk-line" style="margin-bottom:5px; font-size:0.8rem;"><span class="dot-box"></span> 🎒 我會自己背心愛的小背包，裡面裝水壺跟小手帕。</div>
+      <div class="chk-line" style="margin-bottom:5px; font-size:0.8rem;"><span class="dot-box"></span> 💺 坐汽車時，我會乖乖坐好兒童安全座椅並繫安全帶。</div>
+      <div class="chk-line" style="margin-bottom:5px; font-size:0.8rem;"><span class="dot-box"></span> 🧤 在白川鄉雪地走路時，牽緊爸爸媽媽的手不亂跑。</div>
+      <div class="chk-line" style="font-size:0.8rem;"><span class="dot-box"></span> 🚶 排隊等飛機、等貓咪巴士時，我有耐心慢慢等。</div>
+    </div>
+
+    <div class="game-box">
+      <div class="game-title">✈️ 我們的航班與家庭聯絡卡</div>
+      <div style="font-size:0.78rem; font-weight:700; line-height:1.65;">
+        • <strong>去程 2/24(三)</strong>：日本航空 JAL JL8670（桃園 T2 ➔ 名古屋中部機場）<br>
+        • <strong>回程 3/4(四)</strong>：日本航空 JAL JL8670（名古屋中部機場 ➔ 桃園 T2）<br>
+        • <strong>緊急聯絡人</strong>：爸爸 / 媽媽（若與爸媽走散，請找穿制服的店員或警察幫忙）
+      </div>
+    </div>
+
+    <!-- 簡單的交通工具配對小遊戲 -->
+    <div class="game-box" style="background:#FFF8E7;">
+      <div class="game-title">🔗 暖身遊戲：這趟旅行我們會搭哪 2 種交通工具？請圈出來！</div>
+      <div style="display:flex; justify-content:space-around; align-items:center; padding:4px 0; text-align:center; font-size:0.8rem; font-weight:900;">
+        <div style="border:2px solid var(--ink); border-radius:10px; padding:5px 8px; background:#FFF;">✈️<br>大飛機</div>
+        <div style="border:2px solid var(--ink); border-radius:10px; padding:5px 8px; background:#FFF;">🚀<br>太空梭</div>
+        <div style="border:2px solid var(--ink); border-radius:10px; padding:5px 8px; background:#FFF;">🚗<br>休旅車</div>
+        <div style="border:2px solid var(--ink); border-radius:10px; padding:5px 8px; background:#FFF;">🚢<br>大海盜船</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>出發準備篇</span>
+      <span>第 2 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 3 頁：Day 1（2/24）桃園起飛 ➔ 中部國際機場 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 1｜2/24(三)</span>
+      <span class="p-title">✈️ 飛向日本！中部國際機場</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：今天我們要搭 JAL 大飛機飛到名古屋，走過長長的室內空橋入住機場酒店，晚上吃寬寬的「碁子麵（きしめん）」！
+    </div>
+
+    <!-- D1 黑白著色圖：JAL 大飛機與雲朵 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫載我們去日本的 JAL 大飛機塗顏色吧！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 26 C22 18, 34 16, 40 22 C45 14, 58 15, 62 24 C69 25, 71 34, 62 36 L24 36 C16 35, 16 27, 22 26 Z"/>
+          <path d="M248 24 C248 16, 260 14, 266 20 C271 12, 284 13, 288 22 C295 23, 297 32, 288 34 L250 34 C242 33, 242 25, 248 24 Z"/>
+          <!-- 飛機機身 -->
+          <path d="M68 58 C68 44, 92 38, 134 38 L194 38 L212 14 L226 14 L216 38 L230 38 C238 38, 242 48, 230 56 L132 64 C96 66, 68 64, 68 58 Z"/>
+          <!-- 機翼與引擎 -->
+          <polygon points="128,50 158,78 174,78 152,50"/>
+          <rect x="136" y="62" width="18" height="8" rx="4"/>
+          <!-- 機窗 -->
+          <circle cx="96" cy="48" r="3"/>
+          <circle cx="110" cy="48" r="3"/>
+          <circle cx="124" cy="48" r="3"/>
+          <circle cx="138" cy="48" r="3"/>
+          <circle cx="152" cy="48" r="3"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D1 互動遊戲：數數看有幾扇飛機窗戶 -->
+    <div class="game-box">
+      <div class="game-title">🔢 觀察小遊戲：數一數上面大飛機有幾扇圓圓的窗戶？</div>
+      <div style="font-size:0.82rem; font-weight:700; text-align:center; padding:3px 0;">
+        我數到了（ ＿＿＿＿＿ ）扇窗戶！
+      </div>
+    </div>
+
+    <!-- D1 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 1 專屬集章處</b>
+        <span>中部國際機場 / 機場酒店</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 飛機起降乖乖喝水吞口水</div>
+        <div class="chk-line"><span class="dot-box"></span> 在機場吃到寬寬的烏龍麵</div>
+        <div class="chk-line"><span class="dot-box"></span> 乖乖刷牙早睡覺！</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 1｜中部國際機場</span>
+      <span>第 3 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 4 頁：Day 2（2/25）日本樂高樂園狂歡日 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 2｜2/25(四)</span>
+      <span class="p-title">🧱 日本樂高樂園小車手！</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：早上取車出發去樂高樂園！先幫柔柔量身高領手環，再去駕駛學校開小小樂高汽車，晚上住進名古屋東急飯店。
+    </div>
+
+    <!-- D2 黑白著色圖：樂高積木城堡與樂高小汽車 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫樂高積木城堡跟小小賽車塗上最酷的顏色！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 左側樂高積木塔 -->
+          <rect x="34" y="24" width="12" height="6"/>
+          <rect x="54" y="24" width="12" height="6"/>
+          <rect x="28" y="30" width="44" height="26"/>
+          <rect x="24" y="56" width="52" height="30"/>
+          <rect x="43" y="66" width="14" height="20"/>
+          <!-- 右側樂高小賽車 -->
+          <rect x="148" y="42" width="38" height="16" rx="3"/>
+          <rect x="130" y="58" width="84" height="18" rx="4"/>
+          <circle cx="152" cy="78" r="10"/>
+          <circle cx="152" cy="78" r="4"/>
+          <circle cx="194" cy="78" r="10"/>
+          <circle cx="194" cy="78" r="4"/>
+          <!-- 積木顆粒 -->
+          <rect x="246" y="46" width="10" height="5"/>
+          <rect x="264" y="46" width="10" height="5"/>
+          <rect x="240" y="51" width="40" height="18"/>
+          <rect x="246" y="64" width="10" height="5"/>
+          <rect x="264" y="64" width="10" height="5"/>
+          <rect x="240" y="69" width="40" height="18"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D2 互動遊戲：樂高積木形狀尋寶 -->
+    <div class="game-box">
+      <div class="game-title">🔍 尋寶遊戲：在樂園裡找到下面 3 樣東西就圈起來！</div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; text-align:center; font-size:0.76rem; font-weight:700;">
+        <div style="border:1.8px solid var(--ink); border-radius:9px; padding:4px; background:#FFF;">🦕<br>積木恐龍</div>
+        <div style="border:1.8px solid var(--ink); border-radius:9px; padding:4px; background:#FFF;">🚒<br>樂高消防車</div>
+        <div style="border:1.8px solid var(--ink); border-radius:9px; padding:4px; background:#FFF;">🍟<br>積木造型薯條</div>
+      </div>
+    </div>
+
+    <!-- D2 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 2 專屬集章處</b>
+        <span>日本樂高樂園 / 駕照紀念</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 量身高領取專屬手環</div>
+        <div class="chk-line"><span class="dot-box"></span> 開樂高小汽車拿到駕照</div>
+        <div class="chk-line"><span class="dot-box"></span> 認識積木顏色與形狀</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 2｜日本樂高樂園</span>
+      <span>第 4 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 5 頁：Day 3（2/26）吉卜力公園童話日 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 3｜2/26(五)</span>
+      <span class="p-title">🚌 吉卜力公園與魔女麵包店</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：早上先吃名古屋吐司早餐，接著進「吉卜力大倉庫」找軟綿綿貓巴士，再去「魔女之谷」買香噴噴可頌麵包！
+    </div>
+
+    <!-- D3 黑白著色圖：森林大精靈與香噴噴麵包籃 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫森林大精靈、小煤炭球跟魔女麵包塗顏色！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 森林大精靈（原創圓胖精靈造型） -->
+          <polygon points="74,26 80,10 88,26"/>
+          <polygon points="104,26 112,10 118,26"/>
+          <path d="M62 86 C58 56, 72 24, 96 24 C120 24, 134 56, 130 86 Z"/>
+          <!-- 大眼睛與鬍鬚 -->
+          <circle cx="84" cy="40" r="5"/>
+          <circle cx="108" cy="40" r="5"/>
+          <circle cx="84" cy="40" r="2" fill="#2C3A2B"/>
+          <circle cx="108" cy="40" r="2" fill="#2C3A2B"/>
+          <ellipse cx="96" cy="44" rx="4" ry="2.2" fill="#2C3A2B"/>
+          <line x1="56" y1="44" x2="68" y2="46"/>
+          <line x1="124" y1="46" x2="136" y2="44"/>
+          <!-- 肚子花紋 -->
+          <path d="M76 66 C76 54, 116 54, 116 66 C116 80, 76 80, 76 66 Z"/>
+          <polyline points="84,64 88,60 92,64" fill="none"/>
+          <polyline points="100,64 104,60 108,64" fill="none"/>
+
+          <!-- 魔女麵包店的牛角可頌與法棍 -->
+          <path d="M188 76 L256 76 L248 88 L196 88 Z"/>
+          <path d="M196 76 C196 58, 248 58, 248 76" fill="none"/>
+          <!-- 麵包 -->
+          <ellipse cx="212" cy="66" rx="12" ry="7" transform="rotate(-15 212 66)"/>
+          <ellipse cx="234" cy="66" rx="12" ry="7" transform="rotate(15 234 66)"/>
+          <!-- 蝴蝶結裝飾 -->
+          <polygon points="278,34 292,26 292,42"/>
+          <polygon points="306,34 292,26 292,42"/>
+          <circle cx="292" cy="34" r="3.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D3 互動遊戲：幫小煤炭球走迷宮找麵包 -->
+    <div class="game-box">
+      <div class="game-title">🌀 迷宮遊戲：用筆畫線，幫小煤炭球走到魔女麵包店！</div>
+      <svg viewBox="0 0 280 54" width="100%" height="50px" style="display:block;">
+        <g fill="none" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="34" y="4" width="212" height="46" rx="8"/>
+          <polyline points="34,20 120,20 120,34 80,34"/>
+          <polyline points="246,32 165,32 165,16"/>
+        </g>
+        <text x="8" y="22" font-size="15">⚫</text>
+        <text x="252" y="42" font-size="15">🥐</text>
+      </svg>
+    </div>
+
+    <!-- D3 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 3 專屬集章處</b>
+        <span>吉卜力公園 / 榮商圈</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 摸到軟綿綿的貓咪巴士</div>
+        <div class="chk-line"><span class="dot-box"></span> 吃到魔女之谷現烤麵包</div>
+        <div class="chk-line"><span class="dot-box"></span> 看到可愛的小白兔/吉伊卡哇</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 3｜吉卜力公園</span>
+      <span>第 5 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 6 頁：Day 4（2/27）郡上八幡古鎮 ➔ 飛驒高山 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 4｜2/27(六)</span>
+      <span class="p-title">🐟 郡上八幡看錦鯉 ➔ 飛驒高山</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：今天我們開車往雪國前進！中午在郡上八幡清澈的水渠看彩色大錦鯉，下午住進高山 HOTEL WOOD 連住兩晚！
+    </div>
+
+    <!-- D4 黑白著色圖：水渠裡的大錦鯉與小橋 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫郡上八幡清澈水渠裡的「彩色大錦鯉」塗上紅白花紋！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 水波紋 -->
+          <path d="M16 78 Q56 72 96 78 T176 78 T256 78 T304 78" fill="none"/>
+          <!-- 大錦鯉 1 -->
+          <path d="M56 38 C86 16, 134 22, 156 38 C134 54, 86 60, 56 38 Z"/>
+          <polygon points="56,38 34,24 40,38 34,52"/>
+          <circle cx="140" cy="34" r="3" fill="#2C3A2B"/>
+          <path d="M92 26 C100 32, 108 32, 114 25" fill="none"/>
+          <path d="M84 44 C94 38, 104 42, 112 48" fill="none"/>
+          <!-- 小錦鯉 2 -->
+          <path d="M196 52 C216 38, 250 42, 266 52 C250 62, 216 66, 196 52 Z"/>
+          <polygon points="196,52 180,42 184,52 180,62"/>
+          <circle cx="254" cy="49" r="2.5" fill="#2C3A2B"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D4 互動遊戲：數錦鯉與食物模型猜猜看 -->
+    <div class="game-box">
+      <div class="game-title">🔢 觀察遊戲：數數水渠裡有幾隻錦鯉，並圈出你最想吃的美食！</div>
+      <div style="font-size:0.78rem; font-weight:700; display:flex; justify-content:space-between; align-items:center; padding:2px 4px;">
+        <span>水渠裡有（ ＿＿ ）隻魚</span>
+        <span>美食：🥔 可樂餅　🍜 蕎麥麵　🥩 飛驒牛</span>
+      </div>
+    </div>
+
+    <!-- D4 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 4 專屬集章處</b>
+        <span>郡上八幡 / 高山飯店</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 在郡上八幡水渠看到大錦鯉</div>
+        <div class="chk-line"><span class="dot-box"></span> 認識逼真的食物模型</div>
+        <div class="chk-line"><span class="dot-box"></span> 抵達雪國高山整理好小背包</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 4｜郡上八幡 ➔ 飛驒高山</span>
+      <span>第 6 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 7 頁：Day 5（2/28）宮川朝市 ➔ 童話白川鄉合掌村 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 5｜2/28(日)</span>
+      <span class="p-title">⛄ 童話白川鄉合掌村玩雪日！</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：早上逛宮川朝市喝冰涼「飛驒牛乳」，接著開車去世界遺產白川鄉合掌村看三角形茅草雪屋、堆雪人！
+    </div>
+
+    <!-- D5 黑白著色圖：白川鄉合掌造雪屋 ＋ 戴毛帽小雪人 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫童話「合掌造雪屋」跟「戴毛帽的小雪人」塗顏色！</div>
+      <svg viewBox="0 0 320 98" width="100%" height="92px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 90 Q160 82 310 90" fill="none"/>
+          <!-- 杉樹 -->
+          <rect x="30" y="72" width="5" height="14"/>
+          <polygon points="32.5,28 16,54 49,54"/>
+          <polygon points="32.5,44 12,72 53,72"/>
+          <!-- 合掌屋 -->
+          <rect x="92" y="54" width="68" height="32"/>
+          <rect x="104" y="64" width="12" height="12"/>
+          <rect x="136" y="64" width="12" height="12"/>
+          <rect x="120" y="70" width="12" height="16"/>
+          <polygon points="78,56 126,14 174,56"/>
+          <polyline points="92,46 126,18 160,46" fill="none"/>
+          <!-- 小雪人 -->
+          <circle cx="236" cy="70" r="18"/>
+          <circle cx="236" cy="43" r="12.5"/>
+          <path d="M224 37 Q236 22 248 37 Z"/>
+          <circle cx="236" cy="24" r="3.5"/>
+          <circle cx="231" cy="41" r="1.8" fill="#2C3A2B"/>
+          <circle cx="241" cy="41" r="1.8" fill="#2C3A2B"/>
+          <polygon points="236,44 246,46 236,48"/>
+          <rect x="225" y="54" width="22" height="5" rx="2.5"/>
+          <line x1="218" y1="66" x2="202" y2="56"/>
+          <line x1="254" y1="66" x2="270" y2="56"/>
+          <circle cx="236" cy="66" r="2" fill="#2C3A2B"/>
+          <circle cx="236" cy="75" r="2" fill="#2C3A2B"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D5 互動遊戲：白川鄉雪地觀察賓果小任務 -->
+    <div class="game-box">
+      <div class="game-title">❄️ 雪地觀察遊戲：在白川鄉找到這 3 個秘密就圈起來！</div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; text-align:center; font-size:0.75rem; font-weight:700;">
+        <div style="border:1.8px solid var(--ink); border-radius:9px; padding:4px; background:#FFF;">🏠<br>三角形厚雪屋頂</div>
+        <div style="border:1.8px solid var(--ink); border-radius:9px; padding:4px; background:#FFF;">🍢<br>現烤五平餅</div>
+        <div style="border:1.8px solid var(--ink); border-radius:9px; padding:4px; background:#FFF;">👶<br>飛驒猴寶寶御守</div>
+      </div>
+    </div>
+
+    <!-- D5 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 5 專屬集章處</b>
+        <span>白川鄉合掌村 / 宮川朝市</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 早上喝一瓶冰涼飛驒牛乳</div>
+        <div class="chk-line"><span class="dot-box"></span> 親手做一顆圓圓的小雪球</div>
+        <div class="chk-line"><span class="dot-box"></span> 戴好手套跟毛帽不著涼</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 5｜世界遺產白川鄉</span>
+      <span>第 7 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 8 頁：Day 6（3/1）下呂溫泉水明館極致放鬆 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 6｜3/1(一)</span>
+      <span class="p-title">♨️ 下呂溫泉 ＆ 小青蛙泡湯日</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：下呂是日本三大名泉，日文發音「Gero」就像青蛙叫聲！今天去溫泉街找可愛小青蛙、吃布丁、入住水明館泡暖暖溫泉。
+    </div>
+
+    <!-- D6 黑白著色圖：頭頂毛巾泡溫泉的小青蛙 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫頭頂小毛巾泡溫泉的「下呂小青蛙」塗上綠色吧！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 木造溫泉浴池 -->
+          <ellipse cx="160" cy="78" rx="88" ry="15"/>
+          <!-- 小青蛙臉 -->
+          <ellipse cx="160" cy="54" rx="34" ry="24"/>
+          <circle cx="142" cy="30" r="11"/>
+          <circle cx="178" cy="30" r="11"/>
+          <circle cx="142" cy="30" r="4.5" fill="#2C3A2B"/>
+          <circle cx="178" cy="30" r="4.5" fill="#2C3A2B"/>
+          <!-- 頭頂折疊小毛巾 -->
+          <rect x="148" y="16" width="24" height="8" rx="3"/>
+          <!-- 微笑嘴巴 -->
+          <path d="M144 58 Q160 68 176 58" fill="none"/>
+          <!-- 溫泉熱氣 -->
+          <path d="M96 58 Q90 46 96 34" fill="none"/>
+          <path d="M224 58 Q230 46 224 34" fill="none"/>
+          <path d="M112 44 Q108 34 112 24" fill="none"/>
+          <path d="M208 44 Q212 34 208 24" fill="none"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D6 互動遊戲：找一找溫泉街有幾隻青蛙 -->
+    <div class="game-box">
+      <div class="game-title">🐸 數數小遊戲：今天你在下呂溫泉街找到幾隻小青蛙？</div>
+      <div style="font-size:0.8rem; font-weight:700; text-align:center; padding:3px 0;">
+        我在路燈、看板跟神社一共找到（ ＿＿＿＿＿ ）隻小青蛙！
+      </div>
+    </div>
+
+    <!-- D6 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 6 專屬集章處</b>
+        <span>下呂溫泉水明館 / 溫泉街</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 在溫泉街免費足湯泡泡腳</div>
+        <div class="chk-line"><span class="dot-box"></span> 吃到可愛青蛙瓶下呂布丁</div>
+        <div class="chk-line"><span class="dot-box"></span> 穿上漂亮小浴衣拍全家福</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 6｜下呂溫泉水明館</span>
+      <span>第 8 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 9 頁：Day 7（3/2）返回名古屋・大須＆榮商圈尋寶 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 7｜3/2(二)</span>
+      <span class="p-title">🔮 大須商店街扭蛋 ＆ 榮商圈</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：上午泡完晨湯開車返回溫暖的名古屋市區，下午逛屋頂高高的「大須商店街」轉扭蛋、吃烤醬油糰子！
+    </div>
+
+    <!-- D7 黑白著色圖：大須可愛扭蛋機與三色烤糰子 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫「神奇扭蛋機」跟「三色烤糰子」塗上甜甜的顏色！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 左側扭蛋機 -->
+          <rect x="64" y="14" width="64" height="44" rx="10"/>
+          <rect x="64" y="58" width="64" height="30" rx="4"/>
+          <circle cx="96" cy="70" r="7"/>
+          <line x1="91" y1="70" x2="101" y2="70"/>
+          <rect x="82" y="80" width="28" height="8"/>
+          <!-- 扭蛋機裡的小球 -->
+          <circle cx="82" cy="44" r="8"/>
+          <circle cx="100" cy="46" r="8"/>
+          <circle cx="114" cy="42" r="7"/>
+          <circle cx="90" cy="30" r="7.5"/>
+          <circle cx="108" cy="28" r="7.5"/>
+
+          <!-- 右側三色烤糰子 -->
+          <line x1="205" y1="84" x2="255" y2="22"/>
+          <circle cx="246" cy="33" r="10"/>
+          <circle cx="233" cy="49" r="10"/>
+          <circle cx="220" cy="65" r="10"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D7 互動遊戲：找一找藏了幾顆星星扭蛋 -->
+    <div class="game-box">
+      <div class="game-title">⭐ 眼力挑戰：下面藏了幾顆星星？請全部圈起來！</div>
+      <svg viewBox="0 0 280 42" width="100%" height="38px" style="display:block;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="1.9" stroke-linejoin="round">
+          <polygon points="28,8 31,16 39,16 33,21 35,29 28,24 21,29 23,21 17,16 25,16"/>
+          <circle cx="72" cy="20" r="9"/>
+          <polygon points="118,8 121,16 129,16 123,21 125,29 118,24 111,29 113,21 107,16 115,16"/>
+          <polygon points="166,10 169,18 177,18 171,23 173,31 166,26 159,31 161,23 155,18 163,18"/>
+          <circle cx="212" cy="20" r="9"/>
+          <polygon points="254,8 257,16 265,16 259,21 261,29 254,24 247,29 249,21 243,16 251,16"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D7 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 7 專屬集章處</b>
+        <span>大須商店街 / 榮商圈</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 自己挑一顆喜歡的扭蛋</div>
+        <div class="chk-line"><span class="dot-box"></span> 吃到香香甜甜的烤糰子</div>
+        <div class="chk-line"><span class="dot-box"></span> 牽緊爸媽逛街不走丟</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 7｜大須商店街 ＆ 榮商圈</span>
+      <span>第 9 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 10 頁：Day 8（3/3）三井長島 Outlet ➔ 波音博物館 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 8｜3/3(三)</span>
+      <span class="p-title">🛫 長島 Outlet ＆ 波音 787 巨型客機</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：上午逛長島 Outlet（旁邊還有麵包超人館！），下午開回機場旁的「波音博物館 FLIGHT OF DREAMS」，在真實 787 大飛機機翼下玩滑梯！
+    </div>
+
+    <!-- D8 黑白著色圖：波音 787 巨型客機與彩虹大滑梯 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫「波音 787 巨型客機」跟機翼下的「大滑梯」塗顏色！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 波音 787 巨型機頭與機翼 -->
+          <path d="M44 48 C44 26, 86 18, 148 18 L278 18 L278 52 L144 52 C88 52, 44 54, 44 48 Z"/>
+          <!-- 駕駛艙玻璃 -->
+          <path d="M58 34 L82 28 L86 38 L58 40 Z"/>
+          <!-- 機身線條與窗戶 -->
+          <circle cx="106" cy="34" r="3"/>
+          <circle cx="122" cy="34" r="3"/>
+          <circle cx="138" cy="34" r="3"/>
+          <circle cx="154" cy="34" r="3"/>
+          <!-- 機翼下的大滑梯 -->
+          <path d="M178 52 Q216 56 244 86 L264 86 Q234 54 198 52 Z"/>
+          <!-- 巨型引擎 -->
+          <rect x="116" y="48" width="38" height="22" rx="8"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D8 互動遊戲：機場還車小幫手配對 -->
+    <div class="game-box">
+      <div class="game-title">⛽ 任務遊戲：18:00 還車前要做哪 2 件事？請圈出來！</div>
+      <div style="display:flex; justify-content:space-around; font-size:0.78rem; font-weight:900; padding:3px 0;">
+        <span style="border:1.8px solid var(--ink); border-radius:8px; padding:3px 8px; background:#FFF;">⛽ 幫汽車加滿油</span>
+        <span style="border:1.8px solid var(--ink); border-radius:8px; padding:3px 8px; background:#FFF;">🧳 檢查背包沒遺落</span>
+        <span style="border:1.8px solid var(--ink); border-radius:8px; padding:3px 8px; background:#FFF;">🍉 去海邊種西瓜</span>
+      </div>
+    </div>
+
+    <!-- D8 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 8 專屬集章處</b>
+        <span>長島 Outlet / 波音博物館</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 近距離看到真實波音 787 飛機</div>
+        <div class="chk-line"><span class="dot-box"></span> 玩到飛機機翼下的溜滑梯</div>
+        <div class="chk-line"><span class="dot-box"></span> 幫爸爸媽媽一起整理行李箱</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 8｜長島 Outlet ＆ 波音博物館</span>
+      <span>第 10 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 11 頁：Day 9（3/4）機場退稅 ➔ 平安飛回溫暖的家 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">Day 9｜3/4(四)</span>
+      <span class="p-title">🏠 滿載回憶！搭飛機回台灣囉</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：今天早上推著 6 大件行李走空橋進第一航廈辦退稅與託運，在免稅店買小雞布丁蛋糕與蝦餅，搭 12:05 飛機平安回台灣！
+    </div>
+
+    <!-- D9 黑白著色圖：名古屋小雞布丁蛋糕與伴手禮盒 -->
+    <div class="color-box">
+      <div class="color-label">🎨 著色畫：幫可愛的名古屋「小雞布丁蛋糕」跟「禮物盒」塗顏色！</div>
+      <svg viewBox="0 0 320 96" width="100%" height="90px" style="display:block; margin:0 auto;">
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 左側可愛小雞布丁蛋糕（Piyorin風） -->
+          <ellipse cx="106" cy="84" rx="44" ry="8"/>
+          <path d="M74 82 C74 44, 138 44, 138 82 Z"/>
+          <!-- 小雞頭冠、眼睛與嘴巴 -->
+          <path d="M100 44 Q106 32 112 44" fill="none"/>
+          <circle cx="96" cy="58" r="2.5" fill="#2C3A2B"/>
+          <circle cx="116" cy="58" r="2.5" fill="#2C3A2B"/>
+          <polygon points="102,62 110,62 106,68"/>
+          <!-- 小翅膀 -->
+          <path d="M74 66 Q64 70 74 74" fill="none"/>
+          <path d="M138 66 Q148 70 138 74" fill="none"/>
+
+          <!-- 右側伴手禮大禮物盒 -->
+          <rect x="196" y="42" width="68" height="42" rx="4"/>
+          <rect x="192" y="34" width="76" height="10" rx="3"/>
+          <line x1="230" y1="34" x2="230" y2="84"/>
+          <path d="M230 34 C216 20, 206 30, 230 34 C254 30, 244 20, 230 34 Z"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- D9 互動遊戲：空港伴手禮連連看 -->
+    <div class="game-box">
+      <div class="game-title">🎁 記憶遊戲：這趟日本旅行我們買了哪些伴手禮？請圈起來！</div>
+      <div style="display:flex; justify-content:space-around; font-size:0.78rem; font-weight:700; padding:3px 0;">
+        <span>🐥 小雞布丁</span>
+        <span>🦐 黃金蝦餅</span>
+        <span>🍡 紅豆麻糬</span>
+        <span>🧸 猴寶寶吊飾</span>
+      </div>
+    </div>
+
+    <!-- D9 集章與任務 -->
+    <div class="stamp-row">
+      <div class="stamp-slot">
+        <b>📮 Day 9 專屬集章處</b>
+        <span>中部機場 T1 / 桃園機場</span>
+        <div style="font-size:0.75rem; font-weight:900;">⭕ 蓋章 / 貼貼紙</div>
+      </div>
+      <div class="mini-check-box">
+        <div class="chk-line"><span class="dot-box"></span> 登機前先去上廁所洗手</div>
+        <div class="chk-line"><span class="dot-box"></span> 飛機上安靜看書或睡覺</div>
+        <div class="chk-line"><span class="dot-box"></span> 平安抵達台灣溫暖的家！</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>Day 9｜平安返抵台灣</span>
+      <span>第 11 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 12 頁：互動遊戲專頁（1）好朋友連連看 ＆ 影子配對 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">趣味遊戲 1</span>
+      <span class="p-title">🔗 景點與好朋友連連看</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：請柔柔拿蠟筆或色鉛筆，把左邊去過的地方，連到右邊對應的可愛好朋友！
+    </div>
+
+    <div class="game-box" style="flex:1; display:flex; flex-direction:column; justify-content:space-around; background:#FFFDF8;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 6px;">
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#FFF8E7; font-size:0.84rem; font-weight:900; width:44%;">
+          🧱 日本樂高樂園
+        </div>
+        <div style="font-weight:900;">●　　　　●</div>
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#EFF7EC; font-size:0.84rem; font-weight:900; width:44%; text-align:right;">
+          ⛄ 堆圓圓小雪人
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 6px;">
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#FFF8E7; font-size:0.84rem; font-weight:900; width:44%;">
+          🚌 吉卜力公園
+        </div>
+        <div style="font-weight:900;">●　　　　●</div>
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#EFF7EC; font-size:0.84rem; font-weight:900; width:44%; text-align:right;">
+          🐸 泡暖暖青蛙足湯
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 6px;">
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#FFF8E7; font-size:0.84rem; font-weight:900; width:44%;">
+          🏠 白川鄉合掌村
+        </div>
+        <div style="font-weight:900;">●　　　　●</div>
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#EFF7EC; font-size:0.84rem; font-weight:900; width:44%; text-align:right;">
+          🚗 開小車拿駕照
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 6px;">
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#FFF8E7; font-size:0.84rem; font-weight:900; width:44%;">
+          ♨️ 下呂溫泉水明館
+        </div>
+        <div style="font-weight:900;">●　　　　●</div>
+        <div style="border:2px solid var(--ink); border-radius:12px; padding:7px 10px; background:#EFF7EC; font-size:0.84rem; font-weight:900; width:44%; text-align:right;">
+          🐱 軟綿綿貓咪巴士
+        </div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>飛機＆車上趣味遊戲篇</span>
+      <span>第 12 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 13 頁：互動遊戲專頁（2）找不同 ＆ 小煤炭球大迷宮 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">趣味遊戲 2</span>
+      <span class="p-title">🔍 找找哪裡不一樣 ＆ 森林迷宮</span>
+    </div>
+
+    <!-- 遊戲 A：兩隻小雪人找 3 個不同處 -->
+    <div class="game-box">
+      <div class="game-title">👀 眼力大考驗：右邊的小雪人有「3 個地方」不一樣，請圈出來！</div>
+      <svg viewBox="0 0 300 102" width="100%" height="96px" style="display:block; margin:0 auto;">
+        <!-- 左邊原圖雪人 -->
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="75" cy="74" r="20"/>
+          <circle cx="75" cy="44" r="14"/>
+          <path d="M62 37 Q75 20 88 37 Z"/>
+          <circle cx="75" cy="23" r="4"/>
+          <circle cx="70" cy="42" r="2" fill="#2C3A2B"/>
+          <circle cx="80" cy="42" r="2" fill="#2C3A2B"/>
+          <polygon points="75,45 86,47 75,50"/>
+          <rect x="63" y="56" width="24" height="5" rx="2.5"/>
+          <circle cx="75" cy="68" r="2.2" fill="#2C3A2B"/>
+          <circle cx="75" cy="78" r="2.2" fill="#2C3A2B"/>
+          <line x1="55" y1="68" x2="38" y2="58"/>
+          <line x1="95" y1="68" x2="112" y2="58"/>
+        </g>
+        <line x1="150" y1="10" x2="150" y2="95" stroke="#2C3A2B" stroke-width="1.8" stroke-dasharray="4 4"/>
+        <!-- 右邊雪人（不同處：1.沒有毛帽球球 2.沒有胡蘿蔔鼻子 3.肚子少一顆鈕扣） -->
+        <g fill="#FFFFFF" stroke="#2C3A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="225" cy="74" r="20"/>
+          <circle cx="225" cy="44" r="14"/>
+          <path d="M212 37 Q225 20 238 37 Z"/>
+          <!-- 少了帽子頂端球球 -->
+          <circle cx="220" cy="42" r="2" fill="#2C3A2B"/>
+          <circle cx="230" cy="42" r="2" fill="#2C3A2B"/>
+          <!-- 少了胡蘿蔔鼻子 -->
+          <rect x="213" y="56" width="24" height="5" rx="2.5"/>
+          <circle cx="225" cy="68" r="2.2" fill="#2C3A2B"/>
+          <!-- 少了第二顆鈕扣 -->
+          <line x1="205" y1="68" x2="188" y2="58"/>
+          <line x1="245" y1="68" x2="262" y2="58"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 遊戲 B：貓咪巴士開往白川鄉大迷宮 -->
+    <div class="game-box" style="background:#EFF7EC;">
+      <div class="game-title">🚌 駕駛挑戰：幫貓咪巴士沿著馬路開到白川鄉合掌屋！</div>
+      <svg viewBox="0 0 300 92" width="100%" height="88px" style="display:block; margin:0 auto;">
+        <g fill="none" stroke="#2C3A2B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="38" y="6" width="224" height="80" rx="10" fill="#FFF"/>
+          <polyline points="38,28 145,28 145,52 85,52"/>
+          <polyline points="262,62 175,62 175,32 215,32"/>
+          <line x1="110" y1="6" x2="110" y2="18"/>
+          <line x1="130" y1="86" x2="130" y2="68"/>
+        </g>
+        <text x="6" y="26" font-size="18">🚌</text>
+        <text x="268" y="76" font-size="18">🏠</text>
+      </svg>
+    </div>
+
+    <div class="p-foot">
+      <span>眼力與手眼協調挑戰</span>
+      <span>第 13 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 14 頁：互動遊戲專頁（3）旅行發現 3×3 大賓果 ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">趣味遊戲 3</span>
+      <span class="p-title">🎲 柔柔的日本旅行發現大賓果</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>遊戲規則</strong>：旅途中看到或做到格子裡的事情就拿色筆圈起來，連成「直線、橫線或斜線」就大喊 <strong>BINGO！</strong> 找爸媽領獎勵！
+    </div>
+
+    <div class="game-box" style="flex:1; background:#FFF8E7; display:flex; flex-direction:column; justify-content:center;">
+      <div class="bingo-3x3">
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">✈️</span>
+          <span>看到藍白或紅白大飛機</span>
+        </div>
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">⛄</span>
+          <span>摸到冰冰涼涼的白雪</span>
+        </div>
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">🚌</span>
+          <span>找到軟綿綿貓咪巴士</span>
+        </div>
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">🥛</span>
+          <span>喝一瓶冰涼飛驒牛乳</span>
+        </div>
+        <div class="b-cell" style="background:#F7D97E;">
+          <span style="font-size:1.55rem;">⭐</span>
+          <span><strong>免費星星格</strong><br>（直接圈起來！）</span>
+        </div>
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">🧱</span>
+          <span>開樂高小車拿到駕照</span>
+        </div>
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">🐸</span>
+          <span>找到下呂溫泉小青蛙</span>
+        </div>
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">🔮</span>
+          <span>自己轉一顆可愛扭蛋</span>
+        </div>
+        <div class="b-cell">
+          <span style="font-size:1.55rem;">🎒</span>
+          <span>自己背小背包排隊隊</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>旅途賓果大挑戰</span>
+      <span>第 14 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 15 頁：小畫家紀念畫布（我最喜歡的一天） ==================== -->
+  <div class="a5-page">
+    <div class="p-head">
+      <span class="p-day-pill">回憶紀念頁</span>
+      <span class="p-title">🖍️ 柔柔的小畫家紀念畫布</span>
+    </div>
+
+    <div class="parent-tip">
+      👨‍👩‍👧 <strong>家長陪讀</strong>：問問柔柔這 9 天裡最喜歡哪裡？請她畫下來（或貼上拍立得照片），再由爸媽幫忙寫下一句童言童語！
+    </div>
+
+    <div class="color-box" style="flex:1; display:flex; flex-direction:column; justify-content:space-between; background:#FFFDF8;">
+      <div class="color-label">🖼️ 這趟日本旅行我最喜歡的是：（請畫在框框裡）</div>
+      <div style="flex:1; border:2px dashed #7BA675; border-radius:12px; margin:4px 0; background:#FFFFFF;"></div>
+      <div style="text-align:left; font-size:0.78rem; font-weight:700; padding-top:4px;">
+        <div>💬 柔柔說：「＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿」</div>
+        <div style="margin-top:4px;">😊 旅行心情圈一圈：　😄 超級開心　🤩 好驚喜　☃️ 雪地好好玩</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>我的日本旅行畫作</span>
+      <span>第 15 頁 / 共 16 頁</span>
+    </div>
+  </div>
+
+  <!-- ==================== 第 16 頁：封底頁（勇者畢業獎狀 ＆ 自由蓋章區） ==================== -->
+  <div class="a5-page" style="border-style:solid; border-width:3px; background:#FFFDF8;">
+    <div style="text-align:center; border:3px double var(--ink); border-radius:16px; padding:10px 12px; background:#FFF8E7;">
+      <div style="font-size:2rem; margin-bottom:2px;">👑🏆✨</div>
+      <h2 style="font-size:1.25rem; font-weight:900; margin-bottom:4px;">吉卜力森林與雪國勇者獎狀</h2>
+      <p style="font-size:0.82rem; font-weight:700; line-height:1.55;">
+        茲證明 <strong>柔柔</strong> 小朋友在 2027 年名古屋親子自駕 9 日遊中，表現超級勇敢、乖巧又獨立，順利完成所有集章與挑戰任務，特頒發此獎狀以資鼓勵！
+      </p>
+      <div style="margin-top:8px; font-size:0.78rem; font-weight:900;">
+        頒獎人：爸爸 ＆ 媽媽　｜　日期：2027 年 3 月 4 日
+      </div>
+    </div>
+
+    <!-- 封底自由蓋章收集區 -->
+    <div class="stamp-slot" style="min-height:110px; background:#FFFFFF;">
+      <b>📮 封底特別紀念章收集區（機場 / 車站 / 飯店紀念章）</b>
+      <span>把日本可愛的驛站印章通通蓋在這裡吧！</span>
+      <div style="font-size:0.82rem; font-weight:900;">⭕ 自由蓋章大空間</div>
+    </div>
+
+    <div style="text-align:center; font-size:0.76rem; font-weight:700; opacity:0.85;">
+      🌲 2027 名古屋・吉卜力・白川鄉・下呂溫泉 親子自駕 9 日遊 🌲<br>
+      第 16 頁 / 封底完
+    </div>
+  </div>
+
+</body>
+</html>
